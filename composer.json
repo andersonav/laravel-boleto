@@ -1,0 +1,45 @@
+{
+    "name": "alves/laravel-boleto",
+    "description": "Biblioteca para geração de boletos, remessas e leitura de retornos no Laravel",
+    "keywords": [
+        "alves",
+        "laravel-boleto"
+    ],
+    "homepage": "https://github.com/andersonav/laravel-boleto",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alves Gusmão",
+            "email": "eduguscontra3@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "nesbot/carbon": "^2.72|^3.0",
+        "laravel/framework": "^12.0",
+        "neitanod/forceutf8": "^2.0",
+        "setasign/fpdf": "^1.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5",
+        "orchestra/testbench": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alves\\LaravelBoleto\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alves\\LaravelBoleto\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        }
+    }
+}
+
