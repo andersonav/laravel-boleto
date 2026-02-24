@@ -223,7 +223,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab400
             ->setNumeroControle($this->rem(117, 126, $detalhe))
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
-            ->setOcorrenciaDescricao(array_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
+            ->setOcorrenciaDescricao(data_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setValor(Util::nFloat($this->rem(153, 165, $detalhe), 2, false) / 100)
@@ -266,11 +266,11 @@ class Sicredi extends AbstractRetorno implements RetornoCnab400
         $errorsRetorno = str_split($stringErrors, 2) + array_fill(0, 5, '') + array_fill(0, 5, '');
         if (trim($stringErrors, '0') != '') {
             $error = [];
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[0], '');
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[1], '');
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[2], '');
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[3], '');
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[4], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[0], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[1], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[2], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[3], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[4], '');
 
             $error = array_filter($error);
 

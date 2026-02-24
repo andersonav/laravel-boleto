@@ -189,7 +189,7 @@ class Hsbc extends AbstractRetorno implements RetornoCnab400
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setNumeroControle($this->rem(38, 62, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
-            ->setOcorrenciaDescricao(array_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
+            ->setOcorrenciaDescricao(data_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setValor(Util::nFloat($this->rem(153, 165, $detalhe)/100, 2, false))
@@ -218,7 +218,7 @@ class Hsbc extends AbstractRetorno implements RetornoCnab400
             $d->setOcorrenciaTipo($d::OCORRENCIA_ALTERACAO);
         } elseif ($d->hasOcorrencia('03')) {
             $this->totais['erros']++;
-            $d->setError(array_get($this->rejeicoes, $this->rem(302, 303, $detalhe), 'Consulte seu Internet Banking'));
+            $d->setError(data_get($this->rejeicoes, $this->rem(302, 303, $detalhe), 'Consulte seu Internet Banking'));
         } else {
             $d->setOcorrenciaTipo($d::OCORRENCIA_OUTROS);
         }

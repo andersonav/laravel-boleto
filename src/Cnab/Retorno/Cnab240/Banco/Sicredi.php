@@ -182,7 +182,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
 
         if ($this->getSegmentType($detalhe) == 'T') {
             $d->setOcorrencia($this->rem(16, 17, $detalhe))
-                ->setOcorrenciaDescricao(array_get($this->ocorrencias, $this->detalheAtual()->getOcorrencia(), 'Desconhecida'))
+                ->setOcorrenciaDescricao(data_get($this->ocorrencias, $this->detalheAtual()->getOcorrencia(), 'Desconhecida'))
                 ->setNossoNumero($this->rem(38, 57, $detalhe))
                 ->setCarteira($this->rem(58, 58, $detalhe))
                 ->setNumeroDocumento($this->rem(59, 73, $detalhe))
@@ -220,11 +220,11 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
             } elseif ($d->hasOcorrencia('03', '26', '30', '36')) {
                 $this->totais['erros']++;
                 $error = Util::appendStrings(
-                    array_get($this->rejeicoes, $msgAdicional[0], ''),
-                    array_get($this->rejeicoes, $msgAdicional[1], ''),
-                    array_get($this->rejeicoes, $msgAdicional[2], ''),
-                    array_get($this->rejeicoes, $msgAdicional[3], ''),
-                    array_get($this->rejeicoes, $msgAdicional[4], '')
+                    data_get($this->rejeicoes, $msgAdicional[0], ''),
+                    data_get($this->rejeicoes, $msgAdicional[1], ''),
+                    data_get($this->rejeicoes, $msgAdicional[2], ''),
+                    data_get($this->rejeicoes, $msgAdicional[3], ''),
+                    data_get($this->rejeicoes, $msgAdicional[4], '')
                 );
                 $d->setError($error);
             } else {

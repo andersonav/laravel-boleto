@@ -120,7 +120,7 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setNumeroControle($this->rem(38, 62, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
-            ->setOcorrenciaDescricao(array_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
+            ->setOcorrenciaDescricao(data_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($this->rem(176, 181, $detalhe))
@@ -152,11 +152,11 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
         }  elseif ($d->hasOcorrencia('03', '24', '27', '30', '32')) {
             $this->totais['erros']++;
             $error = Util::appendStrings(
-                array_get($this->rejeicoes, $msgAdicional[0], ''),
-                array_get($this->rejeicoes, $msgAdicional[1], ''),
-                array_get($this->rejeicoes, $msgAdicional[2], ''),
-                array_get($this->rejeicoes, $msgAdicional[3], ''),
-                array_get($this->rejeicoes, $msgAdicional[4], '')
+                data_get($this->rejeicoes, $msgAdicional[0], ''),
+                data_get($this->rejeicoes, $msgAdicional[1], ''),
+                data_get($this->rejeicoes, $msgAdicional[2], ''),
+                data_get($this->rejeicoes, $msgAdicional[3], ''),
+                data_get($this->rejeicoes, $msgAdicional[4], '')
             );
             $d->setError($error);
         } else {

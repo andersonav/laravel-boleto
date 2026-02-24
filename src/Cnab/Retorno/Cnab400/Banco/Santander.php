@@ -278,7 +278,7 @@ class Santander extends AbstractRetorno implements RetornoCnab400
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setNumeroControle($this->rem(38, 62, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
-            ->setOcorrenciaDescricao(array_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
+            ->setOcorrenciaDescricao(data_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($this->rem(296, 301, $detalhe))
@@ -312,9 +312,9 @@ class Santander extends AbstractRetorno implements RetornoCnab400
             $this->totais['erros']++;
             $errorsRetorno = str_split(sprintf('%09s', $this->rem(137, 145, $detalhe)), 3) + array_fill(0, 3, '');
             $error = [];
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[0], '');
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[1], '');
-            $error[] = array_get($this->rejeicoes, $errorsRetorno[2], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[0], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[1], '');
+            $error[] = data_get($this->rejeicoes, $errorsRetorno[2], '');
 
             $d->setError(implode(PHP_EOL, $error));
         } else {
