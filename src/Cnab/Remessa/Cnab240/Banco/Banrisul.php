@@ -33,14 +33,14 @@ class Banrisul extends AbstractRemessa implements RemessaContract
     const PROTESTO_DIAS_CORRIDOS = '1';
     const PROTESTO_NAO_PROTESTAR = '3';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('codigoCliente');
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -48,23 +48,23 @@ class Banrisul extends AbstractRemessa implements RemessaContract
 
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
-     * 1 -> CobranÃ§a Simples
-     * 2 -> CobranÃ§a Vinculada
-     * 3 -> CobranÃ§a Caucionada
-     * B -> CobranÃ§a Caucionada CGB Especial
-     * D -> CobranÃ§a CSB
-     * E -> CobranÃ§a Caucionada CÃ¢mbio
-     * F -> CobranÃ§a Vendor
+     * Define as carteiras disponíveis para cada banco
+     * 1 -> Cobrança Simples
+     * 2 -> Cobrança Vinculada
+     * 3 -> Cobrança Caucionada
+     * B -> Cobrança Caucionada CGB Especial
+     * D -> Cobrança CSB
+     * E -> Cobrança Caucionada Câmbio
+     * F -> Cobrança Vendor
      * G -> BBH Reservado
-     * H -> CobranÃ§a Caucionada em DÃ³lar
-     * I -> CobranÃ§a Caucionada Compror
-     * J -> CobranÃ§a Caucionada NPR
-     * K -> CobranÃ§a simples INCC-M
+     * H -> Cobrança Caucionada em Dólar
+     * I -> Cobrança Caucionada Compror
+     * J -> Cobrança Caucionada NPR
+     * K -> Cobrança simples INCC-M
      * N -> Capital de Giro CGB ICM
-     * P -> CDCI EletrÃ´nico â€“ PF
+     * P -> CDCI Eletrônico - PF
      * R -> Desconto de Duplicada
-     * S -> Vendor EletrÃ´nico
+     * S -> Vendor Eletrônico
      * T -> Leasing
      * U -> CSB e CCB sem registro
      * @var array
@@ -108,7 +108,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->segmentoP($boleto);
@@ -125,7 +125,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    protected function segmentoP(BoletoContract $boleto)
+    protected function segmentoP( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -156,7 +156,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
         $this->add(58, 58, $this->getCarteira());
         $this->add(59, 59, '1'); //'1' = Com Cadastramento
         $this->add(60, 60, '');
-        $this->add(61, 61, '2'); //2 â€“ Cliente emite o bloqueto
+        $this->add(61, 61, '2'); //2 - Cliente emite o bloqueto
         $this->add(62, 62, '');
         $this->add(63, 77, Util::formatCnab('9', $boleto->getNumeroDocumento(), 15));
         $this->add(78, 85, $boleto->getDataVencimento()->format('dmY'));
@@ -169,7 +169,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
         $this->add(118, 118, $boleto->getJuros() ? '1' : '3'); //'1' = Valor por Dia, '3' = Isento
         $this->add(119, 126, $boleto->getDataVencimento()->format('dmY'));
         $this->add(127, 141, Util::formatCnab('9', $boleto->getMoraDia(), 15, 2)); //Valor da mora/dia ou Taxa mensal
-        $this->add(142, 142, '1'); // '1' = Valor Fixo AtÃ© a Data Informada
+        $this->add(142, 142, '1'); // '1' = Valor Fixo Até a Data Informada
         $this->add(143, 150, $boleto->getDesconto() > 0 ? $boleto->getDataDesconto()->format('dmY') : '00000000');
         $this->add(151, 165, Util::formatCnab('9', $boleto->getDesconto(), 15, 2));
         $this->add(166, 180, Util::formatCnab('9', 0, 15, 2));
@@ -180,7 +180,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
             $this->add(221, 221, self::PROTESTO_DIAS_CORRIDOS);
         }
         $this->add(222, 223, Util::formatCnab('9', $boleto->getDiasProtesto(), 2));
-        $this->add(224, 224, '2'); // 2 â€“ Reservado
+        $this->add(224, 224, '2'); // 2 - Reservado
         $this->add(225, 227, '000');
         $this->add(228, 229, Util::formatCnab('9', $boleto->getMoeda(), 2));
         $this->add(230, 239, '0000000000');
@@ -195,7 +195,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoQ(BoletoContract $boleto)
+    public function segmentoQ( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -241,7 +241,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoY01(BoletoContract $boleto)
+    public function segmentoY01( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));

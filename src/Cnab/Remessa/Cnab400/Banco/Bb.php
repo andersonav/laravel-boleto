@@ -69,7 +69,7 @@ class Bb extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_BAIXAR = '44';
     const INSTRUCAO_ENTREGAR_SACADO_PAGAMENTO = '46';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('convenio', 'convenioLider');
@@ -77,14 +77,14 @@ class Bb extends AbstractRemessa implements RemessaContract
 
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_BB;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -119,7 +119,7 @@ class Bb extends AbstractRemessa implements RemessaContract
     protected $convenioLider;
 
     /**
-     * VariaÃ§Ã£o da carteira
+     * Variação da carteira
      *
      * @var string
      */
@@ -166,7 +166,7 @@ class Bb extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Retorna variaÃ§Ã£o da carteira
+     * Retorna variação da carteira
      *
      * @return string
      */
@@ -176,7 +176,7 @@ class Bb extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Seta a variaÃ§Ã£o da carteira
+     * Seta a variação da carteira
      *
      * @param string $variacaoCarteira
      *
@@ -227,7 +227,7 @@ class Bb extends AbstractRemessa implements RemessaContract
      * @return mixed|void
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();

@@ -7,26 +7,26 @@ use Alves\LaravelBoleto\Util;
 
 class Hsbc  extends AbstractBoleto implements BoletoContract
 {
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('range', 'contaDv');
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_HSBC;
     /**
-     * Define as carteiras disponÃ­veis para este banco
+     * Define as carteiras disponíveis para este banco
      *
      * @var array
      */
     protected $carteiras = ['CSB'];
     /**
-     * EspÃ©cie do documento, coÃ³digo para remessa
+     * Espécie do documento, coódigo para remessa
      *
      * @var string
      */
@@ -40,13 +40,13 @@ class Hsbc  extends AbstractBoleto implements BoletoContract
         'PD' => '98',
     ];
     /**
-     * CÃ³digo de range de composiÃ§Ã£o do nosso numero.
+     * Código de range de composição do nosso numero.
      *
      * @var string
      */
     protected $range;
     /**
-     * EspÃ©cie do documento, geralmente DM (Duplicata Mercantil)
+     * Espécie do documento, geralmente DM (Duplicata Mercantil)
      *
      * @var string
      */
@@ -70,7 +70,7 @@ class Hsbc  extends AbstractBoleto implements BoletoContract
         return $this;
     }
     /**
-     * Define o campo EspÃ©cie Doc, HSBC sempre PD
+     * Define o campo Espécie Doc, HSBC sempre PD
      *
      * @param  string $especieDoc
      * @return AbstractBoleto
@@ -81,7 +81,7 @@ class Hsbc  extends AbstractBoleto implements BoletoContract
         return $this;
     }
     /**
-     * Retorna o campo AgÃªncia/BeneficiÃ¡rio do boleto
+     * Retorna o campo Agência/Beneficiário do boleto
      *
      * @return string
      */
@@ -100,7 +100,7 @@ class Hsbc  extends AbstractBoleto implements BoletoContract
         return $agencia . ' / ' . $conta;
     }
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class Hsbc  extends AbstractBoleto implements BoletoContract
         return $range . $numero_boleto . $dv;
     }
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -121,7 +121,7 @@ class Hsbc  extends AbstractBoleto implements BoletoContract
         return substr_replace($this->getNossoNumero(), '-', -1, 0);
     }
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      */
@@ -141,7 +141,7 @@ class Hsbc  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *

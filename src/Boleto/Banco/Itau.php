@@ -14,16 +14,16 @@ class Itau extends AbstractBoleto implements BoletoContract
      *
      * @var string
      */
-    protected $localPagamento = 'AtÃ© o vencimento, preferencialmente no ItaÃº';
+    protected $localPagamento = 'Até o vencimento, preferencialmente no Itaú';
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_ITAU;
     /**
-     * VariÃ¡veis adicionais.
+     * Variáveis adicionais.
      *
      * @var array
      */
@@ -31,13 +31,13 @@ class Itau extends AbstractBoleto implements BoletoContract
         'carteira_nome' => '',
     ];
     /**
-     * Define as carteiras disponÃ­veis para este banco
+     * Define as carteiras disponíveis para este banco
      *
      * @var array
      */
     protected $carteiras = ['112', '115', '188', '109', '121', '180', '110', '111'];
     /**
-     * EspÃ©cie do documento, coÃ³digo para remessa
+     * Espécie do documento, coódigo para remessa
      *
      * @var string
      */
@@ -57,7 +57,7 @@ class Itau extends AbstractBoleto implements BoletoContract
         'CPS' => '17',
     ];
     /**
-     * Seta dias para baixa automÃ¡tica
+     * Seta dias para baixa automática
      *
      * @param int $baixaAutomatica
      *
@@ -67,7 +67,7 @@ class Itau extends AbstractBoleto implements BoletoContract
     public function setDiasBaixaAutomatica($baixaAutomatica)
     {
         if ($this->getDiasProtesto() > 0) {
-            throw new \Exception('VocÃª deve usar dias de protesto ou dias de baixa, nunca os 2');
+            throw new \Exception('Você deve usar dias de protesto ou dias de baixa, nunca os 2');
         }
         $baixaAutomatica = (int) $baixaAutomatica;
         $this->diasBaixaAutomatica = $baixaAutomatica > 0 ? $baixaAutomatica : 0;
@@ -75,7 +75,7 @@ class Itau extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @return string
      * @throws \Exception
@@ -90,7 +90,7 @@ class Itau extends AbstractBoleto implements BoletoContract
         return $numero_boleto . $dv;
     }
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -99,7 +99,7 @@ class Itau extends AbstractBoleto implements BoletoContract
         return $this->getCarteira() . '/' . substr_replace($this->getNossoNumero(), '-', -1, 0);
     }
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      * @throws \Exception
@@ -121,7 +121,7 @@ class Itau extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *
@@ -142,7 +142,7 @@ class Itau extends AbstractBoleto implements BoletoContract
         ];
     }
     /**
-     * MÃ©todo que retorna o digito da conta do Itau
+     * Método que retorna o digito da conta do Itau
      *
      * @return int
      */

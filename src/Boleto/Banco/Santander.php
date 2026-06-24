@@ -9,26 +9,26 @@ use Alves\LaravelBoleto\Util;
 
 class Santander extends AbstractBoleto implements BoletoContract
 {
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->setCamposObrigatorios('numero', 'codigoCliente', 'carteira');
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_SANTANDER;
     /**
-     * Define as carteiras disponÃ­veis para este banco
+     * Define as carteiras disponíveis para este banco
      *
      * @var array
      */
     protected $carteiras = ['101', '201'];
     /**
-     * EspÃ©cie do documento, cÃ³digo para remessa 240
+     * Espécie do documento, código para remessa 240
      *
      * @var string
      */
@@ -46,7 +46,7 @@ class Santander extends AbstractBoleto implements BoletoContract
         'ND'  => '98'
     ];
     /**
-     * EspÃ©cie do documento, cÃ³digo para remessa 400
+     * Espécie do documento, código para remessa 400
      *
      * @var string
      */
@@ -61,19 +61,19 @@ class Santander extends AbstractBoleto implements BoletoContract
         'BCC' => '19',
     ];
     /**
-     * Mostrar o endereÃ§o do beneficiÃ¡rio abaixo da razÃ£o e CNPJ na ficha de compensaÃ§Ã£o
+     * Mostrar o endereço do beneficiário abaixo da razão e CNPJ na ficha de compensação
      *
      * @var boolean
      */
     protected $mostrarEnderecoFichaCompensacao = true;
     /**
-     * Define os nomes das carteiras para exibiÃ§Ã£o no boleto
+     * Define os nomes das carteiras para exibição no boleto
      *
      * @var array
      */
     protected $carteirasNomes = [
-        '101' => 'CobranÃ§a Simples ECR',
-        '102' => 'CobranÃ§a Simples CSR',
+        '101' => 'Cobrança Simples ECR',
+        '102' => 'Cobrança Simples CSR',
         '201' => 'Penhor'
     ];
     /**
@@ -92,14 +92,14 @@ class Santander extends AbstractBoleto implements BoletoContract
     ];
 
     /**
-     * CÃ³digo do cliente.
+     * Código do cliente.
      *
      * @var int
      */
     protected $codigoCliente;
 
     /**
-     * Retorna o campo AgÃªncia/BeneficiÃ¡rio do boleto
+     * Retorna o campo Agência/Beneficiário do boleto
      *
      * @return string
      */
@@ -112,7 +112,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Retorna o cÃ³digo da carteira
+     * Retorna o código da carteira
      * @return string
      */
     public function getCarteiraNumero()
@@ -133,7 +133,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Retorna o cÃ³digo do cliente.
+     * Retorna o código do cliente.
      *
      * @return int
      */
@@ -143,7 +143,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Define o cÃ³digo do cliente.
+     * Define o código do cliente.
      *
      * @param int $codigoCliente
      *
@@ -157,7 +157,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Define o cÃ³digo da carteira (Com ou sem registro)
+     * Define o código da carteira (Com ou sem registro)
      *
      * @param string $carteira
      * @return AbstractBoleto
@@ -198,7 +198,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Seta dias para baixa automÃ¡tica
+     * Seta dias para baixa automática
      *
      * @param int $baixaAutomatica
      *
@@ -208,10 +208,10 @@ class Santander extends AbstractBoleto implements BoletoContract
     public function setDiasBaixaAutomatica($baixaAutomatica)
     {
         if ($this->getDiasProtesto() > 0) {
-            throw new \Exception('VocÃª deve usar dias de protesto ou dias de baixa, nunca os 2');
+            throw new \Exception('Você deve usar dias de protesto ou dias de baixa, nunca os 2');
         }
         if (!in_array($baixaAutomatica, [15, 30])) {
-            throw new \Exception('O Banco Santander so aceita 15 ou 30 dias apÃ³s o vencimento para baixa automÃ¡tica');
+            throw new \Exception('O Banco Santander so aceita 15 ou 30 dias após o vencimento para baixa automática');
         }
         $baixaAutomatica = (int)$baixaAutomatica;
         $this->diasBaixaAutomatica = $baixaAutomatica > 0 ? $baixaAutomatica : 0;
@@ -219,7 +219,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @return string
      */
@@ -231,7 +231,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      */
@@ -247,7 +247,7 @@ class Santander extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *

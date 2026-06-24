@@ -27,7 +27,7 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
     protected $processado = false;
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -84,7 +84,7 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
         $this->_position = 1;
 
         if (!$this->file = Util::file2array($file)) {
-            throw new \Exception("Arquivo: nÃ£o existe");
+            throw new \Exception("Arquivo: não existe");
         }
 
         $r = new \ReflectionClass('\Alves\LaravelBoleto\Contracts\Boleto\Boleto');
@@ -97,17 +97,17 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
         }
 
         if (!Util::isHeaderRetorno($this->file[0])) {
-            throw new \Exception(sprintf("Arquivo de retorno invÃ¡lido"));
+            throw new \Exception(sprintf("Arquivo de retorno inválido"));
         }
 
         $banco = Util::isCnab400($this->file[0]) ? mb_substr($this->file[0], 76, 3) : mb_substr($this->file[0], 0, 3);
         if (!in_array($banco, $bancosDisponiveis)) {
-            throw new \Exception(sprintf("Banco: %s, invÃ¡lido", $banco));
+            throw new \Exception(sprintf("Banco: %s, inválido", $banco));
         }
     }
 
     /**
-     * Retorna o cÃ³digo do banco
+     * Retorna o código do banco
      *
      * @return string
      */
@@ -281,7 +281,7 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
     {
         $this->_position = $position;
         if (!$this->valid()) {
-            throw new \OutOfBoundsException('"PosiÃ§Ã£o invÃ¡lida "$position"');
+            throw new \OutOfBoundsException('"Posição inválida "$position"');
         }
     }
 }

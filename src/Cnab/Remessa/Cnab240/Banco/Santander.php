@@ -38,7 +38,7 @@ class Santander extends AbstractRemessa implements RemessaContract
     const PROTESTO_PERFIL_BENEFICIARIO = '3';
     const PROTESTO_AUTOMATICO = '9';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('codigoCliente');
@@ -46,14 +46,14 @@ class Santander extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_SANTANDER;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -95,7 +95,7 @@ class Santander extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->segmentoP($boleto);
@@ -114,7 +114,7 @@ class Santander extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    protected function segmentoP(BoletoContract $boleto)
+    protected function segmentoP( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -158,7 +158,7 @@ class Santander extends AbstractRemessa implements RemessaContract
         $this->add(107, 108, Util::formatCnab('9', $boleto->getEspecieDocCodigo('02', 240), 2));
         $this->add(109, 109, Util::formatCnab('9', 'N', 1));
         $this->add(110, 117, $boleto->getDataDocumento()->format('dmY'));
-        $this->add(118, 118, ($boleto->getJuros() !== null && $boleto->getJuros() > 0) ? '2' : '3');    //3 = ISENTO | 1 = R$ ao dia | 2 = % ao mÃªs
+        $this->add(118, 118, ($boleto->getJuros() !== null && $boleto->getJuros() > 0) ? '2' : '3');    //3 = ISENTO | 1 = R$ ao dia | 2 = % ao mês
         $this->add(119, 126, Util::formatCnab('9', ($boleto->getJuros() !== null && $boleto->getJuros() > 0) ? $boleto->getDataVencimento()->format('dmY') : 0, 8));
         $this->add(127, 141, Util::formatCnab('9', $boleto->getJuros(), 15, 5));
         $this->add(142, 142, $boleto->getDesconto() > 0  ? '1' : '0'); //0 = SEM DESCONTO | 1 = VALOR FIXO | 2 = PERCENTUAL
@@ -172,7 +172,7 @@ class Santander extends AbstractRemessa implements RemessaContract
             $this->add(221, 221, self::PROTESTO_DIAS_UTEIS);
         }
         $this->add(222, 223, Util::formatCnab('9', $boleto->getDiasProtesto(), 2));
-        $this->add(224, 224, $boleto->getDiasBaixaAutomatica() > 0 ? '1' : '3'); // 1 = Baixar/Devolver / 2 = NÃ£o Baixar / 3 = Perfil do BenefÃ­ciario (ConfiguraÃ§Ã£o do Banco)
+        $this->add(224, 224, $boleto->getDiasBaixaAutomatica() > 0 ? '1' : '3'); // 1 = Baixar/Devolver / 2 = Não Baixar / 3 = Perfil do Benefíciario (Configuração do Banco)
         $this->add(225, 225, Util::formatCnab('9', 0, 1));  //Zero Fixo
         $this->add(226, 227, Util::formatCnab('9', $boleto->getDiasBaixaAutomatica(), 2));  //Dias para Baixa
         $this->add(228, 229, Util::formatCnab('9', 0, 2));  // 00 = Real
@@ -187,7 +187,7 @@ class Santander extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoQ(BoletoContract $boleto)
+    public function segmentoQ( $boleto)
     {
         $this->iniciaDetalhe();
 
@@ -237,7 +237,7 @@ class Santander extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoR(BoletoContract $boleto)
+    public function segmentoR( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -299,7 +299,7 @@ class Santander extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Retorna o codigo de transmissÃ£o.
+     * Retorna o codigo de transmissão.
      *
      * @return string
      * @throws \Exception

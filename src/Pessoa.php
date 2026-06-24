@@ -132,7 +132,7 @@ class Pessoa implements PessoaContract
     {
         $documento = substr(Util::onlyNumbers($documento), -14);
         if (!in_array(strlen($documento), [10, 11, 14, 0])) {
-            throw new \Exception('Documento invÃ¡lido');
+            throw new \Exception('Documento inválido');
         }
         $this->documento = $documento;
     }
@@ -152,7 +152,7 @@ class Pessoa implements PessoaContract
     }
 
     /**
-     * Define o endereÃ§o
+     * Define o endereço
      *
      * @param string $endereco
      *
@@ -165,7 +165,7 @@ class Pessoa implements PessoaContract
         return $this;
     }
     /**
-     * Retorna o endereÃ§o
+     * Retorna o endereço
      *
      * @return string
      */
@@ -256,7 +256,7 @@ class Pessoa implements PessoaContract
         }
     }
     /**
-     * Retorna se o tipo do documento Ã© CPF ou CNPJ ou Documento
+     * Retorna se o tipo do documento é CPF ou CNPJ ou Documento
      *
      * @return string
      */
@@ -273,9 +273,9 @@ class Pessoa implements PessoaContract
         return 'CNPJ';
     }
     /**
-     * Retorna o endereÃ§o formatado para a linha 2 de endereÃ§o
+     * Retorna o endereço formatado para a linha 2 de endereço
      *
-     * Ex: 71000-000 - BrasÃ­lia - DF
+     * Ex: 71000-000 - Brasília - DF
      *
      * @return string
      */
@@ -286,9 +286,9 @@ class Pessoa implements PessoaContract
     }
 
     /**
-     * Retorna o endereÃ§o completo em uma Ãºnica string
+     * Retorna o endereço completo em uma única string
      *
-     * Ex.: Rua um, 123 - Bairro Industrial - BrasÃ­lia - DF - 71000-000
+     * Ex.: Rua um, 123 - Bairro Industrial - Brasília - DF - 71000-000
      *
      * @return string
      */

@@ -9,7 +9,7 @@ use Alves\LaravelBoleto\Util;
 class Bradesco extends AbstractRetorno implements RetornoCnab400
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -23,33 +23,33 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
     private $ocorrencias = [
         "02" => "Entrada Confirmada",
         "03" => "Entrada Rejeitada",
-        "06" => "LiquidaÃ§Ã£o normal (sem motivo)",
+        "06" => "Liquidação normal (sem motivo)",
         "09" => "Baixado Automat. via Arquivo",
-        "10" => "Baixado conforme instruÃ§Ãµes da AgÃªncia",
-        "11" => "Em Ser - Arquivo de TÃ­tulos pendentes (sem motivo)",
+        "10" => "Baixado conforme instruções da Agência",
+        "11" => "Em Ser - Arquivo de Títulos pendentes (sem motivo)",
         "12" => "Abatimento Concedido (sem motivo)",
         "13" => "Abatimento Cancelado (sem motivo)",
         "14" => "Vencimento Alterado (sem motivo)",
-        "15" => "LiquidaÃ§Ã£o em CartÃ³rio (sem motivo)",
-        "16" => "TÃ­tulo Pago em Cheque - Vinculado",
-        "17" => "LiquidaÃ§Ã£o apÃ³s baixa ou TÃ­tulo nÃ£o registrado (sem motivo)",
-        "18" => "Acerto de DepositÃ¡ria (sem motivo)",
-        "19" => "ConfirmaÃ§Ã£o Receb. Inst. de Protesto",
-        "20" => "ConfirmaÃ§Ã£o Recebimento InstruÃ§Ã£o SustaÃ§Ã£o de Protesto (sem motivo)",
+        "15" => "Liquidação em Cartório (sem motivo)",
+        "16" => "Título Pago em Cheque - Vinculado",
+        "17" => "Liquidação após baixa ou Título não registrado (sem motivo)",
+        "18" => "Acerto de Depositária (sem motivo)",
+        "19" => "Confirmação Receb. Inst. de Protesto",
+        "20" => "Confirmação Recebimento Instrução Sustação de Protesto (sem motivo)",
         "21" => "Acerto do Controle do Participante (sem motivo)",
-        "22" => "TÃ­tulo Com Pagamento Cancelado",
-        "23" => "Entrada do TÃ­tulo em CartÃ³rio (sem motivo)",
+        "22" => "Título Com Pagamento Cancelado",
+        "23" => "Entrada do Título em Cartório (sem motivo)",
         "24" => "Entrada rejeitada por CEP Irregular",
         "27" => "Baixa Rejeitada",
-        "28" => "DÃ©bito de tarifas/custas",
-        "30" => "AlteraÃ§Ã£o de Outros Dados Rejeitados",
-        "32" => "InstruÃ§Ã£o Rejeitada",
-        "33" => "ConfirmaÃ§Ã£o Pedido AlteraÃ§Ã£o Outros Dados (sem motivo)",
-        "34" => "Retirado de CartÃ³rio e ManutenÃ§Ã£o Carteira (sem motivo)",
-        "35" => "Desagendamento do dÃ©bito automÃ¡tico",
+        "28" => "Débito de tarifas/custas",
+        "30" => "Alteração de Outros Dados Rejeitados",
+        "32" => "Instrução Rejeitada",
+        "33" => "Confirmação Pedido Alteração Outros Dados (sem motivo)",
+        "34" => "Retirado de Cartório e Manutenção Carteira (sem motivo)",
+        "35" => "Desagendamento do débito automático",
         "40" => "Estorno de pagamento (Novo)",
         "55" => "Sustado judicial (Novo)",
-        "68" => "Acerto dos dados do rateio de CrÃ©dito",
+        "68" => "Acerto dos dados do rateio de Crédito",
         "69" => "Cancelamento dos dados do rateio",
     ];
 
@@ -59,40 +59,40 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
      * @var array
      */
     private $rejeicoes = [
-        '02' => 'CÃ³digo do registro detalhe invÃ¡lido',
-        '03' => 'CÃ³digo da ocorrÃªncia invÃ¡lida',
-        '04' => 'CÃ³digo de ocorrÃªncia nÃ£o permitida para a carteira',
-        '05' => 'CÃ³digo de ocorrÃªncia nÃ£o numÃ©rico',
-        '07' => 'AgÃªncia/conta/Digito - |InvÃ¡lido',
-        '08' => 'Nosso nÃºmero invÃ¡lido',
-        '09' => 'Nosso nÃºmero duplicado',
-        '10' => 'Carteira invÃ¡lida',
-        '13' => 'IdentificaÃ§Ã£o da emissÃ£o do bloqueto invÃ¡lida',
-        '16' => 'Data de vencimento invÃ¡lida',
-        '18' => 'Vencimento fora do prazo de operaÃ§Ã£o',
-        '20' => 'Valor do TÃ­tulo invÃ¡lido',
-        '21' => 'EspÃ©cie do TÃ­tulo invÃ¡lida',
-        '22' => 'EspÃ©cie nÃ£o permitida para a carteira',
-        '24' => 'Data de emissÃ£o invÃ¡lida',
-        '28' => 'CÃ³digo do desconto invÃ¡lido',
-        '38' => 'Prazo para protesto/ NegativaÃ§Ã£o invÃ¡lido (ALTERADO)',
-        '44' => 'AgÃªncia BeneficiÃ¡rio nÃ£o prevista',
-        '45' => 'Nome do pagador nÃ£o informado',
-        '46' => 'Tipo/nÃºmero de inscriÃ§Ã£o do pagador invÃ¡lidos',
-        '47' => 'EndereÃ§o do pagador nÃ£o informado',
-        '48' => 'CEP InvÃ¡lido',
+        '02' => 'Código do registro detalhe inválido',
+        '03' => 'Código da ocorrência inválida',
+        '04' => 'Código de ocorrência não permitida para a carteira',
+        '05' => 'Código de ocorrência não numérico',
+        '07' => 'Agência/conta/Digito - |Inválido',
+        '08' => 'Nosso número inválido',
+        '09' => 'Nosso número duplicado',
+        '10' => 'Carteira inválida',
+        '13' => 'Identificação da emissão do bloqueto inválida',
+        '16' => 'Data de vencimento inválida',
+        '18' => 'Vencimento fora do prazo de operação',
+        '20' => 'Valor do Título inválido',
+        '21' => 'Espécie do Título inválida',
+        '22' => 'Espécie não permitida para a carteira',
+        '24' => 'Data de emissão inválida',
+        '28' => 'Código do desconto inválido',
+        '38' => 'Prazo para protesto/ Negativação inválido (ALTERADO)',
+        '44' => 'Agência Beneficiário não prevista',
+        '45' => 'Nome do pagador não informado',
+        '46' => 'Tipo/número de inscrição do pagador inválidos',
+        '47' => 'Endereço do pagador não informado',
+        '48' => 'CEP Inválido',
         '50' => 'CEP irregular - Banco Correspondente',
-        '63' => 'Entrada para TÃ­tulo jÃ¡ cadastrado',
+        '63' => 'Entrada para Título já cadastrado',
         '65' => 'Limite excedido',
-        '66' => 'NÃºmero autorizaÃ§Ã£o inexistente',
-        '68' => 'DÃ©bito nÃ£o agendado - erro nos dados de remessa',
-        '69' => 'DÃ©bito nÃ£o agendado - Pagador nÃ£o consta no cadastro de autorizante',
-        '70' => 'DÃ©bito nÃ£o agendado - BeneficiÃ¡rio nÃ£o autorizado pelo Pagador',
-        '71' => 'DÃ©bito nÃ£o agendado - BeneficiÃ¡rio nÃ£o participa do dÃ©bito AutomÃ¡tico',
-        '72' => 'DÃ©bito nÃ£o agendado - CÃ³digo de moeda diferente de R$',
-        '73' => 'DÃ©bito nÃ£o agendado - Data de vencimento invÃ¡lida',
-        '74' => 'DÃ©bito nÃ£o agendado - Conforme seu pedido, TÃ­tulo nÃ£o registrado',
-        '75' => 'DÃ©bito nÃ£o agendado â€“ Tipo de nÃºmero de inscriÃ§Ã£o do debitado invÃ¡lido',
+        '66' => 'Número autorização inexistente',
+        '68' => 'Débito não agendado - erro nos dados de remessa',
+        '69' => 'Débito não agendado - Pagador não consta no cadastro de autorizante',
+        '70' => 'Débito não agendado - Beneficiário não autorizado pelo Pagador',
+        '71' => 'Débito não agendado - Beneficiário não participa do débito Automático',
+        '72' => 'Débito não agendado - Código de moeda diferente de R$',
+        '73' => 'Débito não agendado - Data de vencimento inválida',
+        '74' => 'Débito não agendado - Conforme seu pedido, Título não registrado',
+        '75' => 'Débito não agendado - Tipo de número de inscrição do debitado inválido',
     ];
 
     /**
@@ -116,7 +116,7 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setOperacaoCodigo($this->rem(2, 2, $header))
@@ -135,7 +135,7 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         if ($this->count() == 1) {
             $this->getHeader()
@@ -207,7 +207,7 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setQuantidadeTitulos($this->rem(18, 25, $trailer))

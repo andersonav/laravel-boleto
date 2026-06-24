@@ -30,10 +30,10 @@ class Pdf extends AbstractPdf implements PdfContract
     private $showInstrucoes = true;
 
 
-    private $desc = 3; // tamanho cÃ©lula descriÃ§Ã£o
-    private $cell = 4; // tamanho cÃ©lula dado
-    private $fdes = 6; // tamanho fonte descriÃ§Ã£o
-    private $fcel = 8; // tamanho fonte cÃ©lula
+    private $desc = 3; // tamanho célula descrição
+    private $cell = 4; // tamanho célula dado
+    private $fdes = 6; // tamanho fonte descrição
+    private $fcel = 8; // tamanho fonte célula
     private $small = 0.2; // tamanho barra fina
     private $totalBoletos = 0;
 
@@ -64,26 +64,26 @@ class Pdf extends AbstractPdf implements PdfContract
 
         $this->SetFont($this->PadraoFont, 'B', 8);
         if ($this->showInstrucoes) {
-            $this->Cell(0, 5, $this->_('InstruÃ§Ãµes de ImpressÃ£o'), 0, 1, 'C');
+            $this->Cell(0, 5, $this->_('Instruções de Impressão'), 0, 1, 'C');
             $this->Ln(5);
             $this->SetFont($this->PadraoFont, '', 6);
             if (count($this->boleto[$i]->getInstrucoesImpressao()) > 0) {
                 $this->listaLinhas($this->boleto[$i]->getInstrucoesImpressao(), 0);
             } else {
-                $this->Cell(0, $this->desc, $this->_('- Imprima em impressora jato de tinta (ink jet) ou laser em qualidade normal ou alta (NÃ£o use modo econÃ´mico).'), 0, 1, 'L');
-                $this->Cell(0, $this->desc, $this->_('- Utilize folha A4 (210 x 297 mm) ou Carta (216 x 279 mm) e margens mÃ­nimas Ã  esquerda e Ã  direita do formulÃ¡rio.'), 0, 1, 'L');
-                $this->Cell(0, $this->desc, $this->_('- Corte na linha indicada. NÃ£o rasure, risque, fure ou dobre a regiÃ£o onde se encontra o cÃ³digo de barras.'), 0, 1, 'L');
-                $this->Cell(0, $this->desc, $this->_('- Caso nÃ£o apareÃ§a o cÃ³digo de barras no final, clique em F5 para atualizar esta tela.'), 0, 1, 'L');
-                $this->Cell(0, $this->desc, $this->_('- Caso tenha problemas ao imprimir, copie a seqÃ¼encia numÃ©rica abaixo e pague no caixa eletrÃ´nico ou no internet banking:'), 0, 1, 'L');
+                $this->Cell(0, $this->desc, $this->_('- Imprima em impressora jato de tinta (ink jet) ou laser em qualidade normal ou alta (Não use modo econômico).'), 0, 1, 'L');
+                $this->Cell(0, $this->desc, $this->_('- Utilize folha A4 (210 x 297 mm) ou Carta (216 x 279 mm) e margens mínimas à esquerda e à direita do formulário.'), 0, 1, 'L');
+                $this->Cell(0, $this->desc, $this->_('- Corte na linha indicada. Não rasure, risque, fure ou dobre a região onde se encontra o código de barras.'), 0, 1, 'L');
+                $this->Cell(0, $this->desc, $this->_('- Caso não apareça o código de barras no final, clique em F5 para atualizar esta tela.'), 0, 1, 'L');
+                $this->Cell(0, $this->desc, $this->_('- Caso tenha problemas ao imprimir, copie a seqüencia numérica abaixo e pague no caixa eletrônico ou no internet banking:'), 0, 1, 'L');
             }
             $this->Ln(4);
 
             $this->SetFont($this->PadraoFont, '', $this->fcel);
-            $this->Cell(25, $this->cell, $this->_('Linha DigitÃ¡vel: '), 0, 0);
+            $this->Cell(25, $this->cell, $this->_('Linha Digitável: '), 0, 0);
             $this->SetFont($this->PadraoFont, 'B', $this->fcel);
             $this->Cell(0, $this->cell, $this->_($this->boleto[$i]->getLinhaDigitavel()), 0, 1);
             $this->SetFont($this->PadraoFont, '', $this->fcel);
-            $this->Cell(25, $this->cell, $this->_('NÃºmero: '), 0, 0);
+            $this->Cell(25, $this->cell, $this->_('Número: '), 0, 0);
             $this->SetFont($this->PadraoFont, 'B', $this->fcel);
             $this->Cell(0, $this->cell, $this->_($this->boleto[$i]->getNumero()), 0, 1);
             $this->SetFont($this->PadraoFont, '', $this->fcel);
@@ -141,9 +141,9 @@ class Pdf extends AbstractPdf implements PdfContract
         $this->Cell(0, 6, $this->boleto[$i]->getLinhaDigitavel(), 'B', 1, 'R');
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
-        $this->Cell(75, $this->desc, $this->_('BeneficiÃ¡rio'), 'TLR');
-        $this->Cell(35, $this->desc, $this->_('Agencia/Codigo do beneficiÃ¡rio'), 'TR');
-        $this->Cell(10, $this->desc, $this->_('EspÃ©cie'), 'TR');
+        $this->Cell(75, $this->desc, $this->_('Beneficiário'), 'TLR');
+        $this->Cell(35, $this->desc, $this->_('Agencia/Codigo do beneficiário'), 'TR');
+        $this->Cell(10, $this->desc, $this->_('Espécie'), 'TR');
         $this->Cell(15, $this->desc, $this->_('Quantidade'), 'TR');
         $this->Cell(35, $this->desc, $this->_('Nosso Numero'), 'TR', 1);
 
@@ -157,7 +157,7 @@ class Pdf extends AbstractPdf implements PdfContract
         $this->Cell(35, $this->cell, $this->_($this->boleto[$i]->getNossoNumeroBoleto()), 'R', 1, 'R');
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
-        $this->Cell(50, $this->desc, $this->_('NÃºmero do Documento'), 'TLR');
+        $this->Cell(50, $this->desc, $this->_('Número do Documento'), 'TLR');
         $this->Cell(40, $this->desc, $this->_('CPF/CNPJ'), 'TR');
         $this->Cell(30, $this->desc, $this->_('Vencimento'), 'TR');
         $this->Cell(50, $this->desc, $this->_('Valor do Documento'), 'TR', 1);
@@ -170,9 +170,9 @@ class Pdf extends AbstractPdf implements PdfContract
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
         $this->Cell(30, $this->desc, $this->_('(-) Descontos/Abatimentos'), 'TLR');
-        $this->Cell(30, $this->desc, $this->_('(-) Outras DeduÃ§Ãµes'), 'TR');
+        $this->Cell(30, $this->desc, $this->_('(-) Outras Deduções'), 'TR');
         $this->Cell(30, $this->desc, $this->_('(+) Mora Multa'), 'TR');
-        $this->Cell(30, $this->desc, $this->_('(+) AcrÃ©scimos'), 'TR');
+        $this->Cell(30, $this->desc, $this->_('(+) Acréscimos'), 'TR');
         $this->Cell(50, $this->desc, $this->_('(=) Valor Cobrado'), 'TR', 1);
 
         $this->SetFont($this->PadraoFont, 'B', $this->fcel);
@@ -190,7 +190,7 @@ class Pdf extends AbstractPdf implements PdfContract
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
         $this->Cell(100, $this->desc, $this->_('Demonstrativo'), 0, 0, 'L');
-        $this->Cell(0, $this->desc, $this->_('AutenticaÃ§Ã£o mecÃ¢nica'), 0, 1, 'R');
+        $this->Cell(0, $this->desc, $this->_('Autenticação mecânica'), 0, 1, 'R');
         $this->Ln(2);
 
         $pulaLinha = 26;
@@ -228,8 +228,8 @@ class Pdf extends AbstractPdf implements PdfContract
         $this->Cell(50, $this->cell, $this->_($this->boleto[$i]->getDataVencimento()->format('d/m/Y')), 'R', 1, 'R');
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
-        $this->Cell(120, $this->desc, $this->_('BeneficiÃ¡rio'), 'TLR');
-        $this->Cell(50, $this->desc, $this->_('AgÃªncia/CÃ³digo beneficiÃ¡rio'), 'TR', 1);
+        $this->Cell(120, $this->desc, $this->_('Beneficiário'), 'TLR');
+        $this->Cell(50, $this->desc, $this->_('Agência/Código beneficiário'), 'TR', 1);
 
         $this->SetFont($this->PadraoFont, 'B', $this->fcel);
         $this->Cell(120, $this->cell, $this->_($this->boleto[$i]->getBeneficiario()->getNomeDocumento()), 'LR');
@@ -246,11 +246,11 @@ class Pdf extends AbstractPdf implements PdfContract
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
         $this->Cell(30, $this->desc, $this->_('Data do documento'), 'TLR');
-        $this->Cell(40, $this->desc, $this->_('NÃºmero do documento'), 'TR');
-        $this->Cell(15, $this->desc, $this->_('EspÃ©cie Doc.'), 'TR');
+        $this->Cell(40, $this->desc, $this->_('Número do documento'), 'TR');
+        $this->Cell(15, $this->desc, $this->_('Espécie Doc.'), 'TR');
         $this->Cell(10, $this->desc, $this->_('Aceite'), 'TR');
         $this->Cell(25, $this->desc, $this->_('Data processamento'), 'TR');
-        $this->Cell(50, $this->desc, $this->_('Nosso nÃºmero'), 'TR', 1);
+        $this->Cell(50, $this->desc, $this->_('Nosso número'), 'TR', 1);
 
         $this->SetFont($this->PadraoFont, 'B', $this->fcel);
         $this->Cell(30, $this->cell, $this->_($this->boleto[$i]->getDataDocumento()->format('d/m/Y')), 'LR');
@@ -274,7 +274,7 @@ class Pdf extends AbstractPdf implements PdfContract
             $this->Cell(25, $this->desc, $this->_('Carteira'), 'TR');
         }
 
-        $this->Cell(12, $this->desc, $this->_('EspÃ©cie'), 'TR');
+        $this->Cell(12, $this->desc, $this->_('Espécie'), 'TR');
         $this->Cell(28, $this->desc, $this->_('Quantidade'), 'TR');
         $this->Cell(25, $this->desc, $this->_(($this->boleto[$i]->getCodigoBanco() == '104') ? 'xValor' : 'Valor Documento'), 'TR');
         $this->Cell(50, $this->desc, $this->_('Valor Documento'), 'TR', 1);
@@ -298,7 +298,7 @@ class Pdf extends AbstractPdf implements PdfContract
         $this->Cell(50, $this->cell, $this->_(Util::nReal($this->boleto[$i]->getValor())), 'R', 1, 'R');
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
-        $this->Cell(120, $this->desc, $this->_("InstruÃ§Ãµes de responsabilidade do beneficiÃ¡rio. Qualquer dÃºvida sobre este boleto, contate o beneficiÃ¡rio"), 'TLR');
+        $this->Cell(120, $this->desc, $this->_("Instruções de responsabilidade do beneficiário. Qualquer dúvida sobre este boleto, contate o beneficiário"), 'TLR');
         $this->Cell(50, $this->desc, $this->_('(-) Desconto / Abatimentos)'), 'TR', 1);
 
         $xInstrucoes = $this->GetX();
@@ -309,7 +309,7 @@ class Pdf extends AbstractPdf implements PdfContract
         $this->Cell(50, $this->cell, $this->_(''), 'R', 1);
 
         $this->Cell(120, $this->desc, $this->_(''), 'LR');
-        $this->Cell(50, $this->desc, $this->_('(-) Outras deduÃ§Ãµes'), 'TR', 1);
+        $this->Cell(50, $this->desc, $this->_('(-) Outras deduções'), 'TR', 1);
 
         $this->Cell(120, $this->cell, $this->_(''), 'LR');
         $this->Cell(50, $this->cell, $this->_(''), 'R', 1);
@@ -321,7 +321,7 @@ class Pdf extends AbstractPdf implements PdfContract
         $this->Cell(50, $this->cell, $this->_(''), 'R', 1);
 
         $this->Cell(120, $this->desc, $this->_(''), 'LR');
-        $this->Cell(50, $this->desc, $this->_('(+) Outros acrÃ©scimos'), 'TR', 1);
+        $this->Cell(50, $this->desc, $this->_('(+) Outros acréscimos'), 'TR', 1);
 
         $this->Cell(120, $this->cell, $this->_(''), 'LR');
         $this->Cell(50, $this->cell, $this->_(''), 'R', 1);
@@ -342,14 +342,14 @@ class Pdf extends AbstractPdf implements PdfContract
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
         $this->Cell(120, $this->cell, $this->_(''), 'BLR');
-        $this->Cell(12, $this->cell, $this->_('CÃ³d. Baixa'), 'B');
+        $this->Cell(12, $this->cell, $this->_('Cód. Baixa'), 'B');
         $this->SetFont($this->PadraoFont, 'B', $this->fcel);
         $this->Cell(38, $this->cell, $this->_(''), 'BR', 1);
 
         $this->SetFont($this->PadraoFont, '', $this->fdes);
         $this->Cell(20, $this->desc, $this->_('Sacador/Avalista'), 0);
         $this->Cell(98, $this->desc, $this->_($this->boleto[$i]->getSacadorAvalista() ? $this->boleto[$i]->getSacadorAvalista()->getNomeDocumento() : ''), 0);
-        $this->Cell(52, $this->desc, $this->_('AutenticaÃ§Ã£o mecÃ¢nica - Ficha de CompensaÃ§Ã£o'), 0, 1);
+        $this->Cell(52, $this->desc, $this->_('Autenticação mecânica - Ficha de Compensação'), 0, 1);
 
         $xOriginal = $this->GetX();
         $yOriginal = $this->GetY();
@@ -404,7 +404,7 @@ class Pdf extends AbstractPdf implements PdfContract
      *
      * @return $this
      */
-    public function addBoletos(array $boletos, $withGroup = true)
+    public function addBoletos( $boletos, $withGroup = true)
     {
         if ($withGroup) {
             $this->StartPageGroup();
@@ -424,7 +424,7 @@ class Pdf extends AbstractPdf implements PdfContract
      *
      * @return $this
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->totalBoletos += 1;
         $this->boleto[] = $boleto;
@@ -450,7 +450,7 @@ class Pdf extends AbstractPdf implements PdfContract
     }
 
     /**
-     * funÃ§Ã£o para gerar o boleto
+     * função para gerar o boleto
      *
      * @param string $dest tipo de destino const BOLETOPDF_DEST_STANDARD | BOLETOPDF_DEST_DOWNLOAD | BOLETOPDF_DEST_SAVE | BOLETOPDF_DEST_STRING
      * @param null $save_path

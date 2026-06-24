@@ -9,7 +9,7 @@ use Alves\LaravelBoleto\Util;
 class Santander extends AbstractRetorno implements RetornoCnab400
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -21,25 +21,25 @@ class Santander extends AbstractRetorno implements RetornoCnab400
      * @var array
      */
     private $ocorrencias = [
-        '01' => 'TÃ­tulo nÃ£o existe',
-        '02' => 'Entrada tÃ­tulo confirmada',
-        '03' => 'Entrada tÃ­tulo rejeitada',
-        '06' => 'LiquidaÃ§Ã£o',
-        '07' => 'LiquidaÃ§Ã£o por conta',
-        '08' => 'LiquidaÃ§Ã£o por saldo',
-        '09' => 'Baixa automÃ¡tica',
-        '10' => 'TÃ­tutlo baixado conforme instruÃ§Ã£o ou por tÃ­tulo protestado',
+        '01' => 'Título não existe',
+        '02' => 'Entrada título confirmada',
+        '03' => 'Entrada título rejeitada',
+        '06' => 'Liquidação',
+        '07' => 'Liquidação por conta',
+        '08' => 'Liquidação por saldo',
+        '09' => 'Baixa automática',
+        '10' => 'Títutlo baixado conforme instrução ou por título protestado',
         '11' => 'Em ser',
         '12' => 'Abatimento concedido',
         '13' => 'Abatimento cancelado',
-        '14' => 'ProrrogaÃ§Ã£o de vencimento',
-        '15' => 'Enviado para CartÃ³rio',
-        '16' => 'TÃ­tulo jÃ¡ baixado/liquidado',
-        '17' => 'Liquidado em cartÃ³rio',
-        '21' => 'Entrada em CartÃ³rio',
-        '22' => 'Retirado de cartÃ³rio',
-        '24' => 'Custas de CartÃ³rio',
-        '25' => 'Protestar TÃ­tulo',
+        '14' => 'Prorrogação de vencimento',
+        '15' => 'Enviado para Cartório',
+        '16' => 'Título já baixado/liquidado',
+        '17' => 'Liquidado em cartório',
+        '21' => 'Entrada em Cartório',
+        '22' => 'Retirado de cartório',
+        '24' => 'Custas de Cartório',
+        '25' => 'Protestar Título',
         '26' => 'Sustar Protesto',
     ];
 
@@ -63,7 +63,7 @@ class Santander extends AbstractRetorno implements RetornoCnab400
         '012' => 'Valor do titulo em outra unidade',
         '013' => 'Valor do titulo nao numerico',
         '014' => 'Valor de mora nao numerico',
-        '015' => 'Data emissao nÃ£o numerica ',
+        '015' => 'Data emissao não numerica ',
         '016' => 'Data de vencimento invalida',
         '017' => 'Codigo da agencia cobradora nao numerica',
         '018' => 'Valor do ioc nao numerico',
@@ -136,11 +136,11 @@ class Santander extends AbstractRetorno implements RetornoCnab400
         '098' => 'Data emissao invalida',
         '099' => 'Registro duplicado no movimento diario',
         '100' => 'Data emissao maior que a data vencimento',
-        '101' => 'Nome do sacado nÃ£o informado ',
-        '102' => 'Endereco do sacado nÃ£o informado',
+        '101' => 'Nome do sacado não informado ',
+        '102' => 'Endereco do sacado não informado',
         '103' => 'Municipio do sacado nao informado',
         '104' => 'Unidade da federacao nao informada',
-        '105' => 'Tipo inscricao nÃ£o existe',
+        '105' => 'Tipo inscricao não existe',
         '106' => 'Cgc/cpf nao informado',
         '107' => 'Unidade da federacao incorreta',
         '108' => 'Digito cgc/cpf incorreto',
@@ -246,7 +246,7 @@ class Santander extends AbstractRetorno implements RetornoCnab400
         ];
     }
 
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setOperacaoCodigo($this->rem(2, 2, $header))
@@ -260,7 +260,7 @@ class Santander extends AbstractRetorno implements RetornoCnab400
         return true;
     }
 
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         if ($this->count() == 1) {
             if (trim($this->rem(384, 385, $detalhe), '') != '') {
@@ -324,7 +324,7 @@ class Santander extends AbstractRetorno implements RetornoCnab400
         return true;
     }
 
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setQuantidadeTitulos((int) $this->count())

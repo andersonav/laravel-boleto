@@ -108,14 +108,14 @@ class Itau extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_MSG_40_POS = '94';
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_ITAU;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -169,7 +169,7 @@ class Itau extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();
@@ -240,11 +240,11 @@ class Itau extends AbstractRemessa implements RemessaContract
 
         // Verifica multa
         if ($boleto->getMulta() > 0) {
-            // Inicia uma nova linha de detalhe e marca com a atual de ediÃ§Ã£o
+            // Inicia uma nova linha de detalhe e marca com a atual de edição
             $this->iniciaDetalhe();
             // Campo adicional para a multa
             $this->add(1, 1, 2); // Adicional Multa
-            $this->add(2, 2, 2); // CÃ³d 2 = Informa Valor em percentual
+            $this->add(2, 2, 2); // Cód 2 = Informa Valor em percentual
             $this->add(3, 10, $boleto->getDataVencimento()->format('dmY')); // Data da multa
             $this->add(11, 23, Util::formatCnab('9', Util::nFloat($boleto->getMulta(), 2), 13));
             $this->add(24, 394, '');

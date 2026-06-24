@@ -63,7 +63,7 @@ class Hsbc extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_PROTESTAR_XX_VENC_UTEIS_NAO_PAGO = '76';
     const INSTRUCAO_PROTESTAR_XX_VENC_NAO_PAGO = '84';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('contaDv');
@@ -71,14 +71,14 @@ class Hsbc extends AbstractRemessa implements RemessaContract
 
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_HSBC;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -99,8 +99,8 @@ class Hsbc extends AbstractRemessa implements RemessaContract
     public function getCarteiraNumero()
     {
         /**
-         * 1 - CobranÃ§a Simples
-         * 3 - Garantias de OperaÃ§Ãµes Quando o cliente optar por trabalhar diretamente nesta carteira de cobranÃ§a, o boleto poderÃ¡ nÃ£o ser aceito para compor a carteira â€˜03â€™, desta forma ele serÃ¡ registrado na carteira â€˜00 â€“ CobranÃ§a Simplesâ€™, sendo que no arquivo retorno serÃ¡ informado a carteira em que o boleto foi acatado.
+         * 1 - Cobrança Simples
+         * 3 - Garantias de Operações Quando o cliente optar por trabalhar diretamente nesta carteira de cobrança, o boleto poderá não ser aceito para compor a carteira '03', desta forma ele será registrado na carteira '00 - Cobrança Simples', sendo que no arquivo retorno será informado a carteira em que o boleto foi acatado.
          * 4 - Desconto Suspenso (somente para arquivo Retorno )
          */
         return 1;
@@ -146,7 +146,7 @@ class Hsbc extends AbstractRemessa implements RemessaContract
      * @return mixed|void
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();
@@ -173,7 +173,7 @@ class Hsbc extends AbstractRemessa implements RemessaContract
             $this->add(109, 110, self::OCORRENCIA_PEDIDO_BAIXA); // BAIXA
         }
         if ($boleto->getStatus() == $boleto::STATUS_ALTERACAO) {
-            throw new \Exception('HSBC nÃ£o suporta alteraÃ§Ã£o geral, use o comando `comandarInstrucao` no boleto para enviar uma solicitaÃ§Ã£o especifica');
+            throw new \Exception('HSBC não suporta alteração geral, use o comando `comandarInstrucao` no boleto para enviar uma solicitação especifica');
         }
         if ($boleto->getStatus() == $boleto::STATUS_ALTERACAO_DATA) {
             $this->add(109, 110, self::OCORRENCIA_ALT_VENCIMENTO);

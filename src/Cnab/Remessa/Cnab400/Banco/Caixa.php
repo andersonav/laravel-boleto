@@ -32,7 +32,7 @@ class Caixa  extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_PROTESTAR_VENC_XX = '01';
     const INSTRUCAO_DEVOLVER_VENC_XX = '02';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('codigoCliente', 'idremessa');
@@ -40,14 +40,14 @@ class Caixa  extends AbstractRemessa implements RemessaContract
 
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_CEF;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -144,7 +144,7 @@ class Caixa  extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();
@@ -154,8 +154,8 @@ class Caixa  extends AbstractRemessa implements RemessaContract
         $this->add(4, 17, Util::formatCnab('9', Util::onlyNumbers($this->getBeneficiario()->getDocumento()), 14));
         $this->add(18, 21, Util::formatCnab('9', $this->getAgencia(), 4));
         $this->add(22, 27, Util::formatCnab('9', $this->getCodigoCliente(), 6));
-        $this->add(28, 28, '2'); // â€˜1â€™ = Banco Emite â€˜2â€™ = Cliente Emite
-        $this->add(29, 29, '0'); // â€˜0â€™ = Postagem pelo BeneficiÃ¡rio â€˜1â€™ = Pagador via Correio â€˜2â€™ = BeneficiÃ¡rio via AgÃªncia CAIXA â€˜3â€™ = Pagador via e-mail
+        $this->add(28, 28, '2'); // '1' = Banco Emite '2' = Cliente Emite
+        $this->add(29, 29, '0'); // '0' = Postagem pelo Beneficiário '1' = Pagador via Correio '2' = Beneficiário via Agência CAIXA '3' = Pagador via e-mail
         $this->add(30, 31, '00');
         $this->add(32, 56, Util::formatCnab('X', $boleto->getNumeroControle(), 25)); // numero de controle
         $this->add(57, 73, Util::formatCnab('9', $boleto->getNossoNumero(), 17));
@@ -208,7 +208,7 @@ class Caixa  extends AbstractRemessa implements RemessaContract
         $this->add(368, 389, Util::formatCnab('X', $boleto->getSacadorAvalista() ? $boleto->getSacadorAvalista()->getNome() : '', 22));
         $this->add(390, 391, '00');
         $this->add(392, 393, Util::formatCnab('9', $boleto->getDiasProtesto($boleto->getDiasBaixaAutomatica()), 2));
-        // CÃ³digo da Moeda - CÃ³digo adotado para identificar a moeda referenciada no TÃ­tulo. Informar fixo: â€˜1â€™ = REAL
+        // Código da Moeda - Código adotado para identificar a moeda referenciada no Título. Informar fixo: '1' = REAL
         $this->add(394, 394, Util::formatCnab('9', 1, 1));
         $this->add(395, 400, Util::formatCnab('9', $this->iRegistros + 1, 6));
 

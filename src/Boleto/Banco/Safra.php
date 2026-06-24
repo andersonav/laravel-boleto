@@ -14,17 +14,17 @@ class Safra  extends AbstractBoleto implements BoletoContract
      *
      * @var string
      */
-    protected $localPagamento = 'PagÃ¡vel em qualquer Banco';
+    protected $localPagamento = 'Pagável em qualquer Banco';
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_SAFRA;
     
     /**
-     * VariÃ¡veis adicionais.
+     * Variáveis adicionais.
      *
      * @var array
      */
@@ -33,14 +33,14 @@ class Safra  extends AbstractBoleto implements BoletoContract
     ];
     
     /**
-     * Define as carteiras disponÃ­veis para este banco
+     * Define as carteiras disponíveis para este banco
      *
      * @var array
      */
     protected $carteiras = ['1', '2'];
     
     /**
-     * EspÃ©cie do documento, coÃ³digo para remessa
+     * Espécie do documento, coódigo para remessa
      *
      * @var string
      */
@@ -64,7 +64,7 @@ class Safra  extends AbstractBoleto implements BoletoContract
     ];
     
     /**
-     * Seta dias para baixa automÃ¡tica
+     * Seta dias para baixa automática
      *
      * @param int $baixaAutomatica
      *
@@ -74,7 +74,7 @@ class Safra  extends AbstractBoleto implements BoletoContract
     public function setDiasBaixaAutomatica($baixaAutomatica)
     {
         if ($this->getDiasProtesto() > 0) {
-            throw new \Exception('VocÃª deve usar dias de protesto ou dias de baixa, nunca os 2');
+            throw new \Exception('Você deve usar dias de protesto ou dias de baixa, nunca os 2');
         }
         $baixaAutomatica = (int) $baixaAutomatica;
         $this->diasBaixaAutomatica = $baixaAutomatica > 0 ? $baixaAutomatica : 0;
@@ -82,7 +82,7 @@ class Safra  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @return string
      * @throws \Exception
@@ -92,7 +92,7 @@ class Safra  extends AbstractBoleto implements BoletoContract
         return Util::numberFormatGeral($this->getNumero(), 9);
     }
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -120,7 +120,7 @@ class Safra  extends AbstractBoleto implements BoletoContract
     }
     
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      * @throws \Exception
@@ -138,7 +138,7 @@ class Safra  extends AbstractBoleto implements BoletoContract
     }
     
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *

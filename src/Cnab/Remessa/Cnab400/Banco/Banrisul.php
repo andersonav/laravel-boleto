@@ -44,7 +44,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
     const OCORRENCIA_ACERTO_RATEIO_CREDITO = '68';
     const OCORRENCIA_CANC_RATEIO_CREDITO = '69';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('codigoCliente');
@@ -58,32 +58,32 @@ class Banrisul extends AbstractRemessa implements RemessaContract
     private $valorTotal = 0;
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_BANRISUL;
 
     /**
-     * Define as carteiras disponÃ­veis para este banco
-     * 1 -> CobranÃ§a Simples
-     * 3 -> CobranÃ§a Caucionada
-     * 4 -> CobranÃ§a em IGPM
-     * 5 -> CobranÃ§a Caucionada CGB Especial
-     * 6 -> CobranÃ§a Simples Seguradora
-     * 7 -> CobranÃ§a em UFIR
-     * 8 -> CobranÃ§a em IDTR
-     * C -> CobranÃ§a Vinculada
-     * D -> CobranÃ§a CSB
-     * E -> CobranÃ§a Caucionada CÃ¢mbio
-     * F -> CobranÃ§a Vendor
-     * H -> CobranÃ§a Caucionada DÃ³lar
-     * I -> CobranÃ§a Caucionada Compror
-     * K -> CobranÃ§a Simples INCC-M
-     * M -> CobranÃ§a Partilhada
+     * Define as carteiras disponíveis para este banco
+     * 1 -> Cobrança Simples
+     * 3 -> Cobrança Caucionada
+     * 4 -> Cobrança em IGPM
+     * 5 -> Cobrança Caucionada CGB Especial
+     * 6 -> Cobrança Simples Seguradora
+     * 7 -> Cobrança em UFIR
+     * 8 -> Cobrança em IDTR
+     * C -> Cobrança Vinculada
+     * D -> Cobrança CSB
+     * E -> Cobrança Caucionada Câmbio
+     * F -> Cobrança Vendor
+     * H -> Cobrança Caucionada Dólar
+     * I -> Cobrança Caucionada Compror
+     * K -> Cobrança Simples INCC-M
+     * M -> Cobrança Partilhada
      * N -> Capital de Giro CGB ICM
      * R -> Desconto de Duplicata
-     * S -> Vendor EletrÃ´nico
+     * S -> Vendor Eletrônico
      * X -> Vendor BDL
      *
      *
@@ -126,7 +126,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
     protected $teste = false;
 
     /**
-     * Define se Ã© teste
+     * Define se é teste
      *
      * @param  boolean $teste
      * @return $this
@@ -138,7 +138,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
         return $this;
     }
     /**
-     * Retorna se Ã© com registro.
+     * Retorna se é com registro.
      *
      * @return bool
      */
@@ -240,7 +240,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
      * @return bool
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();
@@ -259,7 +259,7 @@ class Banrisul extends AbstractRemessa implements RemessaContract
             $this->add(109, 110, self::OCORRENCIA_PEDIDO_BAIXA); // BAIXA
         }
         if ($boleto->getStatus() == $boleto::STATUS_ALTERACAO) {
-            throw new \Exception('Banrisul nÃ£o suporta alteraÃ§Ã£o geral, use o comando `comandarInstrucao` no boleto para enviar uma solicitaÃ§Ã£o especifica');
+            throw new \Exception('Banrisul não suporta alteração geral, use o comando `comandarInstrucao` no boleto para enviar uma solicitação especifica');
         }
         if ($boleto->getStatus() == $boleto::STATUS_ALTERACAO_DATA) {
             $this->add(109, 110, self::OCORRENCIA_ALT_VENCIMENTO);
@@ -343,13 +343,13 @@ class Banrisul extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Verifica se a carteira Ã© uma das seguintes : R, S, X ou alguma a mais passada por parametro
+     * Verifica se a carteira é uma das seguintes : R, S, X ou alguma a mais passada por parametro
      *
      * @param array $adicional
      *
      * @return bool
      */
-    private function isCarteiraRSX(array $adicional = [])
+    private function isCarteiraRSX( $adicional = [])
     {
         return in_array(Util::upper($this->getCarteira()), array_merge(['R', 'S', 'X'], $adicional));
     }

@@ -10,7 +10,7 @@ use Alves\LaravelBoleto\Util;
 class Sicredi extends AbstractRetorno implements RetornoCnab240
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -24,26 +24,26 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
     private $ocorrencias = [
         '02' => 'Entrada confirmada',
         '03' => 'Entrada rejeitada',
-        '06' => 'LiquidaÃ§Ã£o',
-        '07' => 'ConfirmaÃ§Ã£o do recebimento da instruÃ§Ã£o de desconto',
-        '08' => 'ConfirmaÃ§Ã£o do recebimento do cancelamento do desconto',
+        '06' => 'Liquidação',
+        '07' => 'Confirmação do recebimento da instrução de desconto',
+        '08' => 'Confirmação do recebimento do cancelamento do desconto',
         '09' => 'Baixa',
-        '12' => 'ConfirmaÃ§Ã£o do recebimento instruÃ§Ã£o de abatimento',
-        '13' => 'ConfirmaÃ§Ã£o do recebimento instruÃ§Ã£o de cancelamento abatimento',
-        '14' => 'ConfirmaÃ§Ã£o do recebimento instruÃ§Ã£o alteraÃ§Ã£o de vencimento',
-        '17' => 'LiquidaÃ§Ã£o apÃ³s baixa ou liquidaÃ§Ã£o tÃ­tulo nÃ£o registrado',
-        '19' => 'ConfirmaÃ§Ã£o do recebimento instruÃ§Ã£o de protesto',
-        '20' => 'ConfirmaÃ§Ã£o do recebimento instruÃ§Ã£o de sustaÃ§Ã£o/cancelamento de protesto',
-        '23' => 'Remessa a cartÃ³rio (aponte em cartÃ³rio)',
-        '24' => 'Retirada de cartÃ³rio e manutenÃ§Ã£o em carteira',
+        '12' => 'Confirmação do recebimento instrução de abatimento',
+        '13' => 'Confirmação do recebimento instrução de cancelamento abatimento',
+        '14' => 'Confirmação do recebimento instrução alteração de vencimento',
+        '17' => 'Liquidação após baixa ou liquidação título não registrado',
+        '19' => 'Confirmação do recebimento instrução de protesto',
+        '20' => 'Confirmação do recebimento instrução de sustação/cancelamento de protesto',
+        '23' => 'Remessa a cartório (aponte em cartório)',
+        '24' => 'Retirada de cartório e manutenção em carteira',
         '25' => 'Protestado e baixado (baixa por ter sido protestado)',
-        '26' => 'InstruÃ§Ã£o rejeitada',
-        '27' => 'ConfirmaÃ§Ã£o do pedido de alteraÃ§Ã£o de outros dados',
-        '28' => 'DÃ©bito de tarifas custas',
-        '30' => 'AlteraÃ§Ã£o de dados rejeitada',
+        '26' => 'Instrução rejeitada',
+        '27' => 'Confirmação do pedido de alteração de outros dados',
+        '28' => 'Débito de tarifas custas',
+        '30' => 'Alteração de dados rejeitada',
         '36' => 'Baixa rejeitada',
-        '51' => 'TÃ­tulo DDA reconhecido pelo pagador',
-        '52' => 'TÃ­tulo DDA nÃ£o reconhecido pelo pagador',
+        '51' => 'Título DDA reconhecido pelo pagador',
+        '52' => 'Título DDA não reconhecido pelo pagador',
     ];
 
     /**
@@ -52,47 +52,47 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
      * @var array
      */
     private $rejeicoes = [
-        '22' => 'EspÃ©cie do tÃ­tulo nÃ£o permitida para a carteira',
-        '23' => 'Aceite invÃ¡lido',
-        '24' => 'Data da emissÃ£o invÃ¡lida',
-        '25' => 'Data da emissÃ£o posterior a data de entrada',
-        '26' => 'CÃ³digo de juros de mora invÃ¡lido',
-        '27' => 'Valor/taxa de juros de mora invÃ¡lido',
-        '28' => 'CÃ³digo do desconto invÃ¡lido',
-        '29' => 'Valor do desconto maior ou igual ao valor do tÃ­tulo',
-        '30' => 'Desconto a conceder nÃ£o confere',
-        '31' => 'ConcessÃ£o de desconto - jÃ¡ existe desconto anterior',
-        '33' => 'Valor do abatimento invÃ¡lido',
-        '34' => 'Valor do abatimento maior ou igual ao valor do tÃ­tulo',
-        '35' => 'Valor a conceder nÃ£o confere',
-        '36' => 'ConcessÃ£o de abatimento - jÃ¡ existe abatimento anterior',
-        '37' => 'CÃ³digo para protesto invÃ¡lido',
-        '38' => 'Prazo para protesto invÃ¡lido',
-        '39' => 'Pedido de protesto nÃ£o permitido para o tÃ­tulo',
-        '40' => 'TÃ­tulo com ordem de protesto emitida',
-        '41' => 'Pedido de cancelamento/sustaÃ§Ã£o para tÃ­tulos sem instruÃ§Ã£o de protesto',
-        '44' => 'CÃ³digo da moeda invÃ¡lido',
-        '45' => 'Nome do pagador nÃ£o informado',
-        '46' => 'Tipo/nÃºmero de inscriÃ§Ã£o do pagador invÃ¡lidos',
-        '47' => 'EndereÃ§o do pagador nÃ£o informado',
-        '48' => 'CEP invÃ¡lido',
-        '53' => 'Tipo/nÃºmero de inscriÃ§Ã£o do pagador/avalista invÃ¡lido',
-        '54' => 'Pagador/avalista nÃ£o informado',
-        '55' => 'Nosso nÃºmero no banco correspondente nÃ£o informado',
-        '56' => 'CÃ³digo do banco correspondente nÃ£o informado',
-        '57' => 'CÃ³digo da multa invÃ¡lido',
-        '58' => 'Data da multa invÃ¡lida',
-        '59' => 'Valor/percentual da multa invÃ¡lido',
-        '60' => 'Movimento para tÃ­tulo nÃ£o cadastrado',
-        '61' => 'AlteraÃ§Ã£o da cooperativa crÃ©dito/agÃªncia cobradora/DV invÃ¡lida',
-        '62' => 'Tipo de impressÃ£o invÃ¡lido',
-        '63' => 'Entrada para tÃ­tulo jÃ¡ cadastrado',
-        '64' => 'NÃºmero da linha invÃ¡lido',
-        '79' => 'Data juros de mora invÃ¡lida',
-        '80' => 'Data do desconto invÃ¡lida',
-        '84' => 'NÃºmero autorizaÃ§Ã£o inexistente',
-        '85' => 'TÃ­tulo com pagamento vinculado',
-        '86' => 'Seu nÃºmero invÃ¡lido',
+        '22' => 'Espécie do título não permitida para a carteira',
+        '23' => 'Aceite inválido',
+        '24' => 'Data da emissão inválida',
+        '25' => 'Data da emissão posterior a data de entrada',
+        '26' => 'Código de juros de mora inválido',
+        '27' => 'Valor/taxa de juros de mora inválido',
+        '28' => 'Código do desconto inválido',
+        '29' => 'Valor do desconto maior ou igual ao valor do título',
+        '30' => 'Desconto a conceder não confere',
+        '31' => 'Concessão de desconto - já existe desconto anterior',
+        '33' => 'Valor do abatimento inválido',
+        '34' => 'Valor do abatimento maior ou igual ao valor do título',
+        '35' => 'Valor a conceder não confere',
+        '36' => 'Concessão de abatimento - já existe abatimento anterior',
+        '37' => 'Código para protesto inválido',
+        '38' => 'Prazo para protesto inválido',
+        '39' => 'Pedido de protesto não permitido para o título',
+        '40' => 'Título com ordem de protesto emitida',
+        '41' => 'Pedido de cancelamento/sustação para títulos sem instrução de protesto',
+        '44' => 'Código da moeda inválido',
+        '45' => 'Nome do pagador não informado',
+        '46' => 'Tipo/número de inscrição do pagador inválidos',
+        '47' => 'Endereço do pagador não informado',
+        '48' => 'CEP inválido',
+        '53' => 'Tipo/número de inscrição do pagador/avalista inválido',
+        '54' => 'Pagador/avalista não informado',
+        '55' => 'Nosso número no banco correspondente não informado',
+        '56' => 'Código do banco correspondente não informado',
+        '57' => 'Código da multa inválido',
+        '58' => 'Data da multa inválida',
+        '59' => 'Valor/percentual da multa inválido',
+        '60' => 'Movimento para título não cadastrado',
+        '61' => 'Alteração da cooperativa crédito/agência cobradora/DV inválida',
+        '62' => 'Tipo de impressão inválido',
+        '63' => 'Entrada para título já cadastrado',
+        '64' => 'Número da linha inválido',
+        '79' => 'Data juros de mora inválida',
+        '80' => 'Data do desconto inválida',
+        '84' => 'Número autorização inexistente',
+        '85' => 'Título com pagamento vinculado',
+        '86' => 'Seu número inválido',
         'A4' => 'Pagador DDA',
     ];
 
@@ -117,7 +117,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setCodBanco($this->rem(1, 3, $header))
@@ -146,7 +146,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeaderLote(array $headerLote)
+    protected function processarHeaderLote( $headerLote)
     {
         $this->getHeaderLote()
             ->setCodBanco($this->rem(1, 3, $headerLote))
@@ -176,7 +176,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         $d = $this->detalheAtual();
 
@@ -255,7 +255,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailerLote(array $trailer)
+    protected function processarTrailerLote( $trailer)
     {
         $this->getTrailerLote()
             ->setLoteServico($this->rem(4, 7, $trailer))
@@ -279,7 +279,7 @@ class Sicredi extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setNumeroLote($this->rem(4, 7, $trailer))

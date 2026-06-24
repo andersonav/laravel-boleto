@@ -35,21 +35,21 @@ class Bb extends AbstractRemessa implements RemessaContract
     const PROTESTO_DIAS_UTEIS = '2';
     const PROTESTO_NAO_PROTESTAR = '3';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('convenio', 'convenioLider', 'variacaoCarteira');
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_BB;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -70,7 +70,7 @@ class Bb extends AbstractRemessa implements RemessaContract
     protected $convenioLider;
 
     /**
-     * VariaÃ§Ã£o da carteira
+     * Variação da carteira
      *
      * @var string
      */
@@ -117,7 +117,7 @@ class Bb extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Retorna variaÃ§Ã£o da carteira
+     * Retorna variação da carteira
      *
      * @return string
      */
@@ -127,7 +127,7 @@ class Bb extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Seta a variaÃ§Ã£o da carteira
+     * Seta a variação da carteira
      *
      * @param string $variacaoCarteira
      *
@@ -146,7 +146,7 @@ class Bb extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->segmentoP($boleto);
@@ -163,7 +163,7 @@ class Bb extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    protected function segmentoP(BoletoContract $boleto)
+    protected function segmentoP( $boleto)
     {
         $this->iniciaDetalhe();
 
@@ -192,12 +192,12 @@ class Bb extends AbstractRemessa implements RemessaContract
         $this->add(36, 36, CalculoDV::bbContaCorrente($this->getConta()));
         $this->add(37, 37, '');
         $this->add(38, 57, Util::formatCnab('X', $this->nossoNumero($boleto), 20));
-        $this->add(58, 58, '1'); //'1' = CobranÃ§a Simples
+        $this->add(58, 58, '1'); //'1' = Cobrança Simples
         $this->add(59, 59, '');
         $this->add(60, 60, '');
         $this->add(61, 61, '');
         $this->add(62, 62, '');
-        $this->add(63, 77, Util::formatCnab('9', $boleto->getNumeroDocumento(), 15)); //valor do nÃºmero do documento
+        $this->add(63, 77, Util::formatCnab('9', $boleto->getNumeroDocumento(), 15)); //valor do número do documento
         $this->add(78, 85, $boleto->getDataVencimento()->format('dmY'));
         $this->add(86, 100, Util::formatCnab('9', $boleto->getValor(), 15, 2));
         $this->add(101, 105, '00000');
@@ -208,7 +208,7 @@ class Bb extends AbstractRemessa implements RemessaContract
         $this->add(118, 118, $boleto->getJuros() ? '2' : '3'); //'1' = Valor por Dia, '2' = Taxa Mensal, '3' = Isento
         $this->add(119, 126, $boleto->getDataVencimento()->format('dmY'));
         $this->add(127, 141, Util::formatCnab('9', $boleto->getJuros(), 15, 2)); //Valor da mora/dia ou Taxa mensal
-        $this->add(142, 142, $boleto->getDesconto() > 0 ? '1' : '0'); // Se houver desconto '1' = Valor Fixo AtÃ© a Data Informada, Se nÃ£o houver envia o 0
+        $this->add(142, 142, $boleto->getDesconto() > 0 ? '1' : '0'); // Se houver desconto '1' = Valor Fixo Até a Data Informada, Se não houver envia o 0
         $this->add(143, 150, $boleto->getDesconto() > 0 ? $boleto->getDataDesconto()->format('dmY') : '00000000');
         $this->add(151, 165, Util::formatCnab('9', $boleto->getDesconto(), 15, 2));
         $this->add(166, 180, Util::formatCnab('9', 0, 15, 2));
@@ -234,7 +234,7 @@ class Bb extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoQ(BoletoContract $boleto)
+    public function segmentoQ( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -286,7 +286,7 @@ class Bb extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoR(BoletoContract $boleto)
+    public function segmentoR( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -456,7 +456,7 @@ class Bb extends AbstractRemessa implements RemessaContract
      *
      * @return mixed|string
      */
-    private function nossoNumero(BoletoContract $boleto) {
+    private function nossoNumero( $boleto) {
         $convenio = (int) Util::onlyNumbers($this->getConvenio());
         if ($convenio > 1000000) {
             return $boleto->getNossoNumero();

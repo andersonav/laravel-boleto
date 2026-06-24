@@ -10,7 +10,7 @@ use Alves\LaravelBoleto\Util;
 class Santander extends AbstractRetorno implements RetornoCnab240
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -24,29 +24,29 @@ class Santander extends AbstractRetorno implements RetornoCnab240
     private $ocorrencias = [
         '02' => 'Entrada confirmada',
         '03' => 'Entrada rejeitada',
-        '04' => 'transferÃªncia de carteira/entrada',
-        '05' => 'transferÃªncia de carteira/baixa',
-        '06' => 'LiquidaÃ§Ã£o',
+        '04' => 'transferência de carteira/entrada',
+        '05' => 'transferência de carteira/baixa',
+        '06' => 'Liquidação',
         '09' => 'Baixa',
-        '11' => 'tÃ­tulos em carteira (em ser)',
-        '12' => 'confirmaÃ§Ã£o recebimento instruÃ§Ã£o de abatimento',
-        '13' => 'confirmaÃ§Ã£o recebimento instruÃ§Ã£o de cancelamento abatimento',
-        '14' => 'confirmaÃ§Ã£o recebimento instruÃ§Ã£o alteraÃ§Ã£o de vencimento',
-        '17' => 'liquidaÃ§Ã£o apÃ³s baixa ou liquidaÃ§Ã£o tÃ­tulo nÃ£o registrado',
-        '19' => 'confirmaÃ§Ã£o recebimento instruÃ§Ã£o de protesto',
-        '20' => 'confirmaÃ§Ã£o recebimento instruÃ§Ã£o de sustaÃ§Ã£o/NÃ£o Protestar',
+        '11' => 'títulos em carteira (em ser)',
+        '12' => 'confirmação recebimento instrução de abatimento',
+        '13' => 'confirmação recebimento instrução de cancelamento abatimento',
+        '14' => 'confirmação recebimento instrução alteração de vencimento',
+        '17' => 'liquidação após baixa ou liquidação título não registrado',
+        '19' => 'confirmação recebimento instrução de protesto',
+        '20' => 'confirmação recebimento instrução de sustação/Não Protestar',
         '23' => 'remessa a cartorio (aponte em cartorio)',
-        '24' => 'retirada de cartorio e manutenÃ§Ã£o em carteira',
+        '24' => 'retirada de cartorio e manutenção em carteira',
         '25' => 'protestado e baixado (baixa por ter sido protestado)',
-        '26' => 'instruÃ§Ã£o rejeitada',
-        '27' => 'confirmaÃ§Ã£o do pedido de alteraÃ§Ã£o de outros dado',
+        '26' => 'instrução rejeitada',
+        '27' => 'confirmação do pedido de alteração de outros dado',
         '28' => 'debito de tarifas/custas',
-        '29' => 'ocorrÃªncias do Pagador',
-        '30' => 'alteraÃ§Ã£o de dados rejeitada',
-        '32' => 'CÃ³digo de IOF invÃ¡lido',
-        '51' => 'TÃ­tulo DDA reconhecido pelo Pagador',
-        '52' => 'TÃ­tulo DDA nÃ£o reconhecido pelo Pagador',
-        '53' => 'TÃ­tulo DDA recusado pela CIP',
+        '29' => 'ocorrências do Pagador',
+        '30' => 'alteração de dados rejeitada',
+        '32' => 'Código de IOF inválido',
+        '51' => 'Título DDA reconhecido pelo Pagador',
+        '52' => 'Título DDA não reconhecido pelo Pagador',
+        '53' => 'Título DDA recusado pela CIP',
         'A4' => 'Pagador DDA',
     ];
 
@@ -56,71 +56,71 @@ class Santander extends AbstractRetorno implements RetornoCnab240
      * @var array
      */
     private $rejeicoes = [
-        '01' => 'cÃ³digo do banco invalido',
-        '02' => 'cÃ³digo do registro detalhe invÃ¡lido',
-        '03' => 'cÃ³digo do segmento invalido',
-        '04' => 'cÃ³digo do movimento nÃ£o permitido para carteira',
-        '05' => 'cÃ³digo de movimento invalido',
-        '06' => 'tipo/numero de inscriÃ§Ã£o do BeneficiÃ¡rio invÃ¡lidos',
+        '01' => 'código do banco invalido',
+        '02' => 'código do registro detalhe inválido',
+        '03' => 'código do segmento invalido',
+        '04' => 'código do movimento não permitido para carteira',
+        '05' => 'código de movimento invalido',
+        '06' => 'tipo/numero de inscrição do Beneficiário inválidos',
         '07' => 'agencia/conta/DV invalido',
         '08' => 'nosso numero invalido',
         '09' => 'nosso numero duplicado',
         '10' => 'carteira invalida',
         '11' => 'forma de cadastramento do titulo invalida',
         '12' => 'tipo de documento invalido',
-        '13' => 'identificaÃ§Ã£o da emissÃ£o do Boleto invalida',
-        '14' => 'identificaÃ§Ã£o da distribuiÃ§Ã£o do Boleto invalida',
-        '15' => 'caracterÃ­sticas da cobranÃ§a incompatÃ­veis',
+        '13' => 'identificação da emissão do Boleto invalida',
+        '14' => 'identificação da distribuição do Boleto invalida',
+        '15' => 'características da cobrança incompatíveis',
         '16' => 'data de vencimento invalida',
-        '17' => 'data de vencimento anterior a data de emissÃ£o',
-        '18' => 'vencimento fora do prazo de operaÃ§Ã£o',
+        '17' => 'data de vencimento anterior a data de emissão',
+        '18' => 'vencimento fora do prazo de operação',
         '19' => 'titulo a cargo de bancos correspondentes com vencimento inferior a xx dias',
-        '20' => 'valor do tÃ­tulo invalido',
-        '21' => 'espÃ©cie do titulo invalida',
-        '22' => 'espÃ©cie nÃ£o permitida para a carteira',
+        '20' => 'valor do título invalido',
+        '21' => 'espécie do titulo invalida',
+        '22' => 'espécie não permitida para a carteira',
         '23' => 'aceite invalido',
-        '24' => 'Data de emissÃ£o invÃ¡lida',
-        '25' => 'Data de emissÃ£o posterior a data de entrada',
-        '26' => 'CÃ³digo de juros de mora invÃ¡lido',
-        '27' => 'Valor/Taxa de juros de mora invÃ¡lido',
-        '28' => 'CÃ³digo de desconto invÃ¡lido',
-        '29' => 'Valor do desconto maior ou igual ao valor do tÃ­tulo',
-        '30' => 'Desconto a conceder nÃ£o confere',
-        '31' => 'ConcessÃ£o de desconto - jÃ¡ existe desconto anterior',
+        '24' => 'Data de emissão inválida',
+        '25' => 'Data de emissão posterior a data de entrada',
+        '26' => 'Código de juros de mora inválido',
+        '27' => 'Valor/Taxa de juros de mora inválido',
+        '28' => 'Código de desconto inválido',
+        '29' => 'Valor do desconto maior ou igual ao valor do título',
+        '30' => 'Desconto a conceder não confere',
+        '31' => 'Concessão de desconto - já existe desconto anterior',
         '32' => 'Valor do IOF',
-        '33' => 'Valor do abatimento invÃ¡lido',
-        '34' => 'Valor do abatimento maior ou igual ao valor do tÃ­tulo',
-        '35' => 'Abatimento a conceder nÃ£o confere',
-        '36' => 'ConcessÃ£o de abatimento - jÃ¡ existe abatimento anterior',
-        '37' => 'CÃ³digo para protesto invÃ¡lido',
-        '38' => 'Prazo para protesto invÃ¡lido',
-        '39' => 'Pedido de protesto nÃ£o permitido para o tÃ­tulo',
-        '40' => 'TÃ­tulo com ordem de protesto emitida',
-        '41' => 'Pedido de cancelamento/sustaÃ§Ã£o para tÃ­tulos sem instruÃ§Ã£o de protesto',
-        '42' => 'CÃ³digo para baixa/devoluÃ§Ã£o invÃ¡lido',
-        '43' => 'Prazo para baixa/devoluÃ§Ã£o invÃ¡lido',
-        '44' => 'CÃ³digo de moeda invÃ¡lido',
-        '45' => 'Nome do Pagador nÃ£o informado',
-        '46' => 'Tipo /NÃºmero de inscriÃ§Ã£o do Pagador invÃ¡lidos',
-        '47' => 'EndereÃ§o do Pagador nÃ£o informado',
-        '48' => 'CEP invÃ¡lido',
-        '49' => 'CEP sem praÃ§a de cobranÃ§a (nÃ£o localizado)',
+        '33' => 'Valor do abatimento inválido',
+        '34' => 'Valor do abatimento maior ou igual ao valor do título',
+        '35' => 'Abatimento a conceder não confere',
+        '36' => 'Concessão de abatimento - já existe abatimento anterior',
+        '37' => 'Código para protesto inválido',
+        '38' => 'Prazo para protesto inválido',
+        '39' => 'Pedido de protesto não permitido para o título',
+        '40' => 'Título com ordem de protesto emitida',
+        '41' => 'Pedido de cancelamento/sustação para títulos sem instrução de protesto',
+        '42' => 'Código para baixa/devolução inválido',
+        '43' => 'Prazo para baixa/devolução inválido',
+        '44' => 'Código de moeda inválido',
+        '45' => 'Nome do Pagador não informado',
+        '46' => 'Tipo /Número de inscrição do Pagador inválidos',
+        '47' => 'Endereço do Pagador não informado',
+        '48' => 'CEP inválido',
+        '49' => 'CEP sem praça de cobrança (não localizado)',
         '50' => 'CEP referente a um Banco Correspondente',
-        '51' => 'CEP incompatÃ­vel com a unidade de federaÃ§Ã£o',
-        '52' => 'Unidade de federaÃ§Ã£o invÃ¡lida',
-        '53' => 'Tipo/NÃºmero de inscriÃ§Ã£o do sacador/avalista invÃ¡lidos',
-        '54' => 'Sacador/Avalista nÃ£o informado',
-        '55' => 'Nosso nÃºmero no Banco Correspondente nÃ£o informado',
-        '56' => 'CÃ³digo do Banco Correspondente nÃ£o informado',
-        '57' => 'CÃ³digo da multa invÃ¡lido',
-        '58' => 'Data da multa invÃ¡lida',
-        '59' => 'Valor/Percentual da multa invÃ¡lido',
-        '60' => 'Movimento para tÃ­tulo nÃ£o cadastrado',
-        '61' => 'AlteraÃ§Ã£o de agÃªncia cobradora/dv invÃ¡lida',
-        '62' => 'Tipo de impressÃ£o invÃ¡lido',
-        '63' => 'Entrada para tÃ­tulo jÃ¡ cadastrado',
-        '64' => 'NÃºmero da linha invÃ¡lido',
-        '90' => 'Identificador/Quantidade de Parcelas de carnÃª invalido',
+        '51' => 'CEP incompatível com a unidade de federação',
+        '52' => 'Unidade de federação inválida',
+        '53' => 'Tipo/Número de inscrição do sacador/avalista inválidos',
+        '54' => 'Sacador/Avalista não informado',
+        '55' => 'Nosso número no Banco Correspondente não informado',
+        '56' => 'Código do Banco Correspondente não informado',
+        '57' => 'Código da multa inválido',
+        '58' => 'Data da multa inválida',
+        '59' => 'Valor/Percentual da multa inválido',
+        '60' => 'Movimento para título não cadastrado',
+        '61' => 'Alteração de agência cobradora/dv inválida',
+        '62' => 'Tipo de impressão inválido',
+        '63' => 'Entrada para título já cadastrado',
+        '64' => 'Número da linha inválido',
+        '90' => 'Identificador/Quantidade de Parcelas de carnê invalido',
     ];
 
     /**
@@ -144,7 +144,7 @@ class Santander extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setCodBanco($this->rem(1, 3, $header))
@@ -173,7 +173,7 @@ class Santander extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeaderLote(array $headerLote)
+    protected function processarHeaderLote( $headerLote)
     {
         $this->getHeaderLote()
             ->setCodBanco($this->rem(1, 3, $headerLote))
@@ -201,7 +201,7 @@ class Santander extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         $d = $this->detalheAtual();
         if ($this->getSegmentType($detalhe) == 'T') {
@@ -290,7 +290,7 @@ class Santander extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailerLote(array $trailer)
+    protected function processarTrailerLote( $trailer)
     {
         $this->getTrailerLote()
             ->setLoteServico($this->rem(4, 7, $trailer))
@@ -315,7 +315,7 @@ class Santander extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setNumeroLote($this->rem(4, 7, $trailer))

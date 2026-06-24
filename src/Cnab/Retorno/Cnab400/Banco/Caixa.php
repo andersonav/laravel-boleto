@@ -9,7 +9,7 @@ use Alves\LaravelBoleto\Util;
 class Caixa extends AbstractRetorno implements RetornoCnab400
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -28,28 +28,28 @@ class Caixa extends AbstractRetorno implements RetornoCnab400
         '05' => 'Vencimento Alterado',
         '06' => 'Uso da Empresa Alterado',
         '07' => 'Prazo de Protesto Alterado',
-        '08' => 'Prazo de DevoluÃ§Ã£o Alterado',
-        '09' => 'AlteraÃ§Ã£o Confirmada',
-        '10' => 'AlteraÃ§Ã£o com ReemissÃ£o de Bloqueto Confirmada',
-        '11' => 'AlteraÃ§Ã£o da OpÃ§Ã£o de Protesto para DevoluÃ§Ã£o',
-        '12' => 'AlteraÃ§Ã£o da OpÃ§Ã£o de DevoluÃ§Ã£o para protesto',
+        '08' => 'Prazo de Devolução Alterado',
+        '09' => 'Alteração Confirmada',
+        '10' => 'Alteração com Reemissão de Bloqueto Confirmada',
+        '11' => 'Alteração da Opção de Protesto para Devolução',
+        '12' => 'Alteração da Opção de Devolução para protesto',
         '20' => 'Em Ser',
-        '21' => 'LiquidaÃ§Ã£o',
-        '22' => 'LiquidaÃ§Ã£o em CartÃ³rio',
-        '23' => 'Baixa por DevoluÃ§Ã£o',
+        '21' => 'Liquidação',
+        '22' => 'Liquidação em Cartório',
+        '23' => 'Baixa por Devolução',
         '24' => 'Baixa por Franco Pagamento',
         '25' => 'Baixa por Protesto',
-        '26' => 'TÃ­tulo enviado para CartÃ³rio',
-        '27' => 'SustaÃ§Ã£o de Protesto',
+        '26' => 'Título enviado para Cartório',
+        '27' => 'Sustação de Protesto',
         '28' => 'Estorno de Protesto',
-        '29' => 'Estorno de SustaÃ§Ã£o de Protesto',
-        '30' => 'AlteraÃ§Ã£o de TÃ­tulo',
-        '31' => 'Tarifa sobre TÃ­tulo Vencido',
-        '32' => 'Outras Tarifas de AlteraÃ§Ã£o',
-        '33' => 'Estorno de Baixa/LiquidaÃ§Ã£o',
-        '34' => 'TransferÃªncia de Carteira/Entrada',
-        '35' => 'TransferÃªncia de Carteira/Baixa',
-        '99' => 'RejeiÃ§Ã£o do TÃ­tulo â€“ CÃ³d. RejeiÃ§Ã£o informado nas POS 80 a 82'
+        '29' => 'Estorno de Sustação de Protesto',
+        '30' => 'Alteração de Título',
+        '31' => 'Tarifa sobre Título Vencido',
+        '32' => 'Outras Tarifas de Alteração',
+        '33' => 'Estorno de Baixa/Liquidação',
+        '34' => 'Transferência de Carteira/Entrada',
+        '35' => 'Transferência de Carteira/Baixa',
+        '99' => 'Rejeição do Título - Cód. Rejeição informado nas POS 80 a 82'
     ];
 
     /**
@@ -59,30 +59,30 @@ class Caixa extends AbstractRetorno implements RetornoCnab400
      */
     private $rejeicoes = [
         '01' => 'Movimento sem Cedente Correspondente ',
-        '02' => 'Movimento sem TÃ­tulo Correspondente',
-        '08' => 'Movimento para TÃ­tulo jÃ¡ com MovimentaÃ§Ã£o no dia ',
-        '09' => 'Nosso NÃºmero nÃ£o Pertence ao Cedente',
-        '10' => 'InclusÃ£o de TÃ­tulo jÃ¡ Existente',
+        '02' => 'Movimento sem Título Correspondente',
+        '08' => 'Movimento para Título já com Movimentação no dia ',
+        '09' => 'Nosso Número não Pertence ao Cedente',
+        '10' => 'Inclusão de Título já Existente',
         '12' => 'Movimento Duplicado',
-        '13' => 'Entrada InvÃ¡lida para CobranÃ§a Caucionada (Cedente nÃ£o possui conta CauÃ§Ã£o)',
-        '20' => 'CEP do Sacado nÃ£o Encontrado (NÃ£o foi possÃ­vel a DeterminaÃ§Ã£o da AgÃªncia Cobradora para o TÃ­tulo) ',
-        '21' => 'AgÃªncia Cobradora nÃ£o Encontrada (AgÃªncia Designada para Cobradora nÃ£o Cadastrada no Sistema) ',
-        '22' => 'AgÃªncia Cedente nÃ£o Encontrada (AgÃªncia do Cedente nÃ£o Cadastrada no Sistema)',
+        '13' => 'Entrada Inválida para Cobrança Caucionada (Cedente não possui conta Caução)',
+        '20' => 'CEP do Sacado não Encontrado (Não foi possível a Determinação da Agência Cobradora para o Título) ',
+        '21' => 'Agência Cobradora não Encontrada (Agência Designada para Cobradora não Cadastrada no Sistema) ',
+        '22' => 'Agência Cedente não Encontrada (Agência do Cedente não Cadastrada no Sistema)',
         '45' => 'Data de Vencimento com prazo mais de 1 ano',
-        '49' => 'Movimento InvÃ¡lido para TÃ­tulo Baixado/Liquidado',
-        '50' => 'Movimento InvÃ¡lido para TÃ­tulo enviado ao CartÃ³rio',
-        '54' => 'Faixa de CEP da AgÃªncia Cobradora nÃ£o Abrange CEP do Sacado',
-        '55' => 'TÃ­tulo jÃ¡ com OpÃ§Ã£o de DevoluÃ§Ã£o',
+        '49' => 'Movimento Inválido para Título Baixado/Liquidado',
+        '50' => 'Movimento Inválido para Título enviado ao Cartório',
+        '54' => 'Faixa de CEP da Agência Cobradora não Abrange CEP do Sacado',
+        '55' => 'Título já com Opção de Devolução',
         '56' => 'Processo de Protesto em Andamento',
-        '57' => 'TÃ­tulo jÃ¡ com OpÃ§Ã£o de Protesto',
-        '58' => 'Processo de DevoluÃ§Ã£o em Andamento',
-        '59' => 'Novo Prazo p/ Protesto/DevoluÃ§Ã£o InvÃ¡lido',
-        '76' => 'AlteraÃ§Ã£o de Prazo de Protesto InvÃ¡lida',
-        '77' => 'AlteraÃ§Ã£o de Prazo de DevoluÃ§Ã£o InvÃ¡lida',
-        '81' => 'CEP do Sacado InvÃ¡lido',
-        '82' => 'CGC/CPF do Sacado InvÃ¡lido (DÃ­gito nÃ£o Confere)',
-        '83' => 'NÃºmero do Documento (Seu NÃºmero) invÃ¡lido',
-        '84' => 'Protesto invÃ¡lido para tÃ­tulo sem NÃºmero do Documento (Seu NÃºmero)',
+        '57' => 'Título já com Opção de Protesto',
+        '58' => 'Processo de Devolução em Andamento',
+        '59' => 'Novo Prazo p/ Protesto/Devolução Inválido',
+        '76' => 'Alteração de Prazo de Protesto Inválida',
+        '77' => 'Alteração de Prazo de Devolução Inválida',
+        '81' => 'CEP do Sacado Inválido',
+        '82' => 'CGC/CPF do Sacado Inválido (Dígito não Confere)',
+        '83' => 'Número do Documento (Seu Número) inválido',
+        '84' => 'Protesto inválido para título sem Número do Documento (Seu Número)',
     ];
 
     /**
@@ -107,7 +107,7 @@ class Caixa extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setOperacaoCodigo($this->rem(2, 2, $header))
@@ -127,7 +127,7 @@ class Caixa extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         $d = $this->detalheAtual();
         $d->setCarteira($this->rem(107, 108, $detalhe))
@@ -180,7 +180,7 @@ class Caixa extends AbstractRetorno implements RetornoCnab400
      *
      * @return bool
      */
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setQuantidadeTitulos((int) $this->count())

@@ -38,14 +38,14 @@ class Safra extends AbstractRemessa implements RemessaContract
     
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_SAFRA;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -66,7 +66,7 @@ class Safra extends AbstractRemessa implements RemessaContract
     protected $fimArquivo = "\r\n";
     
     /**
-     * Valor total dos tÃ­tulos
+     * Valor total dos títulos
      * @var flaot
      */
     private $valorTotalTitulos;
@@ -95,7 +95,7 @@ class Safra extends AbstractRemessa implements RemessaContract
         return $this;
     }
 
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->iniciaDetalhe();
 
@@ -128,12 +128,12 @@ class Safra extends AbstractRemessa implements RemessaContract
         $this->add(150, 150, $boleto->getAceite() == 'SIM' ? 'A' : 'N');
         $this->add(151, 156, $boleto->getDataDocumento()->format('dmy'));
         
-        // Verifica dias de baixo automÃ¡tica
+        // Verifica dias de baixo automática
         if ($boleto->getDiasBaixaAutomatica() > 0 && $boleto->getDiasBaixaAutomatica() <= 15) {
             $this->add(157, 158, self::INSTRUCAO_DEVOL_VENC_15);
         } else if ($boleto->getDiasBaixaAutomatica() > 15) {
             $this->add(157, 158, self::INSTRUCAO_DEVOL_VENC_30);
-        // Verifica instruÃ§Ã£o multa
+        // Verifica instrução multa
         } else if ($boleto->getMulta() > 0) {
             $this->add(157, 158, self::INSTRUCAO_COBRAR_MULTA);
         // Somente juros NOTA 1 - Item C
@@ -190,7 +190,7 @@ class Safra extends AbstractRemessa implements RemessaContract
     }
     
     /**
-     * Retorna o valor de um boleto somando ao valor total dos tÃ­tulos
+     * Retorna o valor de um boleto somando ao valor total dos títulos
      * @param float
      * @return float
      */

@@ -16,11 +16,11 @@ class Factory
     public static function make($file)
     {
         if (!$file_content = Util::file2array($file)) {
-            throw new \Exception("Arquivo: nÃ£o existe");
+            throw new \Exception("Arquivo: não existe");
         }
 
         if (!Util::isHeaderRetorno($file_content[0])) {
-            throw new \Exception("Arquivo: $file, nÃ£o Ã© um arquivo de retorno");
+            throw new \Exception("Arquivo: $file, não é um arquivo de retorno");
         }
 
         $instancia = self::getBancoClass($file_content);
@@ -66,7 +66,7 @@ class Factory
             return new $bancoClass($file_content);
         }
 
-        throw new \Exception("Banco: $banco, invÃ¡lido");
+        throw new \Exception("Banco: $banco, inválido");
     }
 }
 

@@ -33,7 +33,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_SEM = '00';
     const INSTRUCAO_PROTESTO = '06';
 
-    public function __construct(array $params)
+    public function __construct( $params)
     {
         parent::__construct($params);
         $this->setCarteira('A'); //Carteira Simples 'A'
@@ -41,7 +41,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Define o cÃ³digo da carteira (Com ou sem registro)
+     * Define o código da carteira (Com ou sem registro)
      *
      * @param string $carteira
      *
@@ -54,14 +54,14 @@ class Sicredi extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_SICREDI;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -115,7 +115,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         if (!$boleto->isComRegistro()) {

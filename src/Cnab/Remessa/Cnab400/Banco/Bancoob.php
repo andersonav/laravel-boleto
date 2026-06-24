@@ -39,45 +39,45 @@ class Bancoob extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_DEVOLVER_APOS_15 = '42';
     const INSTRUCAO_DEVOLVER_APOS_30 = '43';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('convenio');
     }
 
     /**
-     * Mapeamento das espÃ©cies de documento do CNAB240 para o CNAB400
+     * Mapeamento das espécies de documento do CNAB240 para o CNAB400
      * @var array
      */
     private $especie400 = [
         '01'  => '10', //Cheque
         '02'  => '01', //Duplicata Mercantil
-        '04'  => '12', //Duplicata de ServiÃ§o
+        '04'  => '12', //Duplicata de Serviço
         '06'  => '06', //Duplicata Rural
-        '07'  => '08', //Letra de CÃ¢mbio
-        '12'  => '02', //Nota PromissÃ³ria
+        '07'  => '08', //Letra de Câmbio
+        '12'  => '02', //Nota Promissória
         '14'  => '14', //Triplicata Mercantil
-        '15'  => '15', //Triplicata de ServiÃ§o
+        '15'  => '15', //Triplicata de Serviço
         '16'  => '03', //Nota de Seguro
         '17'  => '05', //Recibo
         '18'  => '18', //Fatura
-        '19'  => '13', //Nota de DÃ©bito
-        '20'  => '20', //ApÃ³lice de Seguro
+        '19'  => '13', //Nota de Débito
+        '20'  => '20', //Apólice de Seguro
         '21'  => '21', //Mensalidade Escolar
-        '22'  => '22', //Parcela de ConsÃ³rcio
+        '22'  => '22', //Parcela de Consórcio
         '99'  => '99', //Outros
         '100' => '09', //Warrant
     ];
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_BANCOOB;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -158,7 +158,7 @@ class Bancoob extends AbstractRemessa implements RemessaContract
      * @return mixed|void
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();
@@ -173,17 +173,17 @@ class Bancoob extends AbstractRemessa implements RemessaContract
         $this->add(32, 37, '000000');
         $this->add(38, 62, Util::formatCnab('X', $boleto->getNumeroControle(), 25)); // numero de controle
         $this->add(63, 74, Util::formatCnab('9', $boleto->getNossoNumero(), 12));
-        $this->add(75, 76, '01'); //Numero da parcela - NÃ£o implementado
+        $this->add(75, 76, '01'); //Numero da parcela - Não implementado
         $this->add(77, 78, '00'); //Grupo de valor
         $this->add(82, 82, '');
         $this->add(83, 85, '');
         $this->add(86, 88, '000');
         $this->add(89, 89, '0');
-        $this->add(90, 94, '00000'); //NÃºmero do Contrato Garantia: Para Carteira 1 preencher "00000"
+        $this->add(90, 94, '00000'); //Número do Contrato Garantia: Para Carteira 1 preencher "00000"
         $this->add(95, 95, '0'); //DV do contrato: Para Carteira 1 preencher "0"
         $this->add(96, 101, '000000');
         $this->add(102, 105, '');
-        $this->add(106, 106, '2'); //Tipo de EmissÃ£o: 1 - Cooperativa 2 - Cliente
+        $this->add(106, 106, '2'); //Tipo de Emissão: 1 - Cooperativa 2 - Cliente
         $this->add(107, 108, Util::formatCnab('9', $this->getCarteira(), 2));
         $this->add(109, 110, self::OCORRENCIA_REMESSA); // REGISTRO
         if ($boleto->getStatus() == $boleto::STATUS_BAIXA) {
@@ -217,12 +217,12 @@ class Bancoob extends AbstractRemessa implements RemessaContract
             if (defined($const)) {
                 $this->add(157, 158, constant($const));
             } else {
-                throw new \Exception("A instruÃ§Ã£o para protesto em ".$boleto->getDiasProtesto()." dias nÃ£o existe no banco.");
+                throw new \Exception("A instrução para protesto em ".$boleto->getDiasProtesto()." dias não existe no banco.");
             }
         }
         $this->add(161, 166, Util::formatCnab('9', $boleto->getJuros(), 6, 4));
         $this->add(167, 172, Util::formatCnab('9', $boleto->getMulta(), 6, 4));
-        $this->add(173, 173, '2'); //Tipo de distribuiÃ§Ã£o: 1 - Cooperativa 2 - Cliente
+        $this->add(173, 173, '2'); //Tipo de distribuição: 1 - Cooperativa 2 - Cliente
         $this->add(174, 179, $boleto->getDesconto() > 0 ? $boleto->getDataDesconto()->format('dmy') : '000000');
         $this->add(180, 192, Util::formatCnab('9', $boleto->getDesconto(), 13, 2));
         $this->add(193, 193, '9');

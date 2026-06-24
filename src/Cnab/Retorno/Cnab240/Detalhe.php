@@ -554,7 +554,7 @@ class Detalhe implements DetalheContract
      *
      * @return Detalhe
      */
-    public function setCheques(array $cheques)
+    public function setCheques( $cheques)
     {
         $this->cheques = $cheques;
 

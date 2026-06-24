@@ -63,14 +63,14 @@ class Bradesco extends AbstractRemessa implements RemessaContract
     const PROTESTO_NEGATIVACAO_SEM_PROTESTO = '8';
     const PROTESTO_AUTOMATICO = '9';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('idremessa');
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -78,7 +78,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
 
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -131,7 +131,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->segmentoP($boleto);
@@ -149,7 +149,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    protected function segmentoP(BoletoContract $boleto)
+    protected function segmentoP( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -173,10 +173,10 @@ class Bradesco extends AbstractRemessa implements RemessaContract
         $this->add(38, 40, Util::formatCnab('9', $this->getCarteira(), 3));
         $this->add(41, 45, '00000');
         $this->add(46, 57, Util::formatCnab('9', $boleto->getNossoNumero(), 12));
-        $this->add(58, 58, '1'); //'1' = CobranÃ§a Simples
-        $this->add(59, 59, '1'); //'1' = Com Cadastramento (CobranÃ§a Registrada)
+        $this->add(58, 58, '1'); //'1' = Cobrança Simples
+        $this->add(59, 59, '1'); //'1' = Com Cadastramento (Cobrança Registrada)
         $this->add(60, 60, '1'); //'1' = Tradicional
-        $this->add(61, 61, '2'); //â€˜2â€™ = Cliente Emite
+        $this->add(61, 61, '2'); //'2' = Cliente Emite
         $this->add(62, 62, '2'); //'2' = Cliente Distribui
         $this->add(63, 77, Util::formatCnab('9', $boleto->getNumeroDocumento(), 15));
         $this->add(78, 85, $boleto->getDataVencimento()->format('dmY'));
@@ -200,7 +200,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
             $this->add(221, 221, self::PROTESTO_DIAS_UTEIS);
         }
         $this->add(222, 223, Util::formatCnab('9', $boleto->getDiasProtesto(), 2));
-        $this->add(224, 224, '2'); // '2' = NÃ£o Baixar / NÃ£o Devolver (NÃƒO TRATADO PELO BANCO)
+        $this->add(224, 224, '2'); // '2' = Não Baixar / Não Devolver (NÃƒO TRATADO PELO BANCO)
         $this->add(225, 227, '000');
         $this->add(228, 229, Util::formatCnab('9', $boleto->getMoeda(), 2));
         $this->add(230, 239, '0000000000');
@@ -215,7 +215,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoQ(BoletoContract $boleto)
+    public function segmentoQ( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -267,7 +267,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoR(BoletoContract $boleto)
+    public function segmentoR( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -299,7 +299,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
         $this->add(216, 216, '');
         $this->add(217, 228, '000000000000');
         $this->add(229, 230, '');
-        $this->add(231, 231, '2');  //NÃ£o emite Aviso
+        $this->add(231, 231, '2');  //Não emite Aviso
         $this->add(232, 240, '');
 
         return $this;
@@ -311,7 +311,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoY01(BoletoContract $boleto)
+    public function segmentoY01( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -409,7 +409,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
         $this->add(104, 183, '');
         $this->add(184, 191, Util::formatCnab('9', $this->getIdremessa(), 8));
         $this->add(192, 199, date('dmY'));
-        $this->add(200, 207, '00000000');   //Zerado (InformaÃ§Ã£o exclusiva do retorno)
+        $this->add(200, 207, '00000000');   //Zerado (Informação exclusiva do retorno)
         $this->add(208, 240, '');
 
         return $this;
@@ -460,7 +460,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
         $this->add(9, 17, '');
         $this->add(18, 23, Util::formatCnab('9', 1, 6));
         $this->add(24, 29, Util::formatCnab('9', $this->getCount(), 6));
-        $this->add(30, 35, '000000');   //Deve ser informado zeros (exclusivo para conciliaÃ§Ã£o bancÃ¡ria)
+        $this->add(30, 35, '000000');   //Deve ser informado zeros (exclusivo para conciliação bancária)
         $this->add(36, 240, '');
 
         return $this;

@@ -41,7 +41,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     protected $iRegistrosLote;
 
     /**
-     * FunÃ§Ã£o para gerar o cabeÃ§alho do arquivo.
+     * Função para gerar o cabeçalho do arquivo.
      *
      * @return mixed
      */
@@ -49,7 +49,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
 
 
     /**
-     * FunÃ§Ã£o que gera o trailer (footer) do arquivo.
+     * Função que gera o trailer (footer) do arquivo.
      *
      * @return mixed
      */
@@ -76,7 +76,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     }
 
     /**
-     * Inicia a ediÃ§Ã£o do header
+     * Inicia a edição do header
      */
     protected function iniciaHeader()
     {
@@ -85,7 +85,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     }
 
     /**
-     * Inicia a ediÃ§Ã£o do header
+     * Inicia a edição do header
      */
     protected function iniciaHeaderLote()
     {
@@ -95,7 +95,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     }
 
     /**
-     * Inicia a ediÃ§Ã£o do trailer (footer).
+     * Inicia a edição do trailer (footer).
      */
     protected function iniciaTrailerLote()
     {
@@ -104,7 +104,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     }
 
     /**
-     * Inicia a ediÃ§Ã£o do trailer (footer).
+     * Inicia a edição do trailer (footer).
      */
     protected function iniciaTrailer()
     {
@@ -113,7 +113,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     }
 
     /**
-     * Inicia uma nova linha de detalhe e marca com a atual de ediÃ§Ã£o
+     * Inicia uma nova linha de detalhe e marca com a atual de edição
      */
     protected function iniciaDetalhe()
     {
@@ -124,7 +124,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     }
 
     /**
-     * FunÃ§Ã£o que mostra a quantidade de linhas do arquivo.
+     * Função que mostra a quantidade de linhas do arquivo.
      *
      * @return int
      */
@@ -134,7 +134,7 @@ abstract class AbstractRemessa extends AbstractRemessaGeneric
     }
 
     /**
-     * FunÃ§Ã£o que mostra a quantidade de linhas do arquivo.
+     * Função que mostra a quantidade de linhas do arquivo.
      *
      * @return int
      */

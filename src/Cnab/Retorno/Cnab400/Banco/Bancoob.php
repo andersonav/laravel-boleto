@@ -9,7 +9,7 @@ use Alves\LaravelBoleto\Util;
 class Bancoob extends AbstractRetorno implements RetornoCnab400
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -22,17 +22,17 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
      */
 
     private $ocorrencias = [
-        '02' => 'ConfirmaÃ§Ã£o Entrada TÃ­tulo',
-        '05' => 'LiquidaÃ§Ã£o Sem Registro: Identifica a liquidaÃ§Ã£o de tÃ­tulo da modalidade ""SEM REGISTRO""',
-        '06' => 'LiquidaÃ§Ã£o Normal: Identificar a liquidaÃ§Ã£o de tÃ­tulo de modalidade ""REGISTRADA"", com exceÃ§Ã£o dos tÃ­tulos que forem liquidados em cartÃ³rio (CÃ³d. de movimento 15=LiquidaÃ§Ã£o em CartÃ³rio)',
-        '09' => 'Baixa de Titulo: Identificar as baixas de tÃ­tulos, com exceÃ§Ã£o da baixa realizada com o cÃ³d. de movimento 10 (Baixa - Pedido BeneficiÃ¡rio)',
-        '10' => 'Baixa Solicitada (Baixa - Pedido BeneficiÃ¡rio): Identificar as baixas de tÃ­tulos comandadas a pedido do BeneficiÃ¡rio',
-        '11' => 'TÃ­tulos em Ser: Identifica os tÃ­tulos em carteira, que estiverem com a situaÃ§Ã£o ""em abarto"" (vencidos e a vencer).',
-        '14' => 'AlteraÃ§Ã£o de Vencimento',
-        '15' => 'LiquidaÃ§Ã£o em CartÃ³rio: Identifica as liquidaÃ§Ãµes dos tÃ­tulos ocorridas em cartÃ³rios de protesto',
-        '23' => 'Encaminhado a Protesto: Identifica o recebimento da instruÃ§Ã£o de protesto',
-        '27' => 'ConfirmaÃ§Ã£o AlteraÃ§Ã£o Dados.',
-        '48' => 'ConfirmaÃ§Ã£o de instruÃ§Ã£o de transferÃªncia de carteira/modalidade de cobranÃ§a"'
+        '02' => 'Confirmação Entrada Título',
+        '05' => 'Liquidação Sem Registro: Identifica a liquidação de título da modalidade ""SEM REGISTRO""',
+        '06' => 'Liquidação Normal: Identificar a liquidação de título de modalidade ""REGISTRADA"", com exceção dos títulos que forem liquidados em cartório (Cód. de movimento 15=Liquidação em Cartório)',
+        '09' => 'Baixa de Titulo: Identificar as baixas de títulos, com exceção da baixa realizada com o cód. de movimento 10 (Baixa - Pedido Beneficiário)',
+        '10' => 'Baixa Solicitada (Baixa - Pedido Beneficiário): Identificar as baixas de títulos comandadas a pedido do Beneficiário',
+        '11' => 'Títulos em Ser: Identifica os títulos em carteira, que estiverem com a situação ""em abarto"" (vencidos e a vencer).',
+        '14' => 'Alteração de Vencimento',
+        '15' => 'Liquidação em Cartório: Identifica as liquidações dos títulos ocorridas em cartórios de protesto',
+        '23' => 'Encaminhado a Protesto: Identifica o recebimento da instrução de protesto',
+        '27' => 'Confirmação Alteração Dados.',
+        '48' => 'Confirmação de instrução de transferência de carteira/modalidade de cobrança"'
     ];
     /**
      * Array com as possiveis rejeicoes do banco.
@@ -40,32 +40,32 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
      * @var array
      */
     private $rejeicoes = [
-        '02' => 'CÃ³digo do registro detalhe invÃ¡lido',
-        '03' => 'CÃ³digo da ocorrÃªncia invÃ¡lida',
-        '04' => 'CÃ³digo de ocorrÃªncia nÃ£o permitida para a carteira',
-        '05' => 'CÃ³digo de ocorrÃªncia nÃ£o numÃ©rico',
-        '07' => 'AgÃªncia/conta/Digito â€“ |InvÃ¡lido',
-        '08' => 'Nosso nÃºmero invÃ¡lido',
-        '09' => 'Nosso nÃºmero duplicado',
-        '10' => 'Carteira invÃ¡lida',
-        '16' => 'Data de vencimento invÃ¡lida',
-        '18' => 'Vencimento fora do prazo de operaÃ§Ã£o',
-        '20' => 'Valor do TÃ­tulo invÃ¡lido',
-        '21' => 'EspÃ©cie do TÃ­tulo invÃ¡lida',
-        '22' => 'EspÃ©cie nÃ£o permitida para a carteira',
-        '24' => 'Data de emissÃ£o invÃ¡lida',
-        '38' => 'Prazo para protesto invÃ¡lido',
-        '44' => 'AgÃªncia Cedente nÃ£o prevista',
-        '50' => 'CEP irregular â€“ Banco Correspondente',
-        '63' => 'Entrada para TÃ­tulo jÃ¡ cadastrado',
-        '68' => 'DÃ©bito nÃ£o agendado â€“ erro nos dados de remessa',
-        '69' => 'DÃ©bito nÃ£o agendado â€“ Pagador nÃ£o consta no cadastro de autorizante',
-        '70' => 'DÃ©bito nÃ£o agendado â€“ Cedente nÃ£o autorizado pelo Pagador',
-        '71' => 'DÃ©bito nÃ£o agendado â€“ Cedente nÃ£o participa da modalidade de dÃ©bito automÃ¡tico',
-        '72' => 'DÃ©bito nÃ£o agendado â€“ CÃ³digo de moeda diferente de R$',
-        '73' => 'DÃ©bito nÃ£o agendado â€“ Data de vencimento invÃ¡lida',
-        '74' => 'DÃ©bito nÃ£o agendado â€“ Conforme seu pedido, TÃ­tulo nÃ£o registrado',
-        '75' => 'DÃ©bito nÃ£o agendado â€“ Tipo de nÃºmero de inscriÃ§Ã£o do debitado invÃ¡lido',
+        '02' => 'Código do registro detalhe inválido',
+        '03' => 'Código da ocorrência inválida',
+        '04' => 'Código de ocorrência não permitida para a carteira',
+        '05' => 'Código de ocorrência não numérico',
+        '07' => 'Agência/conta/Digito - |Inválido',
+        '08' => 'Nosso número inválido',
+        '09' => 'Nosso número duplicado',
+        '10' => 'Carteira inválida',
+        '16' => 'Data de vencimento inválida',
+        '18' => 'Vencimento fora do prazo de operação',
+        '20' => 'Valor do Título inválido',
+        '21' => 'Espécie do Título inválida',
+        '22' => 'Espécie não permitida para a carteira',
+        '24' => 'Data de emissão inválida',
+        '38' => 'Prazo para protesto inválido',
+        '44' => 'Agência Cedente não prevista',
+        '50' => 'CEP irregular - Banco Correspondente',
+        '63' => 'Entrada para Título já cadastrado',
+        '68' => 'Débito não agendado - erro nos dados de remessa',
+        '69' => 'Débito não agendado - Pagador não consta no cadastro de autorizante',
+        '70' => 'Débito não agendado - Cedente não autorizado pelo Pagador',
+        '71' => 'Débito não agendado - Cedente não participa da modalidade de débito automático',
+        '72' => 'Débito não agendado - Código de moeda diferente de R$',
+        '73' => 'Débito não agendado - Data de vencimento inválida',
+        '74' => 'Débito não agendado - Conforme seu pedido, Título não registrado',
+        '75' => 'Débito não agendado - Tipo de número de inscrição do debitado inválido',
 ];
 
     /**
@@ -88,7 +88,7 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setOperacaoCodigo($this->rem(2, 2, $header))
@@ -111,7 +111,7 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         $d = $this->detalheAtual();
 
@@ -172,7 +172,7 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setQuantidadeTitulos((int) $this->rem(164, 171, $trailer))

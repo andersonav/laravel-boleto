@@ -37,14 +37,14 @@ class Bnb extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_APOS_VENCIMENTO_COBRAR_COMISSAO_PERMANENCIA = '15';
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_BNB;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -111,7 +111,7 @@ class Bnb extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();
@@ -121,7 +121,7 @@ class Bnb extends AbstractRemessa implements RemessaContract
         $this->add(22, 23, '00');
         $this->add(24, 30, Util::formatCnab('9', $this->getConta(), 7));
         $this->add(31, 31, $this->getContaDv() ?: CalculoDV::bnbContaCorrente($this->getAgencia(), $this->getConta()));
-        $this->add(32, 33, Util::formatCnab('9', round($boleto->getMulta()), 2)); // SÃ³ aceita nÃºmeros inteiros
+        $this->add(32, 33, Util::formatCnab('9', round($boleto->getMulta()), 2)); // Só aceita números inteiros
         $this->add(34, 37, '');
         $this->add(38, 62, Util::formatCnab('X', $boleto->getNumeroControle(), 25)); // Numero de controle
         $this->add(63, 70, Util::formatCnab('9', $boleto->getNossoNumero(), 8));

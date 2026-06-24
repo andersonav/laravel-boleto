@@ -38,7 +38,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
     const PROTESTO_NAO_PROTESTAR = '3';
     const PROTESTO_AUTOMATICO = '9';
 
-    public function __construct(array $params)
+    public function __construct( $params)
     {
         parent::__construct($params);
         $this->setCarteira('A'); //Carteira Simples 'A'
@@ -46,14 +46,14 @@ class Sicredi extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_SICREDI;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -67,7 +67,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
     protected $codigoCliente;
 
     /**
-     * Define o cÃ³digo da carteira (Com ou sem registro)
+     * Define o código da carteira (Com ou sem registro)
      *
      * @param string $carteira
      *
@@ -85,7 +85,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->segmentoP($boleto);
@@ -102,7 +102,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    protected function segmentoP(BoletoContract $boleto)
+    protected function segmentoP( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -124,11 +124,11 @@ class Sicredi extends AbstractRemessa implements RemessaContract
         $this->add(36, 36, Util::modulo11($this->getConta()));
         $this->add(37, 37, '');
         $this->add(38, 57, Util::formatCnab('X', $boleto->getNossoNumero(), 20));
-        $this->add(58, 58, '1'); //'1' = CobranÃ§a Simples
-        $this->add(59, 59, '1'); //'1' = Com cadastramento (cobranÃ§a registrada)
+        $this->add(58, 58, '1'); //'1' = Cobrança Simples
+        $this->add(59, 59, '1'); //'1' = Com cadastramento (cobrança registrada)
         $this->add(60, 60, '1'); //'1' = Tradicional
-        $this->add(61, 61, '2'); //'2' = BeneficiÃ¡rio emite
-        $this->add(62, 62, '2'); //'2' = BeneficiÃ¡rio distribui
+        $this->add(61, 61, '2'); //'2' = Beneficiário emite
+        $this->add(62, 62, '2'); //'2' = Beneficiário distribui
         $this->add(63, 77, Util::formatCnab('9', $boleto->getNumeroDocumento(), 15));
         $this->add(78, 85, $boleto->getDataVencimento()->format('dmY'));
         $this->add(86, 100, Util::formatCnab('9', $boleto->getValor(), 15, 2));
@@ -140,7 +140,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
         $this->add(118, 118, $boleto->getJuros() ? '1' : '3'); //'1' = Valor por Dia, '3' = Isento
         $this->add(119, 126, $boleto->getDataVencimento()->format('dmY'));
         $this->add(127, 141, Util::formatCnab('9', $boleto->getMoraDia(), 15, 2)); //Valor da mora/dia ou Taxa mensal
-        $this->add(142, 142, '1'); // '1' = Valor Fixo AtÃ© a Data Informada
+        $this->add(142, 142, '1'); // '1' = Valor Fixo Até a Data Informada
         $this->add(143, 150, $boleto->getDesconto() > 0 ? $boleto->getDataDesconto()->format('dmY') : '00000000');
         $this->add(151, 165, Util::formatCnab('9', $boleto->getDesconto(), 15, 2));
         $this->add(166, 180, Util::formatCnab('9', 0, 15, 2));
@@ -151,8 +151,8 @@ class Sicredi extends AbstractRemessa implements RemessaContract
             $this->add(221, 221, self::PROTESTO_DIAS_CORRIDOS);
         }
         $this->add(222, 223, Util::formatCnab('9', $boleto->getDiasProtesto(), 2));
-        $this->add(224, 224, '1'); // '1' = Baixar / devolver - Utilizar sempre domÃ­nio â€˜1â€™ para esse campo.
-        $this->add(225, 227, '060'); // Utilizar sempre, nesse campo, 60 dias para baixa/devoluÃ§Ã£o.
+        $this->add(224, 224, '1'); // '1' = Baixar / devolver - Utilizar sempre domínio '1' para esse campo.
+        $this->add(225, 227, '060'); // Utilizar sempre, nesse campo, 60 dias para baixa/devolução.
         $this->add(228, 229, Util::formatCnab('9', $boleto->getMoeda(), 2));
         $this->add(230, 239, '0000000000');
         $this->add(240, 240, '');
@@ -166,7 +166,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoQ(BoletoContract $boleto)
+    public function segmentoQ( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));
@@ -219,7 +219,7 @@ class Sicredi extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function segmentoY01(BoletoContract $boleto)
+    public function segmentoY01( $boleto)
     {
         $this->iniciaDetalhe();
         $this->add(1, 3, Util::onlyNumbers($this->getCodigoBanco()));

@@ -10,7 +10,7 @@ use Alves\LaravelBoleto\Util;
 class Bb extends AbstractRetorno implements RetornoCnab240
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -24,28 +24,28 @@ class Bb extends AbstractRetorno implements RetornoCnab240
     private $ocorrencias = [
         '02' => 'Entrada confirmada,',
         '03' => 'Entrada Rejeitada,',
-        '04' => 'TransferÃªncia de Carteira/Entrada,',
-        '05' => 'TransferÃªncia de Carteira/Baixa,',
-        '06' => 'LiquidaÃ§Ã£o,',
+        '04' => 'Transferência de Carteira/Entrada,',
+        '05' => 'Transferência de Carteira/Baixa,',
+        '06' => 'Liquidação,',
         '09' => 'Baixa,',
-        '11' => 'TÃ­tulos em Carteira (em ser),',
-        '12' => 'ConfirmaÃ§Ã£o Recebimento InstruÃ§Ã£ode Abatimento,',
-        '13' => 'ConfirmaÃ§Ã£o Recebimento InstruÃ§Ã£o de Cancelamento Abatimento,',
-        '14' => 'ConfirmaÃ§Ã£o RecebimentoInstruÃ§Ã£o AlteraÃ§Ã£o de Vencimento,',
+        '11' => 'Títulos em Carteira (em ser),',
+        '12' => 'Confirmação Recebimento Instruçãode Abatimento,',
+        '13' => 'Confirmação Recebimento Instrução de Cancelamento Abatimento,',
+        '14' => 'Confirmação RecebimentoInstrução Alteração de Vencimento,',
         '15' => 'Franco dePagamento,',
-        '17' => 'LiquidaÃ§Ã£o ApÃ³s Baixa ou LiquidaÃ§Ã£o TÃ­tulo NÃ£o Registrado,',
-        '19' => 'ConfirmaÃ§Ã£o Recebimento InstruÃ§Ã£o de Protesto,',
-        '20' => 'ConfirmaÃ§Ã£o Recebimento InstruÃ§Ã£o de SustaÃ§Ã£o/Cancelamento de Protesto,',
-        '23' => 'Remessa aCartÃ³rio (Aponte em CartÃ³rio),',
-        '24' => 'Retirada de CartÃ³rio e ManutenÃ§Ã£o em Carteira,',
+        '17' => 'Liquidação Após Baixa ou Liquidação Título Não Registrado,',
+        '19' => 'Confirmação Recebimento Instrução de Protesto,',
+        '20' => 'Confirmação Recebimento Instrução de Sustação/Cancelamento de Protesto,',
+        '23' => 'Remessa aCartório (Aponte em Cartório),',
+        '24' => 'Retirada de Cartório e Manutenção em Carteira,',
         '25' => 'Protestado e Baixado (Baixapor ter sido Protestado),',
-        '26' => 'InstruÃ§Ã£o Rejeitada,',
-        '27' => 'ConfirmaÃ§Ã£o do Pedido de AlteraÃ§Ã£o de Outros Dados,',
-        '28' => 'DÃ©bito de Tarifas/Custas,',
-        '29' => 'OcorrÃªncias do Sacado,',
-        '30' => 'AlteraÃ§Ã£o de Dados Rejeitada,',
-        '44' => 'TÃ­tulo pago com chequedevolvido,',
-        '50' => 'TÃ­tulo pago com cheque pendente decompensaÃ§Ã£o.',
+        '26' => 'Instrução Rejeitada,',
+        '27' => 'Confirmação do Pedido de Alteração de Outros Dados,',
+        '28' => 'Débito de Tarifas/Custas,',
+        '29' => 'Ocorrências do Sacado,',
+        '30' => 'Alteração de Dados Rejeitada,',
+        '44' => 'Título pago com chequedevolvido,',
+        '50' => 'Título pago com cheque pendente decompensação.',
     ];
 
     /**
@@ -56,16 +56,16 @@ class Bb extends AbstractRetorno implements RetornoCnab240
     private $baixa_liquidacao = [
         '01' => 'Por Saldo',
         '02' => 'Por Conta',
-        '03' => 'LiquidaÃ§Ã£o no GuichÃª de Caixa em Dinheiro',
-        '04' => 'CompensaÃ§Ã£o EletrÃ´nica',
-        '05' => 'CompensaÃ§Ã£o Convencional',
-        '06' => 'Por Meio EletrÃ´nico',
-        '07' => 'ApÃ³s Feriado Local',
-        '08' => 'Em CartÃ³rio',
-        '30' => 'LiquidaÃ§Ã£o no GuichÃª de Caixa em Cheque',
-        '31' => 'LiquidaÃ§Ã£o em banco correspondente',
-        '32' => 'LiquidaÃ§Ã£o Terminal de Auto-Atendimento',
-        '33' => 'LiquidaÃ§Ã£o na Internet (Home banking)',
+        '03' => 'Liquidação no Guichê de Caixa em Dinheiro',
+        '04' => 'Compensação Eletrônica',
+        '05' => 'Compensação Convencional',
+        '06' => 'Por Meio Eletrônico',
+        '07' => 'Após Feriado Local',
+        '08' => 'Em Cartório',
+        '30' => 'Liquidação no Guichê de Caixa em Cheque',
+        '31' => 'Liquidação em banco correspondente',
+        '32' => 'Liquidação Terminal de Auto-Atendimento',
+        '33' => 'Liquidação na Internet (Home banking)',
         '34' => 'Liquidado Office Banking',
         '35' => 'Liquidado Correspondente em Dinheiro',
         '36' => 'Liquidado Correspondente em Cheque',
@@ -76,7 +76,7 @@ class Bb extends AbstractRetorno implements RetornoCnab240
         '12' => 'Decurso Prazo - Cliente',
         '13' => 'Decurso Prazo - Banco',
         '14' => 'Protestado',
-        '15' => 'TÃ­tulo ExcluÃ­do',
+        '15' => 'Título Excluído',
     ];
 
     /**
@@ -85,119 +85,119 @@ class Bb extends AbstractRetorno implements RetornoCnab240
      * @var array
      */
     private $rejeicoes = [
-        '01' => 'CÃ³digo do Banco InvÃ¡lido',
-        '02' => 'CÃ³digo do Registro Detalhe InvÃ¡lido',
-        '03' => 'CÃ³digo do Segmento InvÃ¡lido',
-        '04' => 'CÃ³digo de Movimento NÃ£o Permitido para Carteira',
-        '05' => 'CÃ³digo de Movimento InvÃ¡lido',
-        '06' => 'Tipo/NÃºmero de InscriÃ§Ã£o do BeneficiÃ¡rio InvÃ¡lidos',
-        '07' => 'AgÃªncia/Conta/DV InvÃ¡lido',
-        '08' => 'Nosso NÃºmero InvÃ¡lido',
-        '09' => 'Nosso NÃºmero Duplicado',
-        '10' => 'Carteira InvÃ¡lida',
-        '11' => 'Forma de Cadastramento do TÃ­tulo InvÃ¡lido',
-        '12' => 'Tipo de Documento InvÃ¡lido',
-        '13' => 'IdentificaÃ§Ã£o da EmissÃ£o do Boleto de Pagamento InvÃ¡lida',
-        '14' => 'IdentificaÃ§Ã£o da DistribuiÃ§Ã£o do Boleto de Pagamento InvÃ¡lida',
-        '15' => 'CaracterÃ­sticas da CobranÃ§a IncompatÃ­veis',
-        '16' => 'Data de Vencimento InvÃ¡lida',
-        '17' => 'Data de Vencimento Anterior a Data de EmissÃ£o',
-        '18' => 'Vencimento Fora do Prazo de OperaÃ§Ã£o',
-        '19' => 'TÃ­tulo a Cargo de Bancos Correspondentes com Vencimento Inferior a XX Dias',
-        '20' => 'Valor do TÃ­tulo InvÃ¡lido',
-        '21' => 'EspÃ©cie do TÃ­tulo InvÃ¡lida',
-        '22' => 'EspÃ©cie do TÃ­tulo NÃ£o Permitida para a Carteira',
-        '23' => 'Aceite InvÃ¡lido',
-        '24' => 'Data da EmissÃ£o InvÃ¡lida',
-        '25' => 'Data da EmissÃ£o Posterior a Data de Entrada',
-        '26' => 'CÃ³digo de Juros de Mora InvÃ¡lido',
-        '27' => 'Valor/Taxa de Juros de Mora InvÃ¡lido',
-        '28' => 'CÃ³digo do Desconto InvÃ¡lido',
-        '29' => 'Valor do Desconto Maior ou Igual ao Valor do TÃ­tulo',
-        '30' => 'Desconto a Conceder NÃ£o Confere',
-        '31' => 'ConcessÃ£o de Desconto - JÃ¡ Existe Desconto Anterior',
-        '32' => 'Valor do IOF InvÃ¡lido',
-        '33' => 'Valor do Abatimento InvÃ¡lido',
-        '34' => 'Valor do Abatimento Maior ou Igual ao Valor do TÃ­tulo',
-        '35' => 'Valor a Conceder NÃ£o Confere',
-        '36' => 'ConcessÃ£o de Abatimento - JÃ¡ Existe Abatimento Anterior',
-        '37' => 'CÃ³digo para Protesto InvÃ¡lido',
-        '38' => 'Prazo para Protesto InvÃ¡lido',
-        '39' => 'Pedido de Protesto NÃ£o Permitido para o TÃ­tulo',
-        '40' => 'TÃ­tulo com Ordem de Protesto Emitida',
-        '41' => 'Pedido de Cancelamento/SustaÃ§Ã£o para TÃ­tulos sem InstruÃ§Ã£o de Protesto',
-        '42' => 'CÃ³digo para Baixa/DevoluÃ§Ã£o InvÃ¡lido',
-        '43' => 'Prazo para Baixa/DevoluÃ§Ã£o InvÃ¡lido',
-        '44' => 'CÃ³digo da Moeda InvÃ¡lido',
-        '45' => 'Nome do Pagador NÃ£o Informado',
-        '46' => 'Tipo/NÃºmero de InscriÃ§Ã£o do Pagador InvÃ¡lidos',
-        '47' => 'EndereÃ§o do Pagador NÃ£o Informado',
-        '48' => 'CEP InvÃ¡lido',
-        '49' => 'CEP Sem PraÃ§a de CobranÃ§a (NÃ£o Localizado)',
+        '01' => 'Código do Banco Inválido',
+        '02' => 'Código do Registro Detalhe Inválido',
+        '03' => 'Código do Segmento Inválido',
+        '04' => 'Código de Movimento Não Permitido para Carteira',
+        '05' => 'Código de Movimento Inválido',
+        '06' => 'Tipo/Número de Inscrição do Beneficiário Inválidos',
+        '07' => 'Agência/Conta/DV Inválido',
+        '08' => 'Nosso Número Inválido',
+        '09' => 'Nosso Número Duplicado',
+        '10' => 'Carteira Inválida',
+        '11' => 'Forma de Cadastramento do Título Inválido',
+        '12' => 'Tipo de Documento Inválido',
+        '13' => 'Identificação da Emissão do Boleto de Pagamento Inválida',
+        '14' => 'Identificação da Distribuição do Boleto de Pagamento Inválida',
+        '15' => 'Características da Cobrança Incompatíveis',
+        '16' => 'Data de Vencimento Inválida',
+        '17' => 'Data de Vencimento Anterior a Data de Emissão',
+        '18' => 'Vencimento Fora do Prazo de Operação',
+        '19' => 'Título a Cargo de Bancos Correspondentes com Vencimento Inferior a XX Dias',
+        '20' => 'Valor do Título Inválido',
+        '21' => 'Espécie do Título Inválida',
+        '22' => 'Espécie do Título Não Permitida para a Carteira',
+        '23' => 'Aceite Inválido',
+        '24' => 'Data da Emissão Inválida',
+        '25' => 'Data da Emissão Posterior a Data de Entrada',
+        '26' => 'Código de Juros de Mora Inválido',
+        '27' => 'Valor/Taxa de Juros de Mora Inválido',
+        '28' => 'Código do Desconto Inválido',
+        '29' => 'Valor do Desconto Maior ou Igual ao Valor do Título',
+        '30' => 'Desconto a Conceder Não Confere',
+        '31' => 'Concessão de Desconto - Já Existe Desconto Anterior',
+        '32' => 'Valor do IOF Inválido',
+        '33' => 'Valor do Abatimento Inválido',
+        '34' => 'Valor do Abatimento Maior ou Igual ao Valor do Título',
+        '35' => 'Valor a Conceder Não Confere',
+        '36' => 'Concessão de Abatimento - Já Existe Abatimento Anterior',
+        '37' => 'Código para Protesto Inválido',
+        '38' => 'Prazo para Protesto Inválido',
+        '39' => 'Pedido de Protesto Não Permitido para o Título',
+        '40' => 'Título com Ordem de Protesto Emitida',
+        '41' => 'Pedido de Cancelamento/Sustação para Títulos sem Instrução de Protesto',
+        '42' => 'Código para Baixa/Devolução Inválido',
+        '43' => 'Prazo para Baixa/Devolução Inválido',
+        '44' => 'Código da Moeda Inválido',
+        '45' => 'Nome do Pagador Não Informado',
+        '46' => 'Tipo/Número de Inscrição do Pagador Inválidos',
+        '47' => 'Endereço do Pagador Não Informado',
+        '48' => 'CEP Inválido',
+        '49' => 'CEP Sem Praça de Cobrança (Não Localizado)',
         '50' => 'CEP Referente a um Banco Correspondente',
-        '51' => 'CEP incompatÃ­vel com a Unidade da FederaÃ§Ã£o',
-        '52' => 'Registro de TÃ­tulo jÃ¡ liquidado Cart. 17',
-        '53' => 'Tipo/NÃºmero de InscriÃ§Ã£o do Sacador/Avalista InvÃ¡lidos',
-        '54' => 'Sacador/Avalista NÃ£o Informado',
-        '55' => 'Nosso nÃºmero no Banco Correspondente NÃ£o Informado',
-        '56' => 'CÃ³digo do Banco Correspondente NÃ£o Informado',
-        '57' => 'CÃ³digo da Multa InvÃ¡lido',
-        '58' => 'Data da Multa InvÃ¡lida',
-        '59' => 'Valor/Percentual da Multa InvÃ¡lido',
-        '60' => 'Movimento para TÃ­tulo NÃ£o Cadastrado',
-        '61' => 'AlteraÃ§Ã£o da AgÃªncia Cobradora/DV InvÃ¡lida',
-        '62' => 'Tipo de ImpressÃ£o InvÃ¡lido',
-        '63' => 'Entrada para TÃ­tulo jÃ¡ Cadastrado',
-        '64' => 'NÃºmero da Linha InvÃ¡lido',
-        '65' => 'CÃ³digo do Banco para DÃ©bito InvÃ¡lido',
-        '66' => 'AgÃªncia/Conta/DV para DÃ©bito InvÃ¡lido',
-        '67' => 'Dados para DÃ©bito incompatÃ­vel com a IdentificaÃ§Ã£o da EmissÃ£o do Boleto de Pagamento',
-        '68' => 'DÃ©bito AutomÃ¡tico Agendado',
-        '69' => 'DÃ©bito NÃ£o Agendado - Erro nos Dados da Remessa',
-        '70' => 'DÃ©bito NÃ£o Agendado - Pagador NÃ£o Consta do Cadastro de Autorizante',
-        '71' => 'DÃ©bito NÃ£o Agendado - BeneficiÃ¡rio NÃ£o Autorizado pelo Pagador',
-        '72' => 'DÃ©bito NÃ£o Agendado - BeneficiÃ¡rio NÃ£o Participa da Modalidade DÃ©bito AutomÃ¡tico',
-        '73' => 'DÃ©bito NÃ£o Agendado - CÃ³digo de Moeda Diferente de Real (R$)',
-        '74' => 'DÃ©bito NÃ£o Agendado - Data Vencimento InvÃ¡lida',
-        '75' => 'DÃ©bito NÃ£o Agendado, Conforme seu Pedido, TÃ­tulo NÃ£o Registrado',
-        '76' => 'DÃ©bito NÃ£o Agendado, Tipo/Num. InscriÃ§Ã£o do Debitado, InvÃ¡lido',
-        '77' => 'TransferÃªncia para Desconto NÃ£o Permitida para a Carteira do TÃ­tulo',
-        '78' => 'Data Inferior ou Igual ao Vencimento para DÃ©bito AutomÃ¡tico',
-        '79' => 'Data Juros de Mora InvÃ¡lido',
-        '80' => 'Data do Desconto InvÃ¡lida',
-        '81' => 'Tentativas de DÃ©bito Esgotadas - Baixado',
-        '82' => 'Tentativas de DÃ©bito Esgotadas - Pendente',
+        '51' => 'CEP incompatível com a Unidade da Federação',
+        '52' => 'Registro de Título já liquidado Cart. 17',
+        '53' => 'Tipo/Número de Inscrição do Sacador/Avalista Inválidos',
+        '54' => 'Sacador/Avalista Não Informado',
+        '55' => 'Nosso número no Banco Correspondente Não Informado',
+        '56' => 'Código do Banco Correspondente Não Informado',
+        '57' => 'Código da Multa Inválido',
+        '58' => 'Data da Multa Inválida',
+        '59' => 'Valor/Percentual da Multa Inválido',
+        '60' => 'Movimento para Título Não Cadastrado',
+        '61' => 'Alteração da Agência Cobradora/DV Inválida',
+        '62' => 'Tipo de Impressão Inválido',
+        '63' => 'Entrada para Título já Cadastrado',
+        '64' => 'Número da Linha Inválido',
+        '65' => 'Código do Banco para Débito Inválido',
+        '66' => 'Agência/Conta/DV para Débito Inválido',
+        '67' => 'Dados para Débito incompatível com a Identificação da Emissão do Boleto de Pagamento',
+        '68' => 'Débito Automático Agendado',
+        '69' => 'Débito Não Agendado - Erro nos Dados da Remessa',
+        '70' => 'Débito Não Agendado - Pagador Não Consta do Cadastro de Autorizante',
+        '71' => 'Débito Não Agendado - Beneficiário Não Autorizado pelo Pagador',
+        '72' => 'Débito Não Agendado - Beneficiário Não Participa da Modalidade Débito Automático',
+        '73' => 'Débito Não Agendado - Código de Moeda Diferente de Real (R$)',
+        '74' => 'Débito Não Agendado - Data Vencimento Inválida',
+        '75' => 'Débito Não Agendado, Conforme seu Pedido, Título Não Registrado',
+        '76' => 'Débito Não Agendado, Tipo/Num. Inscrição do Debitado, Inválido',
+        '77' => 'Transferência para Desconto Não Permitida para a Carteira do Título',
+        '78' => 'Data Inferior ou Igual ao Vencimento para Débito Automático',
+        '79' => 'Data Juros de Mora Inválido',
+        '80' => 'Data do Desconto Inválida',
+        '81' => 'Tentativas de Débito Esgotadas - Baixado',
+        '82' => 'Tentativas de Débito Esgotadas - Pendente',
         '83' => 'Limite Excedido',
-        '84' => 'NÃºmero AutorizaÃ§Ã£o Inexistente',
-        '85' => 'TÃ­tulo com Pagamento Vinculado',
-        '86' => 'Seu NÃºmero InvÃ¡lido',
+        '84' => 'Número Autorização Inexistente',
+        '85' => 'Título com Pagamento Vinculado',
+        '86' => 'Seu Número Inválido',
         '87' => 'e-mail/SMS enviado',
         '88' => 'e-mail Lido',
-        '89' => 'e-mail/SMS devolvido - endereÃ§o de e-mail ou nÃºmero do celular incorreto',
+        '89' => 'e-mail/SMS devolvido - endereço de e-mail ou número do celular incorreto',
         '90' => 'e-mail devolvido - caixa postal cheia',
-        '91' => 'e-mail/nÃºmero do celular do Pagador nÃ£o informado',
-        '92' => 'Pagador optante por Boleto de Pagamento EletrÃ´nico - e-mail nÃ£o enviado',
-        '93' => 'CÃ³digo para emissÃ£o de Boleto de Pagamento nÃ£o permite envio de e-mail',
-        '94' => 'CÃ³digo da Carteira invÃ¡lido para envio e-mail.',
-        '95' => 'Contrato nÃ£o permite o envio de e-mail',
-        '96' => 'NÃºmero de contrato invÃ¡lido',
-        '97' => 'RejeiÃ§Ã£o da alteraÃ§Ã£o do prazo limite de recebimento (a data deve ser informada no campo 28.3.p)',
-        '98' => 'RejeiÃ§Ã£o de dispensa de prazo limite de recebimento',
-        '99' => 'RejeiÃ§Ã£o da alteraÃ§Ã£o do nÃºmero do tÃ­tulo dado pelo BeneficiÃ¡rio',
-        'A1' => 'RejeiÃ§Ã£o da alteraÃ§Ã£o do nÃºmero controle do participante',
-        'A2' => 'RejeiÃ§Ã£o da alteraÃ§Ã£o dos dados do Pagador',
-        'A3' => 'RejeiÃ§Ã£o da alteraÃ§Ã£o dos dados do Sacador/avalista',
+        '91' => 'e-mail/número do celular do Pagador não informado',
+        '92' => 'Pagador optante por Boleto de Pagamento Eletrônico - e-mail não enviado',
+        '93' => 'Código para emissão de Boleto de Pagamento não permite envio de e-mail',
+        '94' => 'Código da Carteira inválido para envio e-mail.',
+        '95' => 'Contrato não permite o envio de e-mail',
+        '96' => 'Número de contrato inválido',
+        '97' => 'Rejeição da alteração do prazo limite de recebimento (a data deve ser informada no campo 28.3.p)',
+        '98' => 'Rejeição de dispensa de prazo limite de recebimento',
+        '99' => 'Rejeição da alteração do número do título dado pelo Beneficiário',
+        'A1' => 'Rejeição da alteração do número controle do participante',
+        'A2' => 'Rejeição da alteração dos dados do Pagador',
+        'A3' => 'Rejeição da alteração dos dados do Sacador/avalista',
         'A4' => 'Pagador DDA',
-        'A5' => 'Registro Rejeitado â€“ TÃ­tulo jÃ¡ Liquidado',
-        'A6' => 'CÃ³digo do Convenente InvÃ¡lido ou Encerrado',
-        'A7' => 'TÃ­tulo jÃ¡ se encontra na situaÃ§Ã£o Pretendida',
-        'A8' => 'Valor do Abatimento invÃ¡lido para cancelamento',
-        'A9' => 'NÃ£o autoriza pagamento parcial',
+        'A5' => 'Registro Rejeitado - Título já Liquidado',
+        'A6' => 'Código do Convenente Inválido ou Encerrado',
+        'A7' => 'Título já se encontra na situação Pretendida',
+        'A8' => 'Valor do Abatimento inválido para cancelamento',
+        'A9' => 'Não autoriza pagamento parcial',
         'B1' => 'Autoriza recebimento parcial',
-        'B2' => 'Valor Nominal do TÃ­tulo Conflitante',
-        'B3' => 'Tipo de Pagamento InvÃ¡lido',
-        'B4' => 'Valor MÃ¡ximo/Percentual InvÃ¡lido',
-        'B5' => 'Valor MÃ­nimo/Percentual InvÃ¡lido',
+        'B2' => 'Valor Nominal do Título Conflitante',
+        'B3' => 'Tipo de Pagamento Inválido',
+        'B4' => 'Valor Máximo/Percentual Inválido',
+        'B5' => 'Valor Mínimo/Percentual Inválido',
     ];
 
     /**
@@ -221,7 +221,7 @@ class Bb extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setCodBanco($this->rem(1, 3, $header))
@@ -250,7 +250,7 @@ class Bb extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeaderLote(array $headerLote)
+    protected function processarHeaderLote( $headerLote)
     {
         $this->getHeaderLote()
             ->setCodBanco($this->rem(1, 3, $headerLote))
@@ -275,12 +275,12 @@ class Bb extends AbstractRetorno implements RetornoCnab240
     }
 
     /**
-     * @param array $detalhe
+     * @param $detalhe
      *
      * @return bool
      * @throws \Exception
      */
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe($detalhe)
     {
         $d = $this->detalheAtual();
 
@@ -378,7 +378,7 @@ class Bb extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailerLote(array $trailer)
+    protected function processarTrailerLote( $trailer)
     {
         $this->getTrailerLote()
             ->setLoteServico($this->rem(4, 7, $trailer))
@@ -394,7 +394,7 @@ class Bb extends AbstractRetorno implements RetornoCnab240
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setNumeroLote($this->rem(4, 7, $trailer))

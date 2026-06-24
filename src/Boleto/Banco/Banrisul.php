@@ -10,37 +10,37 @@ use Alves\LaravelBoleto\Util;
 class Banrisul extends AbstractBoleto implements BoletoContract
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_BANRISUL;
 
     /**
-     * Define as carteiras disponÃ­veis para este banco
-     * 1 -> CobranÃ§a Simples
-     * 2 -> CobranÃ§a Vinculada
-     * 3 -> CobranÃ§a Caucionada
-     * 4 -> CobranÃ§a em IGPM
-     * 5 -> CobranÃ§a Caucionada CGB Especial
-     * 6 -> CobranÃ§a Simples Seguradora
-     * 7 -> CobranÃ§a em UFIR
-     * 8 -> CobranÃ§a em IDTR
-     * B -> CobranÃ§a Caucionada CGB Especial
-     * C -> CobranÃ§a Vinculada
-     * D -> CobranÃ§a CSB
-     * E -> CobranÃ§a Caucionada CÃ¢mbio
-     * F -> CobranÃ§a Vendor
+     * Define as carteiras disponíveis para este banco
+     * 1 -> Cobrança Simples
+     * 2 -> Cobrança Vinculada
+     * 3 -> Cobrança Caucionada
+     * 4 -> Cobrança em IGPM
+     * 5 -> Cobrança Caucionada CGB Especial
+     * 6 -> Cobrança Simples Seguradora
+     * 7 -> Cobrança em UFIR
+     * 8 -> Cobrança em IDTR
+     * B -> Cobrança Caucionada CGB Especial
+     * C -> Cobrança Vinculada
+     * D -> Cobrança CSB
+     * E -> Cobrança Caucionada Câmbio
+     * F -> Cobrança Vendor
      * G -> BBH
-     * H -> CobranÃ§a Caucionada DÃ³lar
-     * I -> CobranÃ§a Caucionada Compror
-     * J -> CobranÃ§a Caucionada NPR
-     * K -> CobranÃ§a Simples INCC-M
-     * M -> CobranÃ§a Partilhada
+     * H -> Cobrança Caucionada Dólar
+     * I -> Cobrança Caucionada Compror
+     * J -> Cobrança Caucionada NPR
+     * K -> Cobrança Simples INCC-M
+     * M -> Cobrança Partilhada
      * N -> Capital de Giro CGB ICM
      * P -> Capital de Giro CGB ICM
      * R -> Desconto de Duplicata
-     * S -> Vendor EletrÃ´nico
+     * S -> Vendor Eletrônico
      * T -> Leasing
      * U -> CSB e CCB sem registro
      * X -> Vendor BDL
@@ -50,18 +50,18 @@ class Banrisul extends AbstractBoleto implements BoletoContract
     protected $carteiras = ['1', '2', '3', '4', '5', '6', '7', '8', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N', 'P', 'R', 'S', 'T', 'U', 'X'];
 
     /**
-     * EspÃ©cie do documento, cÃ³digo para remessa do CNAB240
+     * Espécie do documento, código para remessa do CNAB240
      * @var string
      */
     protected $especiesCodigo = [
-        'DM'  => '02', //Duplicata Mercantil â€“ Banco emite bloqueto franqueado. Se a posiÃ§Ã£o 61 for igual a 2 o Banco transformarÃ¡ â€œespÃ©cie do tÃ­tuloâ€ para AA
-        'DS'  => '04', //Duplicata de ServiÃ§o
-        'LC'  => '07', //Letra de CÃ¢mbio
-        'NP'  => '12', //Nota PromissÃ³ria
-        'CCB' => 'AA', //O Banco nÃ£o emite o bloqueto
-        'CD'  => 'AB', //CobranÃ§a Direta
-        'CE'  => 'AC', //CobranÃ§a Escritural
-        'TT'  => 'AD', //TÃ­tulo de terceiros
+        'DM'  => '02', //Duplicata Mercantil - Banco emite bloqueto franqueado. Se a posição 61 for igual a 2 o Banco transformará "espécie do título" para AA
+        'DS'  => '04', //Duplicata de Serviço
+        'LC'  => '07', //Letra de Câmbio
+        'NP'  => '12', //Nota Promissória
+        'CCB' => 'AA', //O Banco não emite o bloqueto
+        'CD'  => 'AB', //Cobrança Direta
+        'CE'  => 'AC', //Cobrança Escritural
+        'TT'  => 'AD', //Título de terceiros
     ];
 
     /**
@@ -72,7 +72,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
     protected $codigoCliente;
 
     /**
-     * Seta dias para baixa automÃ¡tica
+     * Seta dias para baixa automática
      *
      * @param int $baixaAutomatica
      *
@@ -82,7 +82,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
     public function setDiasBaixaAutomatica($baixaAutomatica)
     {
         if ($this->getDiasProtesto() > 0) {
-            throw new \Exception('VocÃª deve usar dias de protesto ou dias de baixa, nunca os 2');
+            throw new \Exception('Você deve usar dias de protesto ou dias de baixa, nunca os 2');
         }
         $baixaAutomatica = (int) $baixaAutomatica;
         $this->diasBaixaAutomatica = $baixaAutomatica > 0 ? $baixaAutomatica : 0;
@@ -90,7 +90,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Gerar nosso nÃºmero
+     * Gerar nosso número
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
         return $nossoNumero;
     }
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -111,7 +111,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
         return substr_replace($this->getNossoNumero(), '-', -2, 0);
     }
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      * @throws \Exception
@@ -124,7 +124,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
 
         $campoLivre = '2';
         $campoLivre .= '1';
-        $campoLivre .= Util::numberFormatGeral($this->getCodigoCliente(), 11); //4 digitos da agencia + 7 primeiros digitos pois os ultimos 2 sÃ£o digitos verificadores
+        $campoLivre .= Util::numberFormatGeral($this->getCodigoCliente(), 11); //4 digitos da agencia + 7 primeiros digitos pois os ultimos 2 são digitos verificadores
         $campoLivre .= Util::numberFormatGeral($this->getNumero(), 8);
         $campoLivre .= '40';
         $campoLivre .= CalculoDV::banrisulDuploDigito(Util::onlyNumbers($campoLivre));
@@ -133,7 +133,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *
@@ -175,7 +175,7 @@ class Banrisul extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Retorna o campo AgÃªncia/BeneficiÃ¡rio do boleto
+     * Retorna o campo Agência/Beneficiário do boleto
      *
      * @return string
      */

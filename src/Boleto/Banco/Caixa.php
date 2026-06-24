@@ -8,26 +8,26 @@ use Alves\LaravelBoleto\Util;
 
 class Caixa  extends AbstractBoleto implements BoletoContract
 {
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->setCamposObrigatorios('numero', 'agencia', 'carteira', 'codigoCliente');
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_CEF;
     /**
-     * Define as carteiras disponÃ­veis para este banco
+     * Define as carteiras disponíveis para este banco
      *
      * @var array
      */
     protected $carteiras = ['RG'];
     /**
-     * EspÃ©cie do documento, coÃ³digo para remessa
+     * Espécie do documento, coódigo para remessa
      *
      * @var string
      */
@@ -68,7 +68,7 @@ class Caixa  extends AbstractBoleto implements BoletoContract
     }
     /**
      * Retorna o codigo do cliente como se fosse a conta
-     * ja que a caixa nÃ£o faz uso da conta para nada.
+     * ja que a caixa não faz uso da conta para nada.
      *
      * @return string
      */
@@ -78,7 +78,7 @@ class Caixa  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @throws \Exception
      * @return string
@@ -92,13 +92,13 @@ class Caixa  extends AbstractBoleto implements BoletoContract
         }
 
         $carteira = $composicao . '4';
-        // As 15 prÃ³ximas posiÃ§Ãµes no nosso nÃºmero sÃ£o a critÃ©rio do beneficiÃ¡rio, utilizando o sequencial
-        // Depois, calcula-se o cÃ³digo verificador por mÃ³dulo 11
+        // As 15 próximas posições no nosso número são a critério do beneficiário, utilizando o sequencial
+        // Depois, calcula-se o código verificador por módulo 11
         $numero = $carteira . Util::numberFormatGeral($numero_boleto, 15);
         return $numero;
     }
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -108,7 +108,7 @@ class Caixa  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Na CEF deve retornar agÃªncia (sem o DV) / cÃ³digo beneficiÃ¡rio (com DV)
+     * Na CEF deve retornar agência (sem o DV) / código beneficiário (com DV)
      * @return [type] [description]
      */
     public function getAgenciaCodigoBeneficiario(){
@@ -118,7 +118,7 @@ class Caixa  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Seta dias para baixa automÃ¡tica
+     * Seta dias para baixa automática
      *
      * @param int $baixaAutomatica
      *
@@ -128,7 +128,7 @@ class Caixa  extends AbstractBoleto implements BoletoContract
     public function setDiasBaixaAutomatica($baixaAutomatica)
     {
         if ($this->getDiasProtesto() > 0) {
-            throw new \Exception('VocÃª deve usar dias de protesto ou dias de baixa, nunca os 2');
+            throw new \Exception('Você deve usar dias de protesto ou dias de baixa, nunca os 2');
         }
         $baixaAutomatica = (int) $baixaAutomatica;
         $this->diasBaixaAutomatica = $baixaAutomatica > 0 ? $baixaAutomatica : 0;
@@ -136,7 +136,7 @@ class Caixa  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      * @throws \Exception
@@ -161,7 +161,7 @@ class Caixa  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *

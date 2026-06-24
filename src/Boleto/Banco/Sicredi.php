@@ -8,7 +8,7 @@ use Alves\LaravelBoleto\Util;
 
 class Sicredi extends AbstractBoleto implements BoletoContract
 {
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('byte', 'posto');
@@ -19,53 +19,53 @@ class Sicredi extends AbstractBoleto implements BoletoContract
      *
      * @var string
      */
-    protected $localPagamento = 'PagÃ¡vel preferencialmente nas cooperativas de crÃ©dito do sicredi';
+    protected $localPagamento = 'Pagável preferencialmente nas cooperativas de crédito do sicredi';
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_SICREDI;
     /**
-     * Define as carteiras disponÃ­veis para este banco
+     * Define as carteiras disponíveis para este banco
      *
      * @var array
      */
     protected $carteiras = ['1', '2', '3'];
     /**
-     * EspÃ©cie do documento, coÃ³digo para remessa
+     * Espécie do documento, coódigo para remessa
      *
      * @var string
      */
     protected $especiesCodigo240 = [
-        'DMI' => '03', // Duplicata Mercantil por IndicaÃ§Ã£o
-        'DM' => '05', // Duplicata Mercantil por IndicaÃ§Ã£o
+        'DMI' => '03', // Duplicata Mercantil por Indicação
+        'DM' => '05', // Duplicata Mercantil por Indicação
         'DR' => '06', // Duplicata Rural
-        'NP' => '12', // Nota PromissÃ³ria
-        'NR' => '13', // Nota PromissÃ³ria Rural
+        'NP' => '12', // Nota Promissória
+        'NR' => '13', // Nota Promissória Rural
         'NS' => '16', // Nota de Seguros
         'RC' => '17', // Recibo
-        'LC' => '07', // Letra de CÃ¢mbio
-        'ND' => '19', // Nota de DÃ©bito
-        'DSI' => '99', // Duplicata de ServiÃ§o por IndicaÃ§Ã£o
+        'LC' => '07', // Letra de Câmbio
+        'ND' => '19', // Nota de Débito
+        'DSI' => '99', // Duplicata de Serviço por Indicação
         'OS' => '99', // Outros
     ];
     /**
-     * EspÃ©cie do documento, coÃ³digo para remessa
+     * Espécie do documento, coódigo para remessa
      *
      * @var string
      */
     protected $especiesCodigo400 = [
-        'DMI' => 'A', // Duplicata Mercantil por IndicaÃ§Ã£o
-        'DM' => 'A', // Duplicata Mercantil por IndicaÃ§Ã£o
+        'DMI' => 'A', // Duplicata Mercantil por Indicação
+        'DM' => 'A', // Duplicata Mercantil por Indicação
         'DR' => 'B', // Duplicata Rural
-        'NP' => 'C', // Nota PromissÃ³ria
-        'NR' => 'D', // Nota PromissÃ³ria Rural
+        'NP' => 'C', // Nota Promissória
+        'NR' => 'D', // Nota Promissória Rural
         'NS' => 'E', // Nota de Seguros
         'RC' => 'G', // Recibo
-        'LC' => 'H', // Letra de CÃ¢mbio
-        'ND' => 'I', // Nota de DÃ©bito
-        'DSI' => 'J', // Duplicata de ServiÃ§o por IndicaÃ§Ã£o
+        'LC' => 'H', // Letra de Câmbio
+        'ND' => 'I', // Nota de Débito
+        'DSI' => 'J', // Duplicata de Serviço por Indicação
         'OS' => 'K', // Outros
     ];
     /**
@@ -75,19 +75,19 @@ class Sicredi extends AbstractBoleto implements BoletoContract
      */
     protected $registro = true;
     /**
-     * CÃ³digo do posto do cliente no banco.
+     * Código do posto do cliente no banco.
      *
      * @var int
      */
     protected $posto;
     /**
-     * Byte que compoe o nosso nÃºmero.
+     * Byte que compoe o nosso número.
      *
      * @var int
      */
     protected $byte = 2;
     /**
-     * Define se possui ou nÃ£o registro
+     * Define se possui ou não registro
      *
      * @param  bool $registro
      * @return $this
@@ -98,7 +98,7 @@ class Sicredi extends AbstractBoleto implements BoletoContract
         return $this;
     }
     /**
-     * Retorna se Ã© com registro.
+     * Retorna se é com registro.
      *
      * @return bool
      */
@@ -153,7 +153,7 @@ class Sicredi extends AbstractBoleto implements BoletoContract
         return $this->byte;
     }
     /**
-     * Retorna o campo AgÃªncia/BeneficiÃ¡rio do boleto
+     * Retorna o campo Agência/Beneficiário do boleto
      *
      * @return string
      */
@@ -162,7 +162,7 @@ class Sicredi extends AbstractBoleto implements BoletoContract
         return sprintf('%04s.%02s.%05s', $this->getAgencia(), $this->getPosto(), $this->getConta());
     }
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @return string
      */
@@ -176,7 +176,7 @@ class Sicredi extends AbstractBoleto implements BoletoContract
         return $nossoNumero;
     }
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -185,7 +185,7 @@ class Sicredi extends AbstractBoleto implements BoletoContract
         return Util::maskString($this->getNossoNumero(), '##/######-#');
     }
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      * @throws \Exception
@@ -209,7 +209,7 @@ class Sicredi extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *

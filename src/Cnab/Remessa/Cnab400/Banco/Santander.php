@@ -34,7 +34,7 @@ class Santander extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_NAO_PROTESTAR = '07';
     const INSTRUCAO_NAO_COBRAR_MORA = '08';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('codigoCliente');
@@ -42,14 +42,14 @@ class Santander extends AbstractRemessa implements RemessaContract
 
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_SANTANDER;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -101,7 +101,7 @@ class Santander extends AbstractRemessa implements RemessaContract
     }
 
     /**
-     * Retorna o codigo de transmissÃ£o.
+     * Retorna o codigo de transmissão.
      *
      * @return string
      * @throws \Exception
@@ -157,7 +157,7 @@ class Santander extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();

@@ -9,7 +9,7 @@ use Alves\LaravelBoleto\Util;
 class Bnb extends AbstractRetorno implements RetornoCnab400
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -22,22 +22,22 @@ class Bnb extends AbstractRetorno implements RetornoCnab400
      */
     private $ocorrencias = [
         '02' => 'Entrada confirmada',
-        '04' => 'AlteraÃ§Ã£o',
-        '06' => 'LiquidaÃ§Ã£o normal',
+        '04' => 'Alteração',
+        '06' => 'Liquidação normal',
         '07' => 'Pagamento por conta',
-        '08' => 'Pagamento por cartÃ³rio',
+        '08' => 'Pagamento por cartório',
         '09' => 'Baixa simples',
         '10' => 'Devolvido - Protestado',
         '11' => 'Em ser',
         '12' => 'Abatimento concedido',
         '13' => 'Abatimento cancelado',
         '14' => 'Vencimento alterado',
-        '15' => 'Baixa automÃ¡tica',
-        '18' => 'AlteraÃ§Ã£o depositÃ¡ria',
-        '19' => 'Confirma recebimento de instruÃ§Ã£o de protesto',
-        '20' => 'Confirma recebimento de instruÃ§Ã£o de sustaÃ§Ã£o de protesto',
-        '21' => 'AlteraÃ§Ã£o de informaÃ§Ãµes de controle da empresa',
-        '22' => 'AlteraÃ§Ã£o do "seu nÃºmero"',
+        '15' => 'Baixa automática',
+        '18' => 'Alteração depositária',
+        '19' => 'Confirma recebimento de instrução de protesto',
+        '20' => 'Confirma recebimento de instrução de sustação de protesto',
+        '21' => 'Alteração de informações de controle da empresa',
+        '22' => 'Alteração do "seu número"',
         '51' => 'Entrada rejeitada',
         '52' => 'Erro ocorrencia 02',
         '54' => 'Erro ocorrencia 04',
@@ -73,7 +73,7 @@ class Bnb extends AbstractRetorno implements RetornoCnab400
         ];
     }
 
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setOperacaoCodigo($this->rem(2, 2, $header))
@@ -88,17 +88,17 @@ class Bnb extends AbstractRetorno implements RetornoCnab400
         return true;
     }
 
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         $d = $this->detalheAtual();
-        // Verifica data de crÃ©dotp (nÃ£o vem no retorno mas uso pra saber se foi liquidado)
+        // Verifica data de crédotp (não vem no retorno mas uso pra saber se foi liquidado)
         if ($this->rem(254, 266, $detalhe) == '0000000000000') {
             $dataCredito = "";
         } else {
             $dataCredito = $this->rem(111, 116, $detalhe);
         }
         $d->setCarteira($this->rem(108, 108, $detalhe))
-            ->setNossoNumero($this->rem(63, 70, $detalhe)) // Nosso nÃºmero + digito (no retorno bnb sÃ£o separados em campos diferentes)
+            ->setNossoNumero($this->rem(63, 70, $detalhe)) // Nosso número + digito (no retorno bnb são separados em campos diferentes)
             ->setNumeroDocumento($this->rem(117, 126, $detalhe))
             ->setNumeroControle($this->rem(38, 62, $detalhe))
             ->setOcorrencia($this->rem(109, 110, $detalhe))
@@ -140,7 +140,7 @@ class Bnb extends AbstractRetorno implements RetornoCnab400
         return true;
     }
 
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setQuantidadeTitulos((int) $this->rem(18, 25, $trailer))

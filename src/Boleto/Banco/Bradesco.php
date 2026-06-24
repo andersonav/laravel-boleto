@@ -10,21 +10,21 @@ use Alves\LaravelBoleto\Util;
 class Bradesco  extends AbstractBoleto implements BoletoContract
 {
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = Boleto::COD_BANCO_BRADESCO;
     /**
-     * Define as carteiras disponÃ­veis para este banco
-     * '09' => Com registro | '06' => Sem Registro | '21' => Com Registro - PagÃ¡vel somente no Bradesco | '22' => Sem Registro - PagÃ¡vel somente no Bradesco | '25' => Sem Registro - EmissÃ£o na Internet | '26' => Com Registro - EmissÃ£o na Internet
+     * Define as carteiras disponíveis para este banco
+     * '09' => Com registro | '06' => Sem Registro | '21' => Com Registro - Pagável somente no Bradesco | '22' => Sem Registro - Pagável somente no Bradesco | '25' => Sem Registro - Emissão na Internet | '26' => Com Registro - Emissão na Internet
      *
      * @var array
      */
     protected $carteiras = ['04', '09', '21', '26'];
     /**
-     * Trata-se de cÃ³digo utilizado para identificar mensagens especificas ao cedente, sendo
-     * que o mesmo consta no cadastro do Banco, quando nÃ£o houver cÃ³digo cadastrado preencher
+     * Trata-se de código utilizado para identificar mensagens especificas ao cedente, sendo
+     * que o mesmo consta no cadastro do Banco, quando não houver código cadastrado preencher
      * com zeros "000".
      *
      * @var int
@@ -40,53 +40,53 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
         'mostra_cip' => true,
     ];
     /**
-     * EspÃ©cie do documento, coÃ³digo para remessa
+     * Espécie do documento, coódigo para remessa
      *
      * @var string
      */
     protected $especiesCodigo = [
         'CH'  => '01', //Cheque
         'DM'  => '02', //Duplicata Mercantil
-        'DMI' => '03', //Duplicata Mercantil p/ IndicaÃ§Ã£o
-        'DS'  => '04', //Duplicata de ServiÃ§o
-        'DSI' => '05', //Duplicata de ServiÃ§o p/ IndicaÃ§Ã£o
+        'DMI' => '03', //Duplicata Mercantil p/ Indicação
+        'DS'  => '04', //Duplicata de Serviço
+        'DSI' => '05', //Duplicata de Serviço p/ Indicação
         'DR'  => '06', //Duplicata Rural
-        'LC'  => '07', //Letra de CÃ¢mbio
-        'NCC' => '08', //Nota de CrÃ©dito Comercial
-        'NCE' => '09', //Nota de CrÃ©dito a ExportaÃ§Ã£o
-        'NCI' => '10', //Nota de CrÃ©dito Industrial
-        'NCR' => '11', //Nota de CrÃ©dito Rural
-        'NP'  => '12', //Nota PromissÃ³ria
-        'NPR' => '13', //Nota PromissÃ³ria Rural
+        'LC'  => '07', //Letra de Câmbio
+        'NCC' => '08', //Nota de Crédito Comercial
+        'NCE' => '09', //Nota de Crédito a Exportação
+        'NCI' => '10', //Nota de Crédito Industrial
+        'NCR' => '11', //Nota de Crédito Rural
+        'NP'  => '12', //Nota Promissória
+        'NPR' => '13', //Nota Promissória Rural
         'TM'  => '14', //Triplicata Mercantil
-        'TS'  => '15', //Triplicata de ServiÃ§o
+        'TS'  => '15', //Triplicata de Serviço
         'NS'  => '16', //Nota de Seguro
         'RC'  => '17', //Recibo
         'FAT' => '18', //Fatura
-        'ND'  => '19', //Nota de DÃ©bito
-        'AP'  => '20', //ApÃ³lice de Seguro
+        'ND'  => '19', //Nota de Débito
+        'AP'  => '20', //Apólice de Seguro
         'ME'  => '21', //Mensalidade Escolar
-        'PC'  => '22', //Parcela de ConsÃ³rcio
+        'PC'  => '22', //Parcela de Consórcio
         'NF'  => '23', //Nota Fiscal
-        'DD'  => '24', //Documento de DÃ­vida
-        'CPR' => '25', //CÃ©dula de Produto Rural,
+        'DD'  => '24', //Documento de Dívida
+        'CPR' => '25', //Cédula de Produto Rural,
         'WAR' => '26', //Warrant
-        'DAE' => '27', //DÃ­vida Ativa do Estado
-        'DAM' => '28', //DÃ­vida Ativa do MunicÃ­pio
-        'DAU' => '29', //DÃ­vida Ativa da UniÃ£o
+        'DAE' => '27', //Dívida Ativa do Estado
+        'DAM' => '28', //Dívida Ativa do Município
+        'DAU' => '29', //Dívida Ativa da União
         'EC'  => '30', //Encargos condominiais
-        'CC'  => '31', //CC CartÃ£o de CrÃ©dito,
+        'CC'  => '31', //CC Cartão de Crédito,
         'BDP' => '32', //BDP - Boleto de Proposta
         'O'   => '99', //Outros,
     ];
     /**
-     * Mostrar o endereÃ§o do beneficiÃ¡rio abaixo da razÃ£o e CNPJ na ficha de compensaÃ§Ã£o
+     * Mostrar o endereço do beneficiário abaixo da razão e CNPJ na ficha de compensação
      *
      * @var boolean
      */
     protected $mostrarEnderecoFichaCompensacao = true;
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @return string
      */
@@ -97,7 +97,7 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * Seta dias para baixa automÃ¡tica
+     * Seta dias para baixa automática
      *
      * @param int $baixaAutomatica
      *
@@ -107,7 +107,7 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
     public function setDiasBaixaAutomatica($baixaAutomatica)
     {
         if ($this->getDiasProtesto() > 0) {
-            throw new \Exception('VocÃª deve usar dias de protesto ou dias de baixa, nunca os 2');
+            throw new \Exception('Você deve usar dias de protesto ou dias de baixa, nunca os 2');
         }
         $baixaAutomatica = (int) $baixaAutomatica;
         $this->diasBaixaAutomatica = $baixaAutomatica > 0 ? $baixaAutomatica : 0;
@@ -115,7 +115,7 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -124,7 +124,7 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
         return Util::numberFormatGeral($this->getCarteira(), 2) . ' / ' .  substr_replace($this->getNossoNumero(), '-', -1, 0);
     }
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      */
@@ -144,7 +144,7 @@ class Bradesco  extends AbstractBoleto implements BoletoContract
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *

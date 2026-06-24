@@ -8,65 +8,65 @@ use Alves\LaravelBoleto\Util;
 
 class Bancoob extends AbstractBoleto implements BoletoContract
 {
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('convenio');
     }
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      * @var string
      */
     protected $codigoBanco = self::COD_BANCO_BANCOOB;
     /**
-     * Define as carteiras disponÃ­veis para este banco
+     * Define as carteiras disponíveis para este banco
      * @var array
      */
     protected $carteiras = ['1','3'];
     /**
-     * EspÃ©cie do documento, cÃ³digo para remessa do CNAB240
+     * Espécie do documento, código para remessa do CNAB240
      * @var string
      */
     protected $especiesCodigo = [
         //Equivalentes ao CNAB240
         'CH'  => '01', //Cheque
         'DM'  => '02', //Duplicata Mercantil
-        'DMI' => '03', //Duplicata Mercantil p/ IndicaÃ§Ã£o
-        'DS'  => '04', //Duplicata de ServiÃ§o
-        'DSI' => '05', //Duplicata de ServiÃ§o p/ IndicaÃ§Ã£o
+        'DMI' => '03', //Duplicata Mercantil p/ Indicação
+        'DS'  => '04', //Duplicata de Serviço
+        'DSI' => '05', //Duplicata de Serviço p/ Indicação
         'DR'  => '06', //Duplicata Rural
-        'LC'  => '07', //Letra de CÃ¢mbio
-        'NCC' => '08', //Nota de CrÃ©dito Comercial
-        'NCE' => '09', //Nota de CrÃ©dito a ExportaÃ§Ã£o
-        'NCI' => '10', //Nota de CrÃ©dito Industrial
-        'NCR' => '11', //Nota de CrÃ©dito Rural
-        'NP'  => '12', //Nota PromissÃ³ria
-        'NPR' => '13', //Nota PromissÃ³ria Rural
+        'LC'  => '07', //Letra de Câmbio
+        'NCC' => '08', //Nota de Crédito Comercial
+        'NCE' => '09', //Nota de Crédito a Exportação
+        'NCI' => '10', //Nota de Crédito Industrial
+        'NCR' => '11', //Nota de Crédito Rural
+        'NP'  => '12', //Nota Promissória
+        'NPR' => '13', //Nota Promissória Rural
         'TM'  => '14', //Triplicata Mercantil
-        'TS'  => '15', //Triplicata de ServiÃ§o
+        'TS'  => '15', //Triplicata de Serviço
         'NS'  => '16', //Nota de Seguro
         'RC'  => '17', //Recibo
         'FAT' => '18', //Fatura
-        'ND'  => '19', //Nota de DÃ©bito
-        'AP'  => '20', //ApÃ³lice de Seguro
+        'ND'  => '19', //Nota de Débito
+        'AP'  => '20', //Apólice de Seguro
         'ME'  => '21', //Mensalidade Escolar
-        'PC'  => '22', //Parcela de ConsÃ³rcio
+        'PC'  => '22', //Parcela de Consórcio
         'NF'  => '23', //Nota Fiscal
-        'DD'  => '24', //Documento de DÃ­vida
-        'CPR' => '25',  //CÃ©dula de Produto Rural,
+        'DD'  => '24', //Documento de Dívida
+        'CPR' => '25',  //Cédula de Produto Rural,
         'O'   => '99',  //Outros,
-        //Equivalente no CNAB400 que nÃ£o existe no CNAB240
+        //Equivalente no CNAB400 que não existe no CNAB240
         'W'   => '100',  //Warrant CNAB400
     ];
     /**
-     * Define o nÃºmero do convÃªnio (4, 6 ou 7 caracteres)
+     * Define o número do convênio (4, 6 ou 7 caracteres)
      *
      * @var string
      */
     protected $convenio;
     /**
-     * Define o nÃºmero do convÃªnio. Sempre use string pois a quantidade de caracteres Ã© validada.
+     * Define o número do convênio. Sempre use string pois a quantidade de caracteres é validada.
      *
      * @param  string $convenio
      * @return Bancoob
@@ -77,7 +77,7 @@ class Bancoob extends AbstractBoleto implements BoletoContract
         return $this;
     }
     /**
-     * Retorna o nÃºmero do convÃªnio
+     * Retorna o número do convênio
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class Bancoob extends AbstractBoleto implements BoletoContract
         return $this->convenio;
     }
     /**
-     * Gera o Nosso NÃºmero.
+     * Gera o Nosso Número.
      *
      * @throws \Exception
      * @return string
@@ -97,7 +97,7 @@ class Bancoob extends AbstractBoleto implements BoletoContract
             . CalculoDV::bancoobNossoNumero($this->getAgencia(), $this->getConvenio(), $this->getNumero());
     }
     /**
-     * MÃ©todo que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenÃ§as.
+     * Método que retorna o nosso numero usado no boleto. alguns bancos possuem algumas diferenças.
      *
      * @return string
      */
@@ -106,7 +106,7 @@ class Bancoob extends AbstractBoleto implements BoletoContract
         return substr_replace($this->getNossoNumero(), '-', -1, 0);
     }
     /**
-     * MÃ©todo para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método para gerar o código da posição de 20 a 44
      *
      * @return string
      * @throws \Exception
@@ -124,13 +124,13 @@ class Bancoob extends AbstractBoleto implements BoletoContract
         $campoLivre .= Util::numberFormatGeral($this->getCarteira(), 2);
         $campoLivre .= Util::numberFormatGeral($this->getConvenio(), 7);
         $campoLivre .= Util::numberFormatGeral($nossoNumero, 8);
-        $campoLivre .= Util::numberFormatGeral(1, 3); //Numero da parcela - NÃ£o implementado
+        $campoLivre .= Util::numberFormatGeral(1, 3); //Numero da parcela - Não implementado
 
         return $this->campoLivre = $campoLivre;
     }
 
     /**
-     * MÃ©todo onde qualquer boleto deve extender para gerar o cÃ³digo da posiÃ§Ã£o de 20 a 44
+     * Método onde qualquer boleto deve extender para gerar o código da posição de 20 a 44
      *
      * @param $campoLivre
      *
@@ -155,9 +155,9 @@ class Bancoob extends AbstractBoleto implements BoletoContract
 
 
     /**
-     * AgÃªncia/CÃ³digo do BeneficiÃ¡rio: Informar o prefixo da agÃªncia e o cÃ³digo de associado/cliente.
-     * Estes dados constam na planilha "Capa" deste arquivo. O cÃ³digo de cliente nÃ£o deve ser
-     * confundido com o nÃºmero da conta corrente, pois sÃ£o cÃ³digos diferentes.
+     * Agência/Código do Beneficiário: Informar o prefixo da agência e o código de associado/cliente.
+     * Estes dados constam na planilha "Capa" deste arquivo. O código de cliente não deve ser
+     * confundido com o número da conta corrente, pois são códigos diferentes.
      * @return string
      */
     public function getAgenciaCodigoBeneficiario(){

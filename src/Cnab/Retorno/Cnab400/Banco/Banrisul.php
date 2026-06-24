@@ -15,42 +15,42 @@ class Banrisul extends AbstractRetorno implements RetornoCnab400
      * @var array
      */
     private $ocorrencias = [
-        '02' => 'ConfirmaÃ§Ã£o de entrada',
+        '02' => 'Confirmação de entrada',
         '03' => 'Entrada rejeitada',
-        '04' => 'Baixa de tÃ­tulo liquidado por edital',
-        '06' => 'LiquidaÃ§Ã£o normal',
-        '07' => 'LiquidaÃ§Ã£o parcial',
-        '08' => 'Baixa por pagamento, liquidaÃ§Ã£o pelo saldo',
-        '09' => 'DevoluÃ§Ã£o automÃ¡tica',
-        '10' => 'Baixado conforme instruÃ§Ãµes',
+        '04' => 'Baixa de título liquidado por edital',
+        '06' => 'Liquidação normal',
+        '07' => 'Liquidação parcial',
+        '08' => 'Baixa por pagamento, liquidação pelo saldo',
+        '09' => 'Devolução automática',
+        '10' => 'Baixado conforme instruções',
         '11' => 'Arquivo levantamento',
-        '12' => 'ConcessÃ£o de abatimento',
+        '12' => 'Concessão de abatimento',
         '13' => 'Cancelamento de abatimento',
         '14' => 'Vencimento alterado',
-        '15' => 'Pagamento em cartÃ³rio',
-        '16' => 'AlteraÃ§Ã£o de dados',
-        '18' => 'AlteraÃ§Ã£o de instruÃ§Ãµes',
-        '19' => 'ConfirmaÃ§Ã£o de instruÃ§Ã£o protesto',
-        '20' => 'ConfirmaÃ§Ã£o de instruÃ§Ã£o para sustar protesto',
-        '21' => 'Aguardando autorizaÃ§Ã£o para protesto por edital',
-        '22' => 'Protesto sustado por alteraÃ§Ã£o de vencimento e prazo de cartÃ³rio',
-        '23' => 'ConfirmaÃ§Ã£o da entrada em cartÃ³rio',
-        '25' => 'DevoluÃ§Ã£o, liquidado anteriormente',
-        '26' => 'Devolvido pelo cartÃ³rio â€“ erro de informaÃ§Ã£o.',
-        '30' => 'cobranÃ§a a creditar (liquidaÃ§Ã£o em trÃ¢nsito)',
-        '31' => 'TÃ­tulo em trÃ¢nsito pago em cartÃ³rio',
-        '32' => 'Reembolso e transferÃªncia Desconto e Vendor ou carteira em garantia',
-        '33' => 'Reembolso e devoluÃ§Ã£o Desconto e Vendor',
-        '34' => 'Reembolso nÃ£o efetuado por falta de saldo',
-        '40' => 'Baixa de tÃ­tulos protestados',
+        '15' => 'Pagamento em cartório',
+        '16' => 'Alteração de dados',
+        '18' => 'Alteração de instruções',
+        '19' => 'Confirmação de instrução protesto',
+        '20' => 'Confirmação de instrução para sustar protesto',
+        '21' => 'Aguardando autorização para protesto por edital',
+        '22' => 'Protesto sustado por alteração de vencimento e prazo de cartório',
+        '23' => 'Confirmação da entrada em cartório',
+        '25' => 'Devolução, liquidado anteriormente',
+        '26' => 'Devolvido pelo cartório - erro de informação.',
+        '30' => 'cobrança a creditar (liquidação em trânsito)',
+        '31' => 'Título em trânsito pago em cartório',
+        '32' => 'Reembolso e transferência Desconto e Vendor ou carteira em garantia',
+        '33' => 'Reembolso e devolução Desconto e Vendor',
+        '34' => 'Reembolso não efetuado por falta de saldo',
+        '40' => 'Baixa de títulos protestados',
         '41' => 'Despesa de aponte.',
-        '42' => 'AlteraÃ§Ã£o de tÃ­tulo',
-        '43' => 'RelaÃ§Ã£o de tÃ­tulos',
-        '44' => 'ManutenÃ§Ã£o mensal',
-        '45' => 'SustaÃ§Ã£o de cartÃ³rio e envio de tÃ­tulo a cartÃ³rio',
-        '46' => 'Fornecimento de formulÃ¡rio prÃ©-impresso',
-        '47' => 'ConfirmaÃ§Ã£o de entrada â€“ Pagador DDA',
-        '68' => 'Acerto dos dados do rateio de crÃ©dito',
+        '42' => 'Alteração de título',
+        '43' => 'Relação de títulos',
+        '44' => 'Manutenção mensal',
+        '45' => 'Sustação de cartório e envio de título a cartório',
+        '46' => 'Fornecimento de formulário pré-impresso',
+        '47' => 'Confirmação de entrada - Pagador DDA',
+        '68' => 'Acerto dos dados do rateio de crédito',
         '69' => 'Cancelamento dos dados do rateio',
     ];
 
@@ -62,12 +62,12 @@ class Banrisul extends AbstractRetorno implements RetornoCnab400
      */
     private $baixa_liquidacao = [
         '37' => 'Cancelamento de rateio por motivo de baixa comandada',
-        '38' => 'Rateio efetuado, BeneficiÃ¡rio aguardando crÃ©dito',
-        '39' => 'Rateio efetuado, BeneficiÃ¡rio jÃ¡ creditado',
-        '40' => 'Rateio nÃ£o efetuado, conta dÃ©bito BeneficiÃ¡rio principal bloqueada',
-        '41' => 'Rateio nÃ£o efetuado, conta BeneficiÃ¡rio encerrada',
-        '42' => 'Rateio nÃ£o efetuado, cÃ³digo cÃ¡lculo 2 (valor registro) e valor pago menor',
-        '43' => 'OcorrÃªncia nÃ£o possui rateio',
+        '38' => 'Rateio efetuado, Beneficiário aguardando crédito',
+        '39' => 'Rateio efetuado, Beneficiário já creditado',
+        '40' => 'Rateio não efetuado, conta débito Beneficiário principal bloqueada',
+        '41' => 'Rateio não efetuado, conta Beneficiário encerrada',
+        '42' => 'Rateio não efetuado, código cálculo 2 (valor registro) e valor pago menor',
+        '43' => 'Ocorrência não possui rateio',
     ];
 
     /**
@@ -76,64 +76,64 @@ class Banrisul extends AbstractRetorno implements RetornoCnab400
      * @var array
      */
     private $rejeicoes = [
-        '01' => 'CÃ³digo do Banco invÃ¡lido',
-        '02' => 'AgÃªncia/Conta/NÃºmero de controle â€“ InvÃ¡lido CobranÃ§a Partilhada',
-        '04' => 'CÃ³digo do movimento nÃ£o permitido para a carteira',
-        '05' => 'CÃ³digo do movimento invÃ¡lido',
-        '07' => 'TÃ­tulo rejeitado na cobranÃ§a CEP irregular',
-        '08' => 'Nosso NÃºmero invÃ¡lido',
-        '09' => 'Nosso NÃºmero duplicado',
-        '10' => 'Carteira invÃ¡lida',
-        '15' => 'CaracterÃ­sticas da cobranÃ§a incompatÃ­veis â€“ se a carteira e a moeda forem vÃ¡lidas e nÃ£o existir espÃ©cie',
-        '16' => 'Data de vencimento invÃ¡lida',
-        '17' => 'Data de vencimento anterior Ã  data de emissÃ£o',
-        '18' => 'Vencimento fora do prazo de operaÃ§Ã£o',
-        '20' => 'Valor do tÃ­tulo invÃ¡lido (nÃ£o numÃ©rico)',
-        '21' => 'EspÃ©cie do tÃ­tulo invÃ¡lida (arquivo de registro)',
-        '23' => 'Aceite invÃ¡lido â€“ verifica conteÃºdo vÃ¡lido',
-        '24' => 'Data de emissÃ£o invÃ¡lida â€“ verifica se a data Ã© numÃ©rica e se estÃ¡ no formato vÃ¡lido',
-        '25' => 'Data de emissÃ£o posterior Ã  data de processamento',
-        '26' => 'CÃ³digo de juros de mora invÃ¡lido',
-        '27' => 'Valor/taxa de juros de mora invÃ¡lido',
-        '28' => 'CÃ³digo do desconto invÃ¡lido',
-        '29' => 'Valor do desconto maior ou igual ao valor do tÃ­tulo',
-        '30' => 'Desconto a conceder nÃ£o confere:',
-        '32' => 'Valor de IOF invÃ¡lido:',
-        '33' => 'Valor do abatimento invÃ¡lido â€“ para registro de tÃ­tulo verifica se o campo Ã© numÃ©rico e para concessÃ£o/cancelamento de abatimento indica o erro',
-        '34' => 'Valor do abatimento maior ou igual ao valor do tÃ­tulo',
-        '37' => 'CÃ³digo para protesto invÃ¡lido â€“ rejeita o tÃ­tulo se o campo for diferente de branco, 0, 1 ou 3',
-        '38' => 'Prazo para protesto invÃ¡lido â€“ se o cÃ³digo for 1 verifica se o campo Ã© numÃ©rico',
-        '39' => 'Pedido de protesto nÃ£o permitido para o tÃ­tulo â€“ nÃ£o permite protesto para as carteiras R, S, N e X',
-        '40' => 'TÃ­tulo com ordem de protesto emitida (para retorno de alteraÃ§Ã£o)',
-        '41' => 'Pedido de cancelamento/sustaÃ§Ã£o de protesto invÃ¡lido',
-        '42' => 'CÃ³digo para baixa/devoluÃ§Ã£o ou instruÃ§Ã£o invÃ¡lido â€“ verifica se o cÃ³digo Ã© branco, 0, 1 ou 2',
-        '43' => 'Prazo para baixa/devoluÃ§Ã£o invÃ¡lido â€“ se o cÃ³digo Ã© 1 verifica se o campo prazo Ã© numÃ©rico',
-        '44' => 'CÃ³digo da moeda invÃ¡lido',
-        '45' => 'Nome do Pagador invÃ¡lido ou alteraÃ§Ã£o do Pagador nÃ£o permitida',
-        '46' => 'Tipo/nÃºmero de inscriÃ§Ã£o do Pagador invÃ¡lido',
-        '47' => 'EndereÃ§o nÃ£o informado ou alteraÃ§Ã£o de endereÃ§o nÃ£o permitida',
-        '48' => 'CEP invÃ¡lido ou alteraÃ§Ã£o de CEP nÃ£o permitida',
-        '49' => 'CEP sem praÃ§a de cobranÃ§a ou alteraÃ§Ã£o de cidade nÃ£o permitida',
+        '01' => 'Código do Banco inválido',
+        '02' => 'Agência/Conta/Número de controle - Inválido Cobrança Partilhada',
+        '04' => 'Código do movimento não permitido para a carteira',
+        '05' => 'Código do movimento inválido',
+        '07' => 'Título rejeitado na cobrança CEP irregular',
+        '08' => 'Nosso Número inválido',
+        '09' => 'Nosso Número duplicado',
+        '10' => 'Carteira inválida',
+        '15' => 'Características da cobrança incompatíveis - se a carteira e a moeda forem válidas e não existir espécie',
+        '16' => 'Data de vencimento inválida',
+        '17' => 'Data de vencimento anterior à data de emissão',
+        '18' => 'Vencimento fora do prazo de operação',
+        '20' => 'Valor do título inválido (não numérico)',
+        '21' => 'Espécie do título inválida (arquivo de registro)',
+        '23' => 'Aceite inválido - verifica conteúdo válido',
+        '24' => 'Data de emissão inválida - verifica se a data é numérica e se está no formato válido',
+        '25' => 'Data de emissão posterior à data de processamento',
+        '26' => 'Código de juros de mora inválido',
+        '27' => 'Valor/taxa de juros de mora inválido',
+        '28' => 'Código do desconto inválido',
+        '29' => 'Valor do desconto maior ou igual ao valor do título',
+        '30' => 'Desconto a conceder não confere:',
+        '32' => 'Valor de IOF inválido:',
+        '33' => 'Valor do abatimento inválido - para registro de título verifica se o campo é numérico e para concessão/cancelamento de abatimento indica o erro',
+        '34' => 'Valor do abatimento maior ou igual ao valor do título',
+        '37' => 'Código para protesto inválido - rejeita o título se o campo for diferente de branco, 0, 1 ou 3',
+        '38' => 'Prazo para protesto inválido - se o código for 1 verifica se o campo é numérico',
+        '39' => 'Pedido de protesto não permitido para o título - não permite protesto para as carteiras R, S, N e X',
+        '40' => 'Título com ordem de protesto emitida (para retorno de alteração)',
+        '41' => 'Pedido de cancelamento/sustação de protesto inválido',
+        '42' => 'Código para baixa/devolução ou instrução inválido - verifica se o código é branco, 0, 1 ou 2',
+        '43' => 'Prazo para baixa/devolução inválido - se o código é 1 verifica se o campo prazo é numérico',
+        '44' => 'Código da moeda inválido',
+        '45' => 'Nome do Pagador inválido ou alteração do Pagador não permitida',
+        '46' => 'Tipo/número de inscrição do Pagador inválido',
+        '47' => 'Endereço não informado ou alteração de endereço não permitida',
+        '48' => 'CEP inválido ou alteração de CEP não permitida',
+        '49' => 'CEP sem praça de cobrança ou alteração de cidade não permitida',
         '50' => 'CEP referente a um Banco Correspondente',
-        '52' => 'Unidade de FederaÃ§Ã£o invÃ¡lida ou alteraÃ§Ã£o de UF nÃ£o permitida',
-        '53' => 'Tipo/NÃºmero de inscriÃ§Ã£o do Sacador/Avalista invÃ¡lido',
-        '54' => 'Sacador/Avalista nÃ£o informado â€“ para espÃ©cie AD o nome do Sacador Ã© obrigatÃ³rio',
-        '57' => 'CÃ³digo da multa invÃ¡lido',
-        '58' => 'Data da multa invÃ¡lida',
-        '59' => 'Valor/percentual da multa invÃ¡lido',
-        '60' => 'Movimento para tÃ­tulo nÃ£o cadastrado â€“ alteraÃ§Ã£o ou devoluÃ§Ã£o',
-        '62' => 'Tipo de impressÃ£o invÃ¡lido â€“ Segmento 3S',
-        '63' => 'Entrada para tÃ­tulo jÃ¡ cadastrado',
-        '79' => 'Data de juros de mora invÃ¡lido â€“ valida data ou prazo na instruÃ§Ã£o de juros',
-        '80' => 'Data do desconto invÃ¡lida â€“ valida data ou prazo da instruÃ§Ã£o de desconto',
-        '81' => 'CEP invÃ¡lido do Sacador',
-        '83' => 'Tipo/NÃºmero de inscriÃ§Ã£o do Sacador invÃ¡lido',
-        '84' => 'Sacador nÃ£o informado',
-        '86' => 'Seu nÃºmero invÃ¡lido (para retorno de alteraÃ§Ã£o)',
+        '52' => 'Unidade de Federação inválida ou alteração de UF não permitida',
+        '53' => 'Tipo/Número de inscrição do Sacador/Avalista inválido',
+        '54' => 'Sacador/Avalista não informado - para espécie AD o nome do Sacador é obrigatório',
+        '57' => 'Código da multa inválido',
+        '58' => 'Data da multa inválida',
+        '59' => 'Valor/percentual da multa inválido',
+        '60' => 'Movimento para título não cadastrado - alteração ou devolução',
+        '62' => 'Tipo de impressão inválido - Segmento 3S',
+        '63' => 'Entrada para título já cadastrado',
+        '79' => 'Data de juros de mora inválido - valida data ou prazo na instrução de juros',
+        '80' => 'Data do desconto inválida - valida data ou prazo da instrução de desconto',
+        '81' => 'CEP inválido do Sacador',
+        '83' => 'Tipo/Número de inscrição do Sacador inválido',
+        '84' => 'Sacador não informado',
+        '86' => 'Seu número inválido (para retorno de alteração)',
     ];
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
@@ -160,7 +160,7 @@ class Banrisul extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarHeader(array $header)
+    protected function processarHeader( $header)
     {
         $this->getHeader()
             ->setOperacaoCodigo($this->rem(2, 2, $header))
@@ -180,7 +180,7 @@ class Banrisul extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarDetalhe(array $detalhe)
+    protected function processarDetalhe( $detalhe)
     {
         $d = $this->detalheAtual();
 
@@ -253,7 +253,7 @@ class Banrisul extends AbstractRetorno implements RetornoCnab400
      * @return bool
      * @throws \Exception
      */
-    protected function processarTrailer(array $trailer)
+    protected function processarTrailer( $trailer)
     {
         $this->getTrailer()
             ->setValorTitulos(Util::nFloat($this->rem(26, 39, $trailer)/100, 2, false))

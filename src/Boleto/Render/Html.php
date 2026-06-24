@@ -61,7 +61,7 @@ class Html implements HtmlContract
      *
      * @return $this
      */
-    public function addBoletos(array $boletos)
+    public function addBoletos( $boletos)
     {
         foreach ($boletos as $boleto) {
             $this->addBoleto($boleto);
@@ -76,7 +76,7 @@ class Html implements HtmlContract
      *
      * @return $this
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $dados = $boleto->toArray();
         $dados['codigo_barras'] = $this->getImagemCodigoDeBarras($dados['codigo_barras']);
@@ -99,7 +99,7 @@ class Html implements HtmlContract
     }
 
     /**
-     * Escreve o codigo css na pÃ¡gina
+     * Escreve o codigo css na página
      */
     protected function writeCss()
     {
@@ -107,7 +107,7 @@ class Html implements HtmlContract
     }
 
     /**
-     * Retorna a string contendo as imagens do cÃ³digo de barras, segundo o padrÃ£o Febraban
+     * Retorna a string contendo as imagens do código de barras, segundo o padrão Febraban
      *
      * @param $codigo_barras
      *
@@ -164,7 +164,7 @@ class Html implements HtmlContract
     }
 
     /**
-     * funÃ§Ã£o para gerar o boleto
+     * função para gerar o boleto
      *
      * @return string
      * @throws \Exception
@@ -184,7 +184,7 @@ class Html implements HtmlContract
     }
 
     /**
-     * funÃ§Ã£o para gerar o carne
+     * função para gerar o carne
      *
      * @return string
      * @throws \Exception

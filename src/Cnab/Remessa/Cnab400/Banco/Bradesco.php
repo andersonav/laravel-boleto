@@ -52,7 +52,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
     const INSTRUCAO_CENCEDER_DESC_APOS_VENC = '15';
     const INSTRUCAO_DEVOLVER_XX = '18';
 
-    public function __construct(array $params = [])
+    public function __construct( $params = [])
     {
         parent::__construct($params);
         $this->addCampoObrigatorio('idremessa');
@@ -60,14 +60,14 @@ class Bradesco extends AbstractRemessa implements RemessaContract
 
 
     /**
-     * CÃ³digo do banco
+     * Código do banco
      *
      * @var string
      */
     protected $codigoBanco = BoletoContract::COD_BANCO_BRADESCO;
 
     /**
-     * Define as carteiras disponÃ­veis para cada banco
+     * Define as carteiras disponíveis para cada banco
      *
      * @var array
      */
@@ -160,7 +160,7 @@ class Bradesco extends AbstractRemessa implements RemessaContract
      * @return $this
      * @throws \Exception
      */
-    public function addBoleto(BoletoContract $boleto)
+    public function addBoleto( $boleto)
     {
         $this->boletos[] = $boleto;
         $this->iniciaDetalhe();
@@ -183,10 +183,10 @@ class Bradesco extends AbstractRemessa implements RemessaContract
         $this->add(71, 82, Util::formatCnab('9', $boleto->getNossoNumero(), 12));
         $this->add(83, 92, Util::formatCnab('9', 0, 10, 2));
         $this->add(93, 93, '2'); // 1 = Banco emite e Processa o registro. 2 = Cliente emite e o Banco somente processa o registro
-        $this->add(94, 94, ''); // N= NÃ£o registra na cobranÃ§a. Diferente de N registra e emite Boleto.
+        $this->add(94, 94, ''); // N= Não registra na cobrança. Diferente de N registra e emite Boleto.
         $this->add(95, 104, '');
         $this->add(105, 105, '');
-        $this->add(106, 106, '2'); // 1 = emite aviso, e assume o endereÃ§o do Pagador constante do Arquivo-Remessa; 2 = nÃ£o emite aviso;
+        $this->add(106, 106, '2'); // 1 = emite aviso, e assume o endereço do Pagador constante do Arquivo-Remessa; 2 = não emite aviso;
         $this->add(107, 108, '');
         $this->add(109, 110, self::OCORRENCIA_REMESSA); // REGISTRO
         if ($boleto->getStatus() == $boleto::STATUS_BAIXA) {

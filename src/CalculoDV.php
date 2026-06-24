@@ -176,7 +176,7 @@ class CalculoDV
 
     /*
     |--------------------------------------------------------------------------
-    | 104 - Caixa EconÃ´mica Federal
+    | 104 - Caixa Econômica Federal
     |--------------------------------------------------------------------------
     */
     public static function cefAgencia($agencia)
