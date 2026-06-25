@@ -192,12 +192,12 @@ class Hsbc extends AbstractRetorno implements RetornoCnab400
             ->setOcorrenciaDescricao(data_get($this->ocorrencias, $d->getOcorrencia(), 'Desconhecida'))
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
-            ->setValor(Util::nFloat($this->rem(153, 165, $detalhe)/100, 2, false))
-            ->setValorTarifa(Util::nFloat($this->rem(176, 188, $detalhe)/100, 2, false))
-            ->setValorAbatimento(Util::nFloat($this->rem(228, 240, $detalhe)/100, 2, false))
-            ->setValorDesconto(Util::nFloat($this->rem(241, 253, $detalhe)/100, 2, false))
-            ->setValorRecebido(Util::nFloat($this->rem(254, 266, $detalhe)/100, 2, false))
-            ->setValorMora(Util::nFloat($this->rem(267, 279, $detalhe)/100, 2, false));
+            ->setValor($this->formatCnabMoney($this->rem(153, 165, $detalhe)))
+            ->setValorTarifa($this->formatCnabMoney($this->rem(176, 188, $detalhe)))
+            ->setValorAbatimento($this->formatCnabMoney($this->rem(228, 240, $detalhe)))
+            ->setValorDesconto($this->formatCnabMoney($this->rem(241, 253, $detalhe)))
+            ->setValorRecebido($this->formatCnabMoney($this->rem(254, 266, $detalhe)))
+            ->setValorMora($this->formatCnabMoney($this->rem(267, 279, $detalhe)));
 
         $this->totais['valor_recebido'] += $d->getValorRecebido();
 

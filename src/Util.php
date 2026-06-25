@@ -26,14 +26,14 @@ final class Util
         '107' => 'Banco BBM S.A.',
         '031' => 'Banco Beg S.A.',
         '739' => 'Banco BGN S.A.',
-        '096' => 'Banco BM&F de Serviços de Liquidação e Custódia S.A',
+        '096' => 'Banco BM&F de ServiÃƒÂ§os de LiquidaÃƒÂ§ÃƒÂ£o e CustÃƒÂ³dia S.A',
         '318' => 'Banco BMG S.A.',
         '752' => 'Banco BNP Paribas Brasil S.A.',
-        '248' => 'Banco Boavista Interatlântico S.A.',
+        '248' => 'Banco Boavista InteratlÃƒÂ¢ntico S.A.',
         '218' => 'Banco Bonsucesso S.A.',
         '065' => 'Banco Bracce S.A.',
         '036' => 'Banco Bradesco BBI S.A.',
-        '204' => 'Banco Bradesco Cartões S.A.',
+        '204' => 'Banco Bradesco CartÃƒÂµes S.A.',
         '394' => 'Banco Bradesco Financiamentos S.A.',
         '237' => 'Banco Bradesco S.A.',
         '225' => 'Banco Brascan S.A.',
@@ -52,7 +52,7 @@ final class Util
         '222' => 'Banco Credit Agricole Brasil S.A.',
         '505' => 'Banco Credit Suisse (Brasil) S.A.',
         '229' => 'Banco Cruzeiro do Sul S.A.',
-        '003' => 'Banco da Amazônia S.A.',
+        '003' => 'Banco da AmazÃƒÂ´nia S.A.',
         '083' => 'Banco da China Brasil S.A.',
         '707' => 'Banco Daycoval S.A.',
         'M06' => 'Banco de Lage Landen Brasil S.A.',
@@ -61,7 +61,7 @@ final class Util
         '214' => 'Banco Dibens S.A.',
         '001' => 'Banco do Brasil S.A.',
         '047' => 'Banco do Estado de Sergipe S.A.',
-        '037' => 'Banco do Estado do Pará S.A.',
+        '037' => 'Banco do Estado do ParÃƒÂ¡ S.A.',
         '041' => 'Banco do Estado do Rio Grande do Sul S.A.',
         '004' => 'Banco do Nordeste do Brasil S.A.',
         '265' => 'Banco Fator S.A.',
@@ -72,14 +72,14 @@ final class Util
         'M07' => 'Banco GMAC S.A.',
         '612' => 'Banco Guanabara S.A.',
         'M22' => 'Banco Honda S.A.',
-        '063' => 'Banco Ibi S.A. Banco Múltiplo',
+        '063' => 'Banco Ibi S.A. Banco MÃƒÂºltiplo',
         'M11' => 'Banco IBM S.A.',
         '604' => 'Banco Industrial do Brasil S.A.',
         '320' => 'Banco Industrial e Comercial S.A.',
         '653' => 'Banco Indusval S.A.',
         '249' => 'Banco Investcred Unibanco S.A.',
-        '184' => 'Banco Itaú BBA S.A.',
-        '479' => 'Banco ItaúBank S.A',
+        '184' => 'Banco ItaÃƒÂº BBA S.A.',
+        '479' => 'Banco ItaÃƒÂºBank S.A',
         'M09' => 'Banco Itaucred Financiamentos S.A.',
         '376' => 'Banco J. P. Morgan S.A.',
         '074' => 'Banco J. 074 S.A.',
@@ -88,7 +88,7 @@ final class Util
         '389' => 'Banco Mercantil do Brasil S.A.',
         '746' => 'Banco Modal S.A.',
         '045' => 'Banco Opportunity S.A.',
-        '079' => 'Banco Original do Agronegócio S.A.',
+        '079' => 'Banco Original do AgronegÃƒÂ³cio S.A.',
         '623' => 'Banco Panamericano S.A.',
         '611' => 'Banco Paulista S.A.',
         '643' => 'Banco Pine S.A.',
@@ -102,41 +102,41 @@ final class Util
         '422' => 'Banco Safra S.A.',
         '033' => 'Banco Santander (Brasil) S.A.',
         '749' => 'Banco Simples S.A.',
-        '366' => 'Banco Société Générale Brasil S.A.',
+        '366' => 'Banco SociÃƒÂ©tÃƒÂ© GÃƒÂ©nÃƒÂ©rale Brasil S.A.',
         '637' => 'Banco Sofisa S.A.',
         '012' => 'Banco Standard de Investimentos S.A.',
         '464' => 'Banco Sumitomo Mitsui Brasileiro S.A.',
-        '082' => 'Banco Topázio S.A.',
+        '082' => 'Banco TopÃƒÂ¡zio S.A.',
         'M20' => 'Banco Toyota do Brasil S.A.',
-        '634' => 'Banco Triângulo S.A.',
+        '634' => 'Banco TriÃƒÂ¢ngulo S.A.',
         'M14' => 'Banco Volkswagen S.A.',
         'M23' => 'Banco Volvo (Brasil) S.A.',
         '655' => 'Banco Votorantim S.A.',
         '610' => 'Banco VR S.A.',
         '119' => 'Banco Western Union do Brasil S.A.',
         '370' => 'Banco WestLB do Brasil S.A.',
-        '021' => 'BANESTES S.A. Banco do Estado do Espírito Santo',
+        '021' => 'BANESTES S.A. Banco do Estado do EspÃƒÂ­rito Santo',
         '719' => 'Banif-Banco Internacional do Funchal (Brasil)S.A.',
-        '755' => 'Bank of America Merrill Lynch Banco Múltiplo S.A.',
+        '755' => 'Bank of America Merrill Lynch Banco MÃƒÂºltiplo S.A.',
         '073' => 'BB Banco Popular do Brasil S.A.',
-        '250' => 'BCV - Banco de Crédito e Varejo S.A.',
+        '250' => 'BCV - Banco de CrÃƒÂ©dito e Varejo S.A.',
         '078' => 'BES Investimento do Brasil S.A.-Banco de Investimento',
-        '069' => 'BPN Brasil Banco Múltiplo S.A.',
-        '070' => 'BRB - Banco de Brasília S.A.',
-        '104' => 'Caixa Econômica Federal',
+        '069' => 'BPN Brasil Banco MÃƒÂºltiplo S.A.',
+        '070' => 'BRB - Banco de BrasÃƒÂ­lia S.A.',
+        '104' => 'Caixa EconÃƒÂ´mica Federal',
         '477' => 'Citibank S.A.',
-        '081' => 'Concórdia Banco S.A.',
-        '487' => 'Deutsche Bank S.A. - Banco Alemão',
-        '064' => 'Goldman Sachs do Brasil Banco Múltiplo S.A.',
-        '062' => 'Hipercard Banco Múltiplo S.A.',
+        '081' => 'ConcÃƒÂ³rdia Banco S.A.',
+        '487' => 'Deutsche Bank S.A. - Banco AlemÃƒÂ£o',
+        '064' => 'Goldman Sachs do Brasil Banco MÃƒÂºltiplo S.A.',
+        '062' => 'Hipercard Banco MÃƒÂºltiplo S.A.',
         '399' => 'HSBC Bank Brasil S.A.',
         '492' => 'ING Bank N.V.',
-        '652' => 'Itaú Unibanco Holding S.A.',
-        '341' => 'Itaú Unibanco S.A.',
+        '652' => 'ItaÃƒÂº Unibanco Holding S.A.',
+        '341' => 'ItaÃƒÂº Unibanco S.A.',
         '488' => 'JPMorgan Chase Bank',
-        '751' => 'Scotiabank Brasil S.A. Banco Múltiplo',
-        '409' => 'UNIBANCO - União de Bancos Brasileiros S.A.',
-        '230' => 'Unicard Banco Múltiplo S.A.',
+        '751' => 'Scotiabank Brasil S.A. Banco MÃƒÂºltiplo',
+        '409' => 'UNIBANCO - UniÃƒÂ£o de Bancos Brasileiros S.A.',
+        '230' => 'Unicard Banco MÃƒÂºltiplo S.A.',
         'XXX' => 'Desconhecido',
     ];
 
@@ -149,7 +149,7 @@ final class Util
      */
     public static function upper($string)
     {
-        return strtr(mb_strtoupper($string), "àáâãäåæçèéêëìíîïðñòóôõöÃ·øùüúþÿ", "Ã€ÁÃ‚ÃƒÃ„Ã…Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÍÃŽÏÐÃ‘Ã’Ã“Ã”Ã•Ã–Ã—Ã˜Ã™ÃœÃšÃžÃŸ");
+        return strtr(mb_strtoupper($string), "ÃƒÂ ÃƒÂ¡ÃƒÂ¢ÃƒÂ£ÃƒÂ¤ÃƒÂ¥ÃƒÂ¦ÃƒÂ§ÃƒÂ¨ÃƒÂ©ÃƒÂªÃƒÂ«ÃƒÂ¬ÃƒÂ­ÃƒÂ®ÃƒÂ¯ÃƒÂ°ÃƒÂ±ÃƒÂ²ÃƒÂ³ÃƒÂ´ÃƒÂµÃƒÂ¶ÃƒÆ’Ã‚Â·ÃƒÂ¸ÃƒÂ¹ÃƒÂ¼ÃƒÂºÃƒÂ¾ÃƒÂ¿", "ÃƒÆ’Ã¢â€šÂ¬ÃƒÂÃƒÆ’Ã¢â‚¬Å¡ÃƒÆ’Ã†â€™ÃƒÆ’Ã¢â‚¬Å¾ÃƒÆ’Ã¢â‚¬Â¦ÃƒÆ’Ã¢â‚¬Â ÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã‹â€ ÃƒÆ’Ã¢â‚¬Â°ÃƒÆ’Ã…Â ÃƒÆ’Ã¢â‚¬Â¹ÃƒÆ’Ã…â€™ÃƒÂÃƒÆ’Ã…Â½ÃƒÂÃƒÂÃƒÆ’Ã¢â‚¬ËœÃƒÆ’Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬ÂÃƒÆ’Ã¢â‚¬Â¢ÃƒÆ’Ã¢â‚¬â€œÃƒÆ’Ã¢â‚¬â€ÃƒÆ’Ã‹Å“ÃƒÆ’Ã¢â€žÂ¢ÃƒÆ’Ã…â€œÃƒÆ’Ã…Â¡ÃƒÆ’Ã…Â¾ÃƒÆ’Ã…Â¸");
     }
 
     /**
@@ -161,7 +161,7 @@ final class Util
      */
     public static function lower($string)
     {
-        return strtr(mb_strtolower($string), "Ã€ÁÃ‚ÃƒÃ„Ã…Ã†Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÍÃŽÏÐÃ‘Ã’Ã“Ã”Ã•Ã–Ã—Ã˜Ã™ÃœÃšÃžÃŸ", "àáâãäåæçèéêëìíîïðñòóôõöÃ·øùüúþÿ");
+        return strtr(mb_strtolower($string), "ÃƒÆ’Ã¢â€šÂ¬ÃƒÂÃƒÆ’Ã¢â‚¬Å¡ÃƒÆ’Ã†â€™ÃƒÆ’Ã¢â‚¬Å¾ÃƒÆ’Ã¢â‚¬Â¦ÃƒÆ’Ã¢â‚¬Â ÃƒÆ’Ã¢â‚¬Â¡ÃƒÆ’Ã‹â€ ÃƒÆ’Ã¢â‚¬Â°ÃƒÆ’Ã…Â ÃƒÆ’Ã¢â‚¬Â¹ÃƒÆ’Ã…â€™ÃƒÂÃƒÆ’Ã…Â½ÃƒÂÃƒÂÃƒÆ’Ã¢â‚¬ËœÃƒÆ’Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å“ÃƒÆ’Ã¢â‚¬ÂÃƒÆ’Ã¢â‚¬Â¢ÃƒÆ’Ã¢â‚¬â€œÃƒÆ’Ã¢â‚¬â€ÃƒÆ’Ã‹Å“ÃƒÆ’Ã¢â€žÂ¢ÃƒÆ’Ã…â€œÃƒÆ’Ã…Â¡ÃƒÆ’Ã…Â¾ÃƒÆ’Ã…Â¸", "ÃƒÂ ÃƒÂ¡ÃƒÂ¢ÃƒÂ£ÃƒÂ¤ÃƒÂ¥ÃƒÂ¦ÃƒÂ§ÃƒÂ¨ÃƒÂ©ÃƒÂªÃƒÂ«ÃƒÂ¬ÃƒÂ­ÃƒÂ®ÃƒÂ¯ÃƒÂ°ÃƒÂ±ÃƒÂ²ÃƒÂ³ÃƒÂ´ÃƒÂµÃƒÂ¶ÃƒÆ’Ã‚Â·ÃƒÂ¸ÃƒÂ¹ÃƒÂ¼ÃƒÂºÃƒÂ¾ÃƒÂ¿");
     }
 
     /**
@@ -297,7 +297,7 @@ final class Util
     }
 
     /**
-     * Função para limpar acentos de uma string
+     * FunÃƒÂ§ÃƒÂ£o para limpar acentos de uma string
      *
      * @param  string $string
      * @return string
@@ -305,19 +305,19 @@ final class Util
     public static function normalizeChars($string)
     {
         $normalizeChars = array(
-            'Á' => 'A', 'Ã€' => 'A', 'Ã‚' => 'A', 'Ãƒ' => 'A', 'Ã…' => 'A', 'Ã„' => 'A', 'Ã†' => 'AE', 'Ã‡' => 'C',
-            'Ã‰' => 'E', 'Ãˆ' => 'E', 'ÃŠ' => 'E', 'Ã‹' => 'E', 'Í' => 'I', 'ÃŒ' => 'I', 'ÃŽ' => 'I', 'Ï' => 'I', 'Ð' => 'Eth',
-            'Ã‘' => 'N', 'Ã“' => 'O', 'Ã’' => 'O', 'Ã”' => 'O', 'Ã•' => 'O', 'Ã–' => 'O', 'Ã˜' => 'O',
-            'Ãš' => 'U', 'Ã™' => 'U', 'Ã›' => 'U', 'Ãœ' => 'U', 'Ý' => 'Y', 'Å”' => 'R',
+            'ÃƒÂ' => 'A', 'ÃƒÆ’Ã¢â€šÂ¬' => 'A', 'ÃƒÆ’Ã¢â‚¬Å¡' => 'A', 'ÃƒÆ’Ã†â€™' => 'A', 'ÃƒÆ’Ã¢â‚¬Â¦' => 'A', 'ÃƒÆ’Ã¢â‚¬Å¾' => 'A', 'ÃƒÆ’Ã¢â‚¬Â ' => 'AE', 'ÃƒÆ’Ã¢â‚¬Â¡' => 'C',
+            'ÃƒÆ’Ã¢â‚¬Â°' => 'E', 'ÃƒÆ’Ã‹â€ ' => 'E', 'ÃƒÆ’Ã…Â ' => 'E', 'ÃƒÆ’Ã¢â‚¬Â¹' => 'E', 'ÃƒÂ' => 'I', 'ÃƒÆ’Ã…â€™' => 'I', 'ÃƒÆ’Ã…Â½' => 'I', 'ÃƒÂ' => 'I', 'ÃƒÂ' => 'Eth',
+            'ÃƒÆ’Ã¢â‚¬Ëœ' => 'N', 'ÃƒÆ’Ã¢â‚¬Å“' => 'O', 'ÃƒÆ’Ã¢â‚¬â„¢' => 'O', 'ÃƒÆ’Ã¢â‚¬Â' => 'O', 'ÃƒÆ’Ã¢â‚¬Â¢' => 'O', 'ÃƒÆ’Ã¢â‚¬â€œ' => 'O', 'ÃƒÆ’Ã‹Å“' => 'O',
+            'ÃƒÆ’Ã…Â¡' => 'U', 'ÃƒÆ’Ã¢â€žÂ¢' => 'U', 'ÃƒÆ’Ã¢â‚¬Âº' => 'U', 'ÃƒÆ’Ã…â€œ' => 'U', 'ÃƒÂ' => 'Y', 'Ãƒâ€¦Ã¢â‚¬Â' => 'R',
 
-            'á' => 'a', 'à' => 'a', 'â' => 'a', 'ã' => 'a', 'å' => 'a', 'ä' => 'a', 'æ' => 'ae', 'ç' => 'c',
-            'é' => 'e', 'è' => 'e', 'ê' => 'e', 'ë' => 'e', 'í' => 'i', 'ì' => 'i', 'î' => 'i', 'ï' => 'i', 'ð' => 'eth',
-            'ñ' => 'n', 'ó' => 'o', 'ò' => 'o', 'ô' => 'o', 'õ' => 'o', 'ö' => 'o', 'ø' => 'o',
-            'ú' => 'u', 'ù' => 'u', 'û' => 'u', 'ü' => 'u', 'ý' => 'y', 'Å•' => 'r', 'ÿ' => 'y',
+            'ÃƒÂ¡' => 'a', 'ÃƒÂ ' => 'a', 'ÃƒÂ¢' => 'a', 'ÃƒÂ£' => 'a', 'ÃƒÂ¥' => 'a', 'ÃƒÂ¤' => 'a', 'ÃƒÂ¦' => 'ae', 'ÃƒÂ§' => 'c',
+            'ÃƒÂ©' => 'e', 'ÃƒÂ¨' => 'e', 'ÃƒÂª' => 'e', 'ÃƒÂ«' => 'e', 'ÃƒÂ­' => 'i', 'ÃƒÂ¬' => 'i', 'ÃƒÂ®' => 'i', 'ÃƒÂ¯' => 'i', 'ÃƒÂ°' => 'eth',
+            'ÃƒÂ±' => 'n', 'ÃƒÂ³' => 'o', 'ÃƒÂ²' => 'o', 'ÃƒÂ´' => 'o', 'ÃƒÂµ' => 'o', 'ÃƒÂ¶' => 'o', 'ÃƒÂ¸' => 'o',
+            'ÃƒÂº' => 'u', 'ÃƒÂ¹' => 'u', 'ÃƒÂ»' => 'u', 'ÃƒÂ¼' => 'u', 'ÃƒÂ½' => 'y', 'Ãƒâ€¦Ã¢â‚¬Â¢' => 'r', 'ÃƒÂ¿' => 'y',
 
-            'ÃŸ' => 'sz', 'þ' => 'thorn', 'º' => '', 'ª' => '', '°' => '',
+            'ÃƒÆ’Ã…Â¸' => 'sz', 'ÃƒÂ¾' => 'thorn', 'Ã‚Âº' => '', 'Ã‚Âª' => '', 'Ã‚Â°' => '',
         );
-        return preg_replace('/[^0-9a-zA-Z !*\-$\(\)\[\]\{\},.;:\/\\#%&@+=]/', '', strtr($string, $normalizeChars));
+        return preg_replace('/[^0-9a-zA-Z !*\-$\(\)\[\]\{\},.;:\/\\#%&@+=]/', '', strtr((string) $string, $normalizeChars));
     }
 
     /**
@@ -374,7 +374,7 @@ final class Util
         $formater->setAttribute(\NumberFormatter::MAX_FRACTION_DIGITS, $decimals);
         $pattern = substr($formater->getPattern(), strpos($formater->getPattern(), '#'));
         if ($symbol) {
-            $pattern = "Â¤ " . $pattern;
+            $pattern = "Ãƒâ€šÃ‚Â¤ " . $pattern;
         }
         $formater->setPattern($pattern);
         return trim($formater->formatCurrency($number, $formater->getTextAttribute(\NumberFormatter::CURRENCY_CODE)));
@@ -412,7 +412,7 @@ final class Util
     }
 
     /**
-     * Função para mascarar uma string, mascara tipo ##-##-##
+     * FunÃƒÂ§ÃƒÂ£o para mascarar uma string, mascara tipo ##-##-##
      *
      * @param string $val
      * @param string $mask
@@ -485,7 +485,7 @@ final class Util
             $left = '-';
             $type = 's';
         } else {
-            throw new \Exception('Tipo inválido');
+            throw new \Exception('Tipo invÃƒÂ¡lido');
         }
         return sprintf("%{$left}{$sFill}{$tamanho}{$type}", mb_substr($valor, 0, $tamanho));
     }
@@ -587,7 +587,7 @@ final class Util
     public static function array2Controle( $a)
     {
         if (preg_match('/[0-9]/', implode('', array_keys($a)))) {
-            throw new \Exception('Somente chave alfanumérica no array, para separar o controle pela chave');
+            throw new \Exception('Somente chave alfanumÃƒÂ©rica no array, para separar o controle pela chave');
         }
 
         $controle = '';
@@ -596,7 +596,7 @@ final class Util
         }
 
         if (mb_strlen($controle) > 25) {
-            throw new \Exception('Controle muito grande, máximo permitido de 25 caracteres');
+            throw new \Exception('Controle muito grande, mÃƒÂ¡ximo permitido de 25 caracteres');
         }
 
         return $controle;
@@ -611,7 +611,7 @@ final class Util
     {
         $matches = '';
         $matches_founded = [];
-        preg_match_all('/(([A-Za-zÃ€-Ãšà-ú]+)([0-9]*))/', $controle, $matches, PREG_SET_ORDER);
+        preg_match_all('/(([A-Za-zÃƒÆ’Ã¢â€šÂ¬-ÃƒÆ’Ã…Â¡ÃƒÂ -ÃƒÂº]+)([0-9]*))/', $controle, $matches, PREG_SET_ORDER);
         if ($matches) {
             foreach ($matches as $match) {
                 $matches_founded[$match[2]] = (int) $match[3];
@@ -678,7 +678,7 @@ final class Util
             self::adiciona($retorno[0], 47, 76, self::remove(47, 76, $remessa[0]));
             break;
         default:
-            throw new \Exception("Banco: $banco, inválido");
+            throw new \Exception("Banco: $banco, invÃƒÂ¡lido");
         }
         self::adiciona($retorno[0], 77, 79, $banco);
         self::adiciona($retorno[0], 95, 100, date('dmy'));
@@ -735,7 +735,7 @@ final class Util
                 self::adiciona($retorno[$i], 18, 30, self::remove(18, 30, $detalhe));
                 break;
             default:
-                throw new \Exception("Banco: $banco, inválido");
+                throw new \Exception("Banco: $banco, invÃƒÂ¡lido");
             }
         }
 
@@ -766,17 +766,17 @@ final class Util
     public static function remove($i, $f, &$array)
     {
         if (is_string($array)) {
-            $array = preg_split('//u', rtrim($array, chr(10) . chr(13) . "\n" . "\r"), null, PREG_SPLIT_NO_EMPTY);
+            $array = preg_split('//u', rtrim($array, chr(10) . chr(13) . "\n" . "\r"), -1, PREG_SPLIT_NO_EMPTY);
         }
 
         $i--;
 
         if ($i > 398 || $f > 400) {
-            throw new \Exception('$ini ou $fim ultrapassam o limite máximo de 400');
+            throw new \Exception('$ini ou $fim ultrapassam o limite mÃƒÂ¡ximo de 400');
         }
 
         if ($f < $i) {
-            throw new \Exception('$ini é maior que o $fim');
+            throw new \Exception('$ini ÃƒÂ© maior que o $fim');
         }
 
         $t = $f - $i;
@@ -791,7 +791,7 @@ final class Util
     }
 
     /**
-     * Função para add valor a linha nas posições informadas.
+     * FunÃƒÂ§ÃƒÂ£o para add valor a linha nas posiÃƒÂ§ÃƒÂµes informadas.
      *
      * @param $line
      * @param integer $i
@@ -806,17 +806,17 @@ final class Util
         $i--;
 
         if ($i > 398 || $f > 400) {
-            throw new \Exception('$ini ou $fim ultrapassam o limite máximo de 400');
+            throw new \Exception('$ini ou $fim ultrapassam o limite mÃƒÂ¡ximo de 400');
         }
 
         if ($f < $i) {
-            throw new \Exception('$ini é maior que o $fim');
+            throw new \Exception('$ini ÃƒÂ© maior que o $fim');
         }
 
         $t = $f - $i;
 
         if (mb_strlen($value) > $t) {
-            throw new \Exception(sprintf('String $valor maior que o tamanho definido em $ini e $fim: $valor=%s e tamanho é de: %s', mb_strlen($value), $t));
+            throw new \Exception(sprintf('String $valor maior que o tamanho definido em $ini e $fim: $valor=%s e tamanho ÃƒÂ© de: %s', mb_strlen($value), $t));
         }
 
         $value = sprintf("%{$t}s", $value);
@@ -826,7 +826,7 @@ final class Util
     }
 
     /**
-     * Validação para o tipo de cnab 240
+     * ValidaÃƒÂ§ÃƒÂ£o para o tipo de cnab 240
      *
      * @param  $content
      * @return bool
@@ -838,7 +838,7 @@ final class Util
     }
 
     /**
-     * Validação para o tipo de cnab 400
+     * ValidaÃƒÂ§ÃƒÂ£o para o tipo de cnab 400
      *
      * @param  $content
      * @return bool
@@ -876,7 +876,7 @@ final class Util
     }
 
     /**
-     * Valida se o header é de um arquivo retorno valido, 240 ou 400 posicoes
+     * Valida se o header ÃƒÂ© de um arquivo retorno valido, 240 ou 400 posicoes
      *
      * @param $header
      *
@@ -990,7 +990,7 @@ final class Util
             return $aBancos[$banco];
         }
 
-        throw new \Exception("Banco: $banco, inválido");
+        throw new \Exception("Banco: $banco, invÃƒÂ¡lido");
     }
 
     /**
@@ -1010,7 +1010,7 @@ final class Util
             $property = $obj;
             return $obj;
         }
-        throw new \Exception('Objeto inválido, somente Pessoa e Array');
+        throw new \Exception('Objeto invÃƒÂ¡lido, somente Pessoa e Array');
     }
 
     /**

@@ -16,11 +16,11 @@ class Factory
     public static function make($file)
     {
         if (!$file_content = Util::file2array($file)) {
-            throw new \Exception("Arquivo: não existe");
+            throw new \Exception("Arquivo: nÃƒÆ’Ã‚Â£o existe");
         }
 
         if (!Util::isHeaderRetorno($file_content[0])) {
-            throw new \Exception("Arquivo: $file, não é um arquivo de retorno");
+            throw new \Exception("Arquivo: $file, nÃƒÆ’Ã‚Â£o ÃƒÆ’Ã‚Â© um arquivo de retorno");
         }
 
         $instancia = self::getBancoClass($file_content);
@@ -45,7 +45,6 @@ class Factory
             $namespace = __NAMESPACE__ . '\\Cnab240\\';
         }
 
-        log_info("############ Banco: " . $banco . ' - Namespace: ' . $namespace);
 
         $aBancos = [
             BoletoContract::COD_BANCO_BB => 'Banco\\Bb',
@@ -66,7 +65,7 @@ class Factory
             return new $bancoClass($file_content);
         }
 
-        throw new \Exception("Banco: $banco, inválido");
+        throw new \Exception("Banco: $banco, invÃƒÆ’Ã‚Â¡lido");
     }
 }
 

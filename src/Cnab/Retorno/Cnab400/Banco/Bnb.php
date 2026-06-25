@@ -106,13 +106,13 @@ class Bnb extends AbstractRetorno implements RetornoCnab400
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($dataCredito)
-            ->setValor(Util::nFloat($this->rem(153, 165, $detalhe)/100, 2, false))
-            ->setValorTarifa(Util::nFloat($this->rem(176, 188, $detalhe)/100, 2, false))
+            ->setValor($this->formatCnabMoney($this->rem(153, 165, $detalhe)))
+            ->setValorTarifa($this->formatCnabMoney($this->rem(176, 188, $detalhe)))
             ->setValorIOF(Util::nFloat(0.00, 2, false))
-            ->setValorAbatimento(Util::nFloat($this->rem(228, 240, $detalhe)/100, 2, false))
-            ->setValorDesconto(Util::nFloat($this->rem(241, 253, $detalhe)/100, 2, false))
-            ->setValorRecebido(Util::nFloat($this->rem(254, 266, $detalhe)/100, 2, false))
-            ->setValorMora(Util::nFloat($this->rem(267, 279, $detalhe)/100, 2, false))
+            ->setValorAbatimento($this->formatCnabMoney($this->rem(228, 240, $detalhe)))
+            ->setValorDesconto($this->formatCnabMoney($this->rem(241, 253, $detalhe)))
+            ->setValorRecebido($this->formatCnabMoney($this->rem(254, 266, $detalhe)))
+            ->setValorMora($this->formatCnabMoney($this->rem(267, 279, $detalhe)))
             ->setValorMulta(Util::nFloat(0.00, 2, false));
 
         if ($d->hasOcorrencia('06', '07', '08')) {
@@ -144,7 +144,7 @@ class Bnb extends AbstractRetorno implements RetornoCnab400
     {
         $this->getTrailer()
             ->setQuantidadeTitulos((int) $this->rem(18, 25, $trailer))
-            ->setValorTitulos((float) Util::nFloat($this->rem(26, 39, $trailer)/100, 2, false))
+            ->setValorTitulos((float) $this->formatCnabMoney($this->rem(26, 39, $trailer)))
             ->setQuantidadeErros((int) $this->totais['erros'])
             ->setQuantidadeEntradas((int) $this->totais['entradas'])
             ->setQuantidadeLiquidados((int) $this->totais['liquidados'])

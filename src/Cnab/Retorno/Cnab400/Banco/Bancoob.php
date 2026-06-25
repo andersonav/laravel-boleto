@@ -124,14 +124,14 @@ class Bancoob extends AbstractRetorno implements RetornoCnab400
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($this->rem(176, 181, $detalhe))
-            ->setValor(Util::nFloat($this->rem(153, 165, $detalhe)/100, 2, false))
-            ->setValorTarifa(Util::nFloat($this->rem(182, 188, $detalhe)/100, 2, false))
-            ->setValorIOF(Util::nFloat($this->rem(215, 227, $detalhe)/100, 2, false))
-            ->setValorAbatimento(Util::nFloat($this->rem(228, 240, $detalhe)/100, 2, false))
-            ->setValorDesconto(Util::nFloat($this->rem(241, 253, $detalhe)/100, 2, false))
-            ->setValorRecebido(Util::nFloat($this->rem(254, 266, $detalhe)/100, 2, false))
-            ->setValorMora(Util::nFloat($this->rem(267, 279, $detalhe)/100, 2, false))
-            ->setValorMulta(Util::nFloat($this->rem(280, 292, $detalhe)/100, 2, false));
+            ->setValor($this->formatCnabMoney($this->rem(153, 165, $detalhe)))
+            ->setValorTarifa($this->formatCnabMoney($this->rem(182, 188, $detalhe)))
+            ->setValorIOF($this->formatCnabMoney($this->rem(215, 227, $detalhe)))
+            ->setValorAbatimento($this->formatCnabMoney($this->rem(228, 240, $detalhe)))
+            ->setValorDesconto($this->formatCnabMoney($this->rem(241, 253, $detalhe)))
+            ->setValorRecebido($this->formatCnabMoney($this->rem(254, 266, $detalhe)))
+            ->setValorMora($this->formatCnabMoney($this->rem(267, 279, $detalhe)))
+            ->setValorMulta($this->formatCnabMoney($this->rem(280, 292, $detalhe)));
 
         $msgAdicional = str_split(sprintf('%08s', $this->rem(319, 328, $detalhe)), 2) + array_fill(0, 5, '');
         if ($d->hasOcorrencia('05', '06')) {

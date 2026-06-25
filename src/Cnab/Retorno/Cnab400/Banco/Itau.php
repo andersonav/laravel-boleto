@@ -223,14 +223,14 @@ class Itau extends AbstractRetorno implements RetornoCnab400
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($this->rem(296, 301, $detalhe))
             ->setCodigoLiquidacao($this->rem(393, 394, $detalhe))
-            ->setValor(Util::nFloat($this->rem(153, 165, $detalhe) / 100, 2, false))
-            ->setValorTarifa(Util::nFloat($this->rem(176, 188, $detalhe) / 100, 2, false))
-            ->setValorIOF(Util::nFloat($this->rem(215, 227, $detalhe) / 100, 2, false))
-            ->setValorAbatimento(Util::nFloat($this->rem(228, 240, $detalhe) / 100, 2, false))
-            ->setValorDesconto(Util::nFloat($this->rem(241, 253, $detalhe) / 100, 2, false))
-            ->setValorRecebido(Util::nFloat($this->rem(254, 266, $detalhe) / 100, 2, false))
-            ->setValorMora(Util::nFloat($this->rem(267, 279, $detalhe) / 100, 2, false))
-            ->setValorMulta(Util::nFloat($this->rem(280, 292, $detalhe) / 100, 2, false));
+            ->setValor($this->formatCnabMoney($this->rem(153, 165, $detalhe)))
+            ->setValorTarifa($this->formatCnabMoney($this->rem(176, 188, $detalhe)))
+            ->setValorIOF($this->formatCnabMoney($this->rem(215, 227, $detalhe)))
+            ->setValorAbatimento($this->formatCnabMoney($this->rem(228, 240, $detalhe)))
+            ->setValorDesconto($this->formatCnabMoney($this->rem(241, 253, $detalhe)))
+            ->setValorRecebido($this->formatCnabMoney($this->rem(254, 266, $detalhe)))
+            ->setValorMora($this->formatCnabMoney($this->rem(267, 279, $detalhe)))
+            ->setValorMulta($this->formatCnabMoney($this->rem(280, 292, $detalhe)));
 
         $msgAdicional = str_split(sprintf('%08s', $this->rem(378, 385, $detalhe)), 2) + array_fill(0, 4, '');
         if ($d->hasOcorrencia('06', '07', '08', '10', '59')) {
@@ -274,7 +274,7 @@ class Itau extends AbstractRetorno implements RetornoCnab400
     {
         $this->getTrailer()
             ->setQuantidadeTitulos((int) $this->rem(18, 25, $trailer) + (int) $this->rem(58, 65, $trailer) + (int) $this->rem(178, 185, $trailer))
-            ->setValorTitulos((float) Util::nFloat($this->rem(221, 234, $trailer) / 100, 2, false))
+            ->setValorTitulos((float) $this->formatCnabMoney($this->rem(221, 234, $trailer)))
             ->setQuantidadeErros((int) $this->totais['erros'])
             ->setQuantidadeEntradas((int) $this->totais['entradas'])
             ->setQuantidadeLiquidados((int) $this->totais['liquidados'])

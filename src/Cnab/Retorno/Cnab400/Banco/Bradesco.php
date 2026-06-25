@@ -9,7 +9,7 @@ use Alves\LaravelBoleto\Util;
 class Bradesco extends AbstractRetorno implements RetornoCnab400
 {
     /**
-     * Código do banco
+     * CÃƒÂ³digo do banco
      *
      * @var string
      */
@@ -23,33 +23,33 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
     private $ocorrencias = [
         "02" => "Entrada Confirmada",
         "03" => "Entrada Rejeitada",
-        "06" => "Liquidação normal (sem motivo)",
+        "06" => "LiquidaÃƒÂ§ÃƒÂ£o normal (sem motivo)",
         "09" => "Baixado Automat. via Arquivo",
-        "10" => "Baixado conforme instruções da Agência",
-        "11" => "Em Ser - Arquivo de Títulos pendentes (sem motivo)",
+        "10" => "Baixado conforme instruÃƒÂ§ÃƒÂµes da AgÃƒÂªncia",
+        "11" => "Em Ser - Arquivo de TÃƒÂ­tulos pendentes (sem motivo)",
         "12" => "Abatimento Concedido (sem motivo)",
         "13" => "Abatimento Cancelado (sem motivo)",
         "14" => "Vencimento Alterado (sem motivo)",
-        "15" => "Liquidação em Cartório (sem motivo)",
-        "16" => "Título Pago em Cheque - Vinculado",
-        "17" => "Liquidação após baixa ou Título não registrado (sem motivo)",
-        "18" => "Acerto de Depositária (sem motivo)",
-        "19" => "Confirmação Receb. Inst. de Protesto",
-        "20" => "Confirmação Recebimento Instrução Sustação de Protesto (sem motivo)",
+        "15" => "LiquidaÃƒÂ§ÃƒÂ£o em CartÃƒÂ³rio (sem motivo)",
+        "16" => "TÃƒÂ­tulo Pago em Cheque - Vinculado",
+        "17" => "LiquidaÃƒÂ§ÃƒÂ£o apÃƒÂ³s baixa ou TÃƒÂ­tulo nÃƒÂ£o registrado (sem motivo)",
+        "18" => "Acerto de DepositÃƒÂ¡ria (sem motivo)",
+        "19" => "ConfirmaÃƒÂ§ÃƒÂ£o Receb. Inst. de Protesto",
+        "20" => "ConfirmaÃƒÂ§ÃƒÂ£o Recebimento InstruÃƒÂ§ÃƒÂ£o SustaÃƒÂ§ÃƒÂ£o de Protesto (sem motivo)",
         "21" => "Acerto do Controle do Participante (sem motivo)",
-        "22" => "Título Com Pagamento Cancelado",
-        "23" => "Entrada do Título em Cartório (sem motivo)",
+        "22" => "TÃƒÂ­tulo Com Pagamento Cancelado",
+        "23" => "Entrada do TÃƒÂ­tulo em CartÃƒÂ³rio (sem motivo)",
         "24" => "Entrada rejeitada por CEP Irregular",
         "27" => "Baixa Rejeitada",
-        "28" => "Débito de tarifas/custas",
-        "30" => "Alteração de Outros Dados Rejeitados",
-        "32" => "Instrução Rejeitada",
-        "33" => "Confirmação Pedido Alteração Outros Dados (sem motivo)",
-        "34" => "Retirado de Cartório e Manutenção Carteira (sem motivo)",
-        "35" => "Desagendamento do débito automático",
+        "28" => "DÃƒÂ©bito de tarifas/custas",
+        "30" => "AlteraÃƒÂ§ÃƒÂ£o de Outros Dados Rejeitados",
+        "32" => "InstruÃƒÂ§ÃƒÂ£o Rejeitada",
+        "33" => "ConfirmaÃƒÂ§ÃƒÂ£o Pedido AlteraÃƒÂ§ÃƒÂ£o Outros Dados (sem motivo)",
+        "34" => "Retirado de CartÃƒÂ³rio e ManutenÃƒÂ§ÃƒÂ£o Carteira (sem motivo)",
+        "35" => "Desagendamento do dÃƒÂ©bito automÃƒÂ¡tico",
         "40" => "Estorno de pagamento (Novo)",
         "55" => "Sustado judicial (Novo)",
-        "68" => "Acerto dos dados do rateio de Crédito",
+        "68" => "Acerto dos dados do rateio de CrÃƒÂ©dito",
         "69" => "Cancelamento dos dados do rateio",
     ];
 
@@ -59,40 +59,40 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
      * @var array
      */
     private $rejeicoes = [
-        '02' => 'Código do registro detalhe inválido',
-        '03' => 'Código da ocorrência inválida',
-        '04' => 'Código de ocorrência não permitida para a carteira',
-        '05' => 'Código de ocorrência não numérico',
-        '07' => 'Agência/conta/Digito - |Inválido',
-        '08' => 'Nosso número inválido',
-        '09' => 'Nosso número duplicado',
-        '10' => 'Carteira inválida',
-        '13' => 'Identificação da emissão do bloqueto inválida',
-        '16' => 'Data de vencimento inválida',
-        '18' => 'Vencimento fora do prazo de operação',
-        '20' => 'Valor do Título inválido',
-        '21' => 'Espécie do Título inválida',
-        '22' => 'Espécie não permitida para a carteira',
-        '24' => 'Data de emissão inválida',
-        '28' => 'Código do desconto inválido',
-        '38' => 'Prazo para protesto/ Negativação inválido (ALTERADO)',
-        '44' => 'Agência Beneficiário não prevista',
-        '45' => 'Nome do pagador não informado',
-        '46' => 'Tipo/número de inscrição do pagador inválidos',
-        '47' => 'Endereço do pagador não informado',
-        '48' => 'CEP Inválido',
+        '02' => 'CÃƒÂ³digo do registro detalhe invÃƒÂ¡lido',
+        '03' => 'CÃƒÂ³digo da ocorrÃƒÂªncia invÃƒÂ¡lida',
+        '04' => 'CÃƒÂ³digo de ocorrÃƒÂªncia nÃƒÂ£o permitida para a carteira',
+        '05' => 'CÃƒÂ³digo de ocorrÃƒÂªncia nÃƒÂ£o numÃƒÂ©rico',
+        '07' => 'AgÃƒÂªncia/conta/Digito - |InvÃƒÂ¡lido',
+        '08' => 'Nosso nÃƒÂºmero invÃƒÂ¡lido',
+        '09' => 'Nosso nÃƒÂºmero duplicado',
+        '10' => 'Carteira invÃƒÂ¡lida',
+        '13' => 'IdentificaÃƒÂ§ÃƒÂ£o da emissÃƒÂ£o do bloqueto invÃƒÂ¡lida',
+        '16' => 'Data de vencimento invÃƒÂ¡lida',
+        '18' => 'Vencimento fora do prazo de operaÃƒÂ§ÃƒÂ£o',
+        '20' => 'Valor do TÃƒÂ­tulo invÃƒÂ¡lido',
+        '21' => 'EspÃƒÂ©cie do TÃƒÂ­tulo invÃƒÂ¡lida',
+        '22' => 'EspÃƒÂ©cie nÃƒÂ£o permitida para a carteira',
+        '24' => 'Data de emissÃƒÂ£o invÃƒÂ¡lida',
+        '28' => 'CÃƒÂ³digo do desconto invÃƒÂ¡lido',
+        '38' => 'Prazo para protesto/ NegativaÃƒÂ§ÃƒÂ£o invÃƒÂ¡lido (ALTERADO)',
+        '44' => 'AgÃƒÂªncia BeneficiÃƒÂ¡rio nÃƒÂ£o prevista',
+        '45' => 'Nome do pagador nÃƒÂ£o informado',
+        '46' => 'Tipo/nÃƒÂºmero de inscriÃƒÂ§ÃƒÂ£o do pagador invÃƒÂ¡lidos',
+        '47' => 'EndereÃƒÂ§o do pagador nÃƒÂ£o informado',
+        '48' => 'CEP InvÃƒÂ¡lido',
         '50' => 'CEP irregular - Banco Correspondente',
-        '63' => 'Entrada para Título já cadastrado',
+        '63' => 'Entrada para TÃƒÂ­tulo jÃƒÂ¡ cadastrado',
         '65' => 'Limite excedido',
-        '66' => 'Número autorização inexistente',
-        '68' => 'Débito não agendado - erro nos dados de remessa',
-        '69' => 'Débito não agendado - Pagador não consta no cadastro de autorizante',
-        '70' => 'Débito não agendado - Beneficiário não autorizado pelo Pagador',
-        '71' => 'Débito não agendado - Beneficiário não participa do débito Automático',
-        '72' => 'Débito não agendado - Código de moeda diferente de R$',
-        '73' => 'Débito não agendado - Data de vencimento inválida',
-        '74' => 'Débito não agendado - Conforme seu pedido, Título não registrado',
-        '75' => 'Débito não agendado - Tipo de número de inscrição do debitado inválido',
+        '66' => 'NÃƒÂºmero autorizaÃƒÂ§ÃƒÂ£o inexistente',
+        '68' => 'DÃƒÂ©bito nÃƒÂ£o agendado - erro nos dados de remessa',
+        '69' => 'DÃƒÂ©bito nÃƒÂ£o agendado - Pagador nÃƒÂ£o consta no cadastro de autorizante',
+        '70' => 'DÃƒÂ©bito nÃƒÂ£o agendado - BeneficiÃƒÂ¡rio nÃƒÂ£o autorizado pelo Pagador',
+        '71' => 'DÃƒÂ©bito nÃƒÂ£o agendado - BeneficiÃƒÂ¡rio nÃƒÂ£o participa do dÃƒÂ©bito AutomÃƒÂ¡tico',
+        '72' => 'DÃƒÂ©bito nÃƒÂ£o agendado - CÃƒÂ³digo de moeda diferente de R$',
+        '73' => 'DÃƒÂ©bito nÃƒÂ£o agendado - Data de vencimento invÃƒÂ¡lida',
+        '74' => 'DÃƒÂ©bito nÃƒÂ£o agendado - Conforme seu pedido, TÃƒÂ­tulo nÃƒÂ£o registrado',
+        '75' => 'DÃƒÂ©bito nÃƒÂ£o agendado - Tipo de nÃƒÂºmero de inscriÃƒÂ§ÃƒÂ£o do debitado invÃƒÂ¡lido',
     ];
 
     /**
@@ -154,14 +154,14 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
             ->setDataOcorrencia($this->rem(111, 116, $detalhe))
             ->setDataVencimento($this->rem(147, 152, $detalhe))
             ->setDataCredito($this->rem(296, 301, $detalhe))
-            ->setValor(Util::nFloat($this->rem(153, 165, $detalhe)/100, 2, false))
-            ->setValorTarifa(Util::nFloat($this->rem(176, 188, $detalhe)/100, 2, false))
-            ->setValorIOF(Util::nFloat($this->rem(215, 227, $detalhe)/100, 2, false))
-            ->setValorAbatimento(Util::nFloat($this->rem(228, 240, $detalhe)/100, 2, false))
-            ->setValorDesconto(Util::nFloat($this->rem(241, 253, $detalhe)/100, 2, false))
-            ->setValorRecebido(Util::nFloat($this->rem(254, 266, $detalhe)/100, 2, false))
-            ->setValorMora(Util::nFloat($this->rem(267, 279, $detalhe)/100, 2, false))
-            ->setValorMulta(Util::nFloat($this->rem(280, 292, $detalhe)/100, 2, false));
+            ->setValor($this->formatCnabMoney($this->rem(153, 165, $detalhe)))
+            ->setValorTarifa($this->formatCnabMoney($this->rem(176, 188, $detalhe)))
+            ->setValorIOF($this->formatCnabMoney($this->rem(215, 227, $detalhe)))
+            ->setValorAbatimento($this->formatCnabMoney($this->rem(228, 240, $detalhe)))
+            ->setValorDesconto($this->formatCnabMoney($this->rem(241, 253, $detalhe)))
+            ->setValorRecebido($this->formatCnabMoney($this->rem(254, 266, $detalhe)))
+            ->setValorMora($this->formatCnabMoney($this->rem(267, 279, $detalhe)))
+            ->setValorMulta($this->formatCnabMoney($this->rem(280, 292, $detalhe)));
 
         $msgAdicional = str_split(sprintf('%08s', $this->rem(319, 328, $detalhe)), 2) + array_fill(0, 5, '');
         if ($d->hasOcorrencia('06', '15', '17')) {
@@ -211,7 +211,7 @@ class Bradesco extends AbstractRetorno implements RetornoCnab400
     {
         $this->getTrailer()
             ->setQuantidadeTitulos($this->rem(18, 25, $trailer))
-            ->setValorTitulos(Util::nFloat($this->rem(26, 39, $trailer)/100, 2, false))
+            ->setValorTitulos($this->formatCnabMoney($this->rem(26, 39, $trailer)))
             ->setQuantidadeErros((int) $this->totais['erros'])
             ->setQuantidadeEntradas((int) $this->totais['entradas'])
             ->setQuantidadeLiquidados((int) $this->totais['liquidados'])

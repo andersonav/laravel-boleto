@@ -314,13 +314,13 @@ class Itau extends AbstractRetorno implements RetornoCnab240
                 ->setCarteira($this->rem(38, 40, $detalhe))
                 ->setNumeroDocumento($this->rem(59, 68, $detalhe))
                 ->setDataVencimento($this->rem(74, 81, $detalhe))
-                ->setValor(Util::nFloat($this->rem(82, 96, $detalhe)/100, 2, false))
+                ->setValor($this->formatCnabMoney($this->rem(82, 96, $detalhe)))
                 ->setNumeroControle($this->rem(106, 130, $detalhe))
                 ->setPagador([
                     'nome' => $this->rem(149, 188, $detalhe),
                     'documento' => $this->rem(134, 148, $detalhe),
                 ])
-                ->setValorTarifa(Util::nFloat($this->rem(199, 213, $detalhe)/100, 2, false));
+                ->setValorTarifa($this->formatCnabMoney($this->rem(199, 213, $detalhe)));
 
             /**
              * ocorrencias
@@ -359,16 +359,16 @@ class Itau extends AbstractRetorno implements RetornoCnab240
         }
 
         if ($this->getSegmentType($detalhe) == 'U') {
-            $d->setValorMulta(Util::nFloat($this->rem(18, 32, $detalhe)/100, 2, false))
-                ->setValorDesconto(Util::nFloat($this->rem(33, 47, $detalhe)/100, 2, false))
-                ->setValorAbatimento(Util::nFloat($this->rem(48, 62, $detalhe)/100, 2, false))
-                ->setValorIOF(Util::nFloat($this->rem(63, 77, $detalhe)/100, 2, false))
-                ->setValorRecebido(Util::nFloat($this->rem(78, 92, $detalhe)/100, 2, false))
+            $d->setValorMulta($this->formatCnabMoney($this->rem(18, 32, $detalhe)))
+                ->setValorDesconto($this->formatCnabMoney($this->rem(33, 47, $detalhe)))
+                ->setValorAbatimento($this->formatCnabMoney($this->rem(48, 62, $detalhe)))
+                ->setValorIOF($this->formatCnabMoney($this->rem(63, 77, $detalhe)))
+                ->setValorRecebido($this->formatCnabMoney($this->rem(78, 92, $detalhe)))
                 ->setDataOcorrencia($this->rem(138, 145, $detalhe))
                 ->setDataCredito($this->rem(146, 153, $detalhe));
 
-            if(Util::nFloat($this->rem(93, 107, $detalhe)/100, 2, false) > 0 && ($d->getValorRecebido() - Util::nFloat($this->rem(93, 107, $detalhe)/100, 2, false) > 0)){
-                $d->setValorTarifa($d->getValorRecebido() - Util::nFloat($this->rem(93, 107, $detalhe)/100, 2, false));
+            if($this->formatCnabMoney($this->rem(93, 107, $detalhe)) > 0 && ($d->getValorRecebido() - $this->formatCnabMoney($this->rem(93, 107, $detalhe)) > 0)){
+                $d->setValorTarifa($d->getValorRecebido() - $this->formatCnabMoney($this->rem(93, 107, $detalhe)));
             }
         }
 
@@ -388,9 +388,9 @@ class Itau extends AbstractRetorno implements RetornoCnab240
             ->setTipoRegistro($this->rem(8, 8, $trailer))
             ->setQtdRegistroLote((int) $this->rem(18, 23, $trailer))
             ->setQtdTitulosCobrancaSimples((int) $this->rem(24, 29, $trailer))
-            ->setValorTotalTitulosCobrancaSimples(Util::nFloat($this->rem(30, 46, $trailer)/100, 2, false))
+            ->setValorTotalTitulosCobrancaSimples($this->formatCnabMoney($this->rem(30, 46, $trailer)))
             ->setQtdTitulosCobrancaVinculada((int) $this->rem(47, 52, $trailer))
-            ->setValorTotalTitulosCobrancaVinculada(Util::nFloat($this->rem(53, 69, $trailer)/100, 2, false));
+            ->setValorTotalTitulosCobrancaVinculada($this->formatCnabMoney($this->rem(53, 69, $trailer)));
 
         return true;
     }

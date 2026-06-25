@@ -27,7 +27,7 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
     protected $processado = false;
 
     /**
-     * Código do banco
+     * CÃƒÆ’Ã‚Â³digo do banco
      *
      * @var string
      */
@@ -84,7 +84,7 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
         $this->_position = 1;
 
         if (!$this->file = Util::file2array($file)) {
-            throw new \Exception("Arquivo: não existe");
+            throw new \Exception("Arquivo: nÃƒÆ’Ã‚Â£o existe");
         }
 
         $r = new \ReflectionClass('\Alves\LaravelBoleto\Contracts\Boleto\Boleto');
@@ -97,17 +97,17 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
         }
 
         if (!Util::isHeaderRetorno($this->file[0])) {
-            throw new \Exception(sprintf("Arquivo de retorno inválido"));
+            throw new \Exception(sprintf("Arquivo de retorno invÃƒÆ’Ã‚Â¡lido"));
         }
 
         $banco = Util::isCnab400($this->file[0]) ? mb_substr($this->file[0], 76, 3) : mb_substr($this->file[0], 0, 3);
         if (!in_array($banco, $bancosDisponiveis)) {
-            throw new \Exception(sprintf("Banco: %s, inválido", $banco));
+            throw new \Exception(sprintf("Banco: %s, invÃƒÆ’Ã‚Â¡lido", $banco));
         }
     }
 
     /**
-     * Retorna o código do banco
+     * Retorna o cÃƒÆ’Ã‚Â³digo do banco
      *
      * @return string
      */
@@ -246,42 +246,67 @@ abstract class AbstractRetorno implements \Countable, \SeekableIterator
         return Util::remove($i, $f, $array);
     }
 
+    /**
+     * Converte um campo monetario CNAB, informado em centavos, para valor decimal.
+     *
+     * @param mixed $value
+     * @param int|false $decimals
+     * @return string|int
+     */
+    protected function formatCnabMoney($value, $decimals = 2)
+    {
+        $numericValue = (float) Util::onlyNumbers((string) $value);
 
+        if ($numericValue == 0.0) {
+            return 0;
+        }
+
+        return Util::nFloat($numericValue / 100, $decimals, false);
+    }
+
+
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return $this->detalhe[$this->_position];
     }
 
+    #[\ReturnTypeWillChange]
     public function next()
     {
         ++$this->_position;
     }
 
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->_position;
     }
 
+    #[\ReturnTypeWillChange]
     public function valid()
     {
         return isset($this->detalhe[$this->_position]);
     }
 
+    #[\ReturnTypeWillChange]
     public function rewind()
     {
         $this->_position = 1;
     }
 
+    #[\ReturnTypeWillChange]
     public function count()
     {
         return count($this->detalhe);
     }
 
+    #[\ReturnTypeWillChange]
     public function seek($position)
     {
         $this->_position = $position;
         if (!$this->valid()) {
-            throw new \OutOfBoundsException('"Posição inválida "$position"');
+            throw new \OutOfBoundsException('"PosiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o invÃƒÆ’Ã‚Â¡lida "$position"');
         }
     }
 }
